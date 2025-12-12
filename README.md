@@ -1,0 +1,2 @@
+# actantial
+`actantial` is a research tool for analyzing narratives using Greimas' Actantial Model. It provides functions to extract and analyse different character roles—actants—in text. Applications include news articles, social media posts, and more.
