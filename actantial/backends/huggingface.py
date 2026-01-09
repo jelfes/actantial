@@ -1,0 +1,103 @@
+# actantial/backends/huggingface.py
+
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+from .base import LLMBackend
+from actantial.config import GENERATION_DEFAULTS, DTYPE_MAP
+
+
+class HuggingFaceBackend(LLMBackend):
+    """Backend for local HuggingFace models without quantization."""
+
+    def __init__(
+        self,
+        model_name: str,
+        quantisation: bool = False,
+        torch_dtype: str = "float16",
+        **kwargs,
+    ):
+        """
+        Initialize HuggingFace backend.
+
+        Args:
+            model_name: HuggingFace model identifier (e.g., "meta-llama/Llama-3-8B")
+            torch_dtype: Data type ("auto", "float16", "bfloat16")
+            **kwargs: Additional model/tokenizer arguments
+        """
+        super().__init__(model_name, **kwargs)
+        self.model_name = model_name.split("/")[-1]
+
+        # Convert torch_dtype string to actual dtype
+        torch_dtype = DTYPE_MAP.get(torch_dtype, "float16")
+
+        # Set quantization configuration if needed
+        quant_config = None
+        if quantisation:
+            quant_config = BitsAndBytesConfig(
+                load_in_4bit=True,
+                bnb_4bit_compute_dtype=torch_dtype,
+                bnb_4bit_use_double_quant=True,
+            )
+
+        # Load model and tokenizer
+        print(f"Loading model {model_name}...")
+        self.tokenizer = AutoTokenizer.from_pretrained(
+            model_name, trust_remote_code=True
+        )
+
+        self.model = AutoModelForCausalLM.from_pretrained(
+            model_name,
+            device_map="auto",
+            quantization_config=quant_config,
+            **kwargs,
+        )
+
+        print("Model loaded successfully")
+
+    def generate(
+        self,
+        prompt: str,
+        **kwargs,
+    ) -> str:
+        """
+        Generate text from prompt.
+
+        Args:
+            prompt: Input prompt
+            max_new_tokens: Maximum tokens to generate
+            temperature: Sampling temperature
+            top_p: Nucleus sampling parameter
+            **kwargs: Additional generation parameters
+
+        Returns:
+            Generated text (excluding prompt)
+        """
+
+        # Tokenize input prompt
+        inputs = self.tokenizer(prompt, return_tensors="pt")
+        inputs.to(self.model.device)
+
+        # Run model inference
+        with torch.no_grad():
+            model_outputs = self.model.generate(
+                **inputs, **GENERATION_DEFAULTS, **kwargs
+            )
+
+        # Decode generated tokens to text
+        output = self.tokenizer.decode(
+            model_outputs[0][inputs["input_ids"].shape[1] :], skip_special_tokens=True
+        )
+
+        return output
+
+    def cleanup(self):
+        """Unload model and free GPU memory."""
+        if hasattr(self, "model"):
+            del self.model
+        if hasattr(self, "tokenizer"):
+            del self.tokenizer
+
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+
+        print("Model unloaded")
