@@ -8,11 +8,18 @@ license = { file = "LICENSE" }
 authors = [
   { name="Jan Elfes", email="janelfes@gmail.com" }
 ]
+
 dependencies = [
-  "torch>=2.4.0",
-  "transformers>=4.51.0",
-  # "jinja2",
-  # add other dependencies here
+  "Jinja2>=3.1.6",
+  "pandas>=2.3.3",
+  "torch>=2.4.0",                 # TODO maybe move to huggingface optionals
+]
+
+[project.optional-dependencies]
+huggingface = [
+  "transformers>=4.57.3",
+  "accelerate>=1.12.0",
+  # "bitsandbytes>=0.42.0",
 ]
 
 [build-system]
