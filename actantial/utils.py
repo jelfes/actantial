@@ -11,7 +11,7 @@ def ensure_directory(dir_path: str):
         os.makedirs(dir_path)
 
 
-def extract_json(input_text: str) -> Dict:
+def parse_json(input_text: str) -> Dict:
     """
     Extract the first flat JSON object from a string.
 
