@@ -1,0 +1,20 @@
+[project]
+name = "actantial"
+version = "0.1.0"
+description = "A toolkit for analyzing narratives using Greimas' Actantial Model."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [
+  { name="Jan Elfes", email="janelfes@gmail.com" }
+]
+dependencies = [
+  "torch>=2.4.0",
+  "transformers>=4.51.0",
+  # "jinja2",
+  # add other dependencies here
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
