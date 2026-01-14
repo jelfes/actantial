@@ -5,15 +5,15 @@ from typing import Dict, Any, Optional
 class LLMBackend(ABC):
     """Abstract base class for LLM backends."""
 
-    def __init__(self, model: str, **kwargs):
+    def __init__(self, model_name: str, **kwargs):
         """
         Initialize the backend.
 
         Args:
-            model: Model identifier (HF model path, API model name, etc.)
+            model_name: Model identifier (HF model path, API model name, etc.)
             **kwargs: Backend-specific configuration
         """
-        self.model = model
+        self.model_name = model_name
         self.config = kwargs
 
     @abstractmethod
