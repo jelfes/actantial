@@ -57,6 +57,7 @@ class HuggingFaceBackend(LLMBackend):
     def generate(
         self,
         prompt: str,
+        max_new_tokens: int = 2048,
         **kwargs,
     ) -> str:
         """
@@ -80,7 +81,7 @@ class HuggingFaceBackend(LLMBackend):
         # Run model inference
         with torch.no_grad():
             model_outputs = self.model.generate(
-                **inputs, **GENERATION_DEFAULTS, **kwargs
+                **inputs, max_new_tokens=max_new_tokens, **GENERATION_DEFAULTS, **kwargs
             )
 
         # Decode generated tokens to text

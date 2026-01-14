@@ -8,7 +8,6 @@ GENERATION_DEFAULTS = {
     "do_sample": False,
     "temperature": None,
     "top_p": None,
-    "max_new_tokens": 2048,
 }
 
 DTYPE_MAP = {
