@@ -28,7 +28,7 @@ class OpenAIBackend(LLMBackend):
         self,
         prompt: str,
         max_new_tokens: int = 2048,
-        top_p=0,
+        temperature=0,
         **kwargs,
     ) -> str:
         """
@@ -37,7 +37,7 @@ class OpenAIBackend(LLMBackend):
         Args:
             prompt: Input prompt
             max_new_tokens: Maximum number of tokens to generate
-            top_p: Nucleus sampling parameter, set to 0 for deterministic output
+            temperature: Sampling temperature for generation, 0 for deterministic output recommended
             **kwargs: Additional generation parameters
 
         Returns:
@@ -49,8 +49,8 @@ class OpenAIBackend(LLMBackend):
             instructions="You are a helpful assistant.",
             input=prompt,
             max_output_tokens=max_new_tokens,
-            top_p=top_p,  # TODO test whether 0 works for deterministic output
+            temperature=temperature,
             **kwargs,
         )
 
-        return response.completion
+        return response.output_text
