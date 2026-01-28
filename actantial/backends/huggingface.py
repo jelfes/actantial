@@ -3,7 +3,7 @@
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 from .base import LLMBackend
-from actantial.config import GENERATION_DEFAULTS, DTYPE_MAP
+from actantial.config import DTYPE_MAP
 
 
 class HuggingFaceBackend(LLMBackend):
@@ -58,6 +58,9 @@ class HuggingFaceBackend(LLMBackend):
         self,
         prompt: str,
         max_new_tokens: int = 2048,
+        do_sample: bool = False,
+        temperature: float = None,
+        top_p: float = None,
         **kwargs,
     ) -> str:
         """
@@ -66,6 +69,7 @@ class HuggingFaceBackend(LLMBackend):
         Args:
             prompt: Input prompt
             max_new_tokens: Maximum tokens to generate
+            do_sample: Whether to use sampling (FALSE for deterministic output)
             temperature: Sampling temperature
             top_p: Nucleus sampling parameter
             **kwargs: Additional generation parameters
@@ -81,7 +85,12 @@ class HuggingFaceBackend(LLMBackend):
         # Run model inference
         with torch.no_grad():
             model_outputs = self.model.generate(
-                **inputs, max_new_tokens=max_new_tokens, **GENERATION_DEFAULTS, **kwargs
+                **inputs,
+                max_new_tokens=max_new_tokens,
+                do_sample=do_sample,
+                temperature=temperature,
+                top_p=top_p,
+                **kwargs,
             )
 
         # Decode generated tokens to text
@@ -93,6 +102,7 @@ class HuggingFaceBackend(LLMBackend):
 
     def cleanup(self):
         """Unload model and free GPU memory."""
+        # TODO: assess use and revise
         if hasattr(self, "model"):
             del self.model
         if hasattr(self, "tokenizer"):

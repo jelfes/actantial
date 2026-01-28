@@ -4,11 +4,11 @@ from openai import OpenAI
 
 
 class OpenAIBackend(LLMBackend):
-    """Backend for Anthropic models."""
+    """Backend for OpenAI models."""
 
     def __init__(self, model_name: str = "gpt-4o-mini", api_key: str = None):
         """
-        Initialize Anthropic backend.
+        Initialize OpenAI backend.
 
         Args:
             model_name: OpenAI model identifier (e.g., "gpt-4o")
@@ -25,11 +25,7 @@ class OpenAIBackend(LLMBackend):
             self.client = OpenAI(api_key=api_key)
 
     def generate(
-        self,
-        prompt: str,
-        max_new_tokens: int = 2048,
-        temperature=0,
-        **kwargs,
+        self, prompt: str, max_new_tokens: int = 2048, temperature: float = 0, **kwargs
     ) -> str:
         """
         Generate text from prompt.
@@ -37,13 +33,12 @@ class OpenAIBackend(LLMBackend):
         Args:
             prompt: Input prompt
             max_new_tokens: Maximum number of tokens to generate
-            temperature: Sampling temperature for generation, 0 for deterministic output recommended
+            temperature: Sampling temperature (0 for deterministic)
             **kwargs: Additional generation parameters
 
         Returns:
             Generated text (excluding prompt)
         """
-
         response = self.client.responses.create(
             model=self.model_name,
             instructions="You are a helpful assistant.",
