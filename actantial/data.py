@@ -3,7 +3,6 @@ import json
 import warnings
 
 from typing import Literal, Optional, Dict, Any, Union
-from actantial.utils import parse_json
 from actantial.config import ACTANTS
 from pandas import DataFrame
 from pathlib import Path
