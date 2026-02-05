@@ -1,11 +1,54 @@
 import os
+import re
 import json
 import warnings
+import logging
 
 from typing import Literal, Optional, Dict, Any, Union
 from actantial.config import ACTANTS
 from pandas import DataFrame
 from pathlib import Path
+
+
+from typing import Dict
+from pathlib import Path
+
+
+def ensure_directory(dir_path: Path | str) -> None:
+    """Ensure directory exists (creates it if necessary)."""
+    path = Path(dir_path)
+    if not path.exists():
+        path.mkdir(parents=True, exist_ok=True)
+
+
+def parse_json(input_text: str) -> Dict:
+    """
+    Extract the first flat JSON object from a string.
+
+    Args:
+        input_text (str): The input string containing a JSON object.
+
+    Returns:
+        dict: The extracted JSON object, or empty dict if parsing fails.
+    """
+    # match only flat JSON objects
+    json_pattern = re.compile(r"\{[^\{\}]*\}")
+    matches = json_pattern.findall(input_text)
+
+    if not matches:
+        logging.warning("No JSON object found in the input.")
+        return {}
+
+    if len(matches) > 1:
+        logging.warning(
+            f"Multiple JSON objects found ({len(matches)}). Using the first one."
+        )
+
+    try:
+        return json.loads(matches[0])
+    except json.JSONDecodeError as e:
+        logging.error(f"Error decoding JSON: {e}")
+        return {}
 
 
 def _read_json_file(file_path: Union[str, Path]) -> Dict[str, Any]:
