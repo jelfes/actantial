@@ -9,7 +9,7 @@ from pandas import DataFrame
 from pathlib import Path
 
 
-def read_json_file(file_path: Union[str, Path]) -> Dict[str, Any]:
+def _read_json_file(file_path: Union[str, Path]) -> Dict[str, Any]:
     """Read and parse a JSON file, returning a dict.
 
     Raises FileNotFoundError or ValueError on invalid JSON.
@@ -24,7 +24,7 @@ def read_json_file(file_path: Union[str, Path]) -> Dict[str, Any]:
         raise ValueError(f"Invalid JSON in {path}: {exc}") from exc
 
 
-def create_file_path(base_folder: str, file_id: str) -> Optional[str]:
+def _create_file_path(base_folder: str, file_id: str) -> Optional[str]:
     """
     Create a file path combining the base folder and file ID. Return None if the file does not exist.
 
@@ -76,7 +76,7 @@ def load_actors(
         if not file_path:
             continue
 
-        file_data = read_json_file(file_path)
+        file_data = _read_json_file(file_path)
 
         # TODO improve robustness of extraction logic
         for actant in ACTANTS:
@@ -138,7 +138,7 @@ def load_annotations(data: DataFrame, label_folder: str, **kwargs) -> DataFrame:
 
     # Map IDs to annotation file paths
     data_annot["file_name"] = data_annot.apply(
-        lambda x: create_file_path(label_folder, x.id), axis=1
+        lambda x: _create_file_path(label_folder, x.id), axis=1
     )
 
     n_missing_files = data_annot.file_name.isna().sum()
