@@ -25,6 +25,7 @@ def compare_labels(
         metric: The agreement metric to compute (e.g., "accuracy", "f1_micro").
         id_column: The name of the column containing unique identifiers for matching rows.
         actant_columns: List of columns corresponding to actants to compare.
+        verbose: If True, print detailed information about dropped rows and mismatches.
     """
     results = {}
 
