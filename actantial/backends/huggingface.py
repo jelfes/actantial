@@ -7,7 +7,12 @@ from actantial.config import DTYPE_MAP
 
 
 class HuggingFaceBackend(LLMBackend):
-    """Backend for local HuggingFace models without quantization."""
+    """Backend for local HuggingFace models.
+
+    Quantization via bits-and-bytes is supported, but only when a CUDA GPU
+    is available. Attempting to enable quantisation on MPS or a CPU-only
+    environment will raise a :class:`RuntimeError`.
+    """
 
     def __init__(
         self,
@@ -23,6 +28,10 @@ class HuggingFaceBackend(LLMBackend):
             model_name: HuggingFace model identifier (e.g., "meta-llama/Llama-3-8B")
             torch_dtype: Data type ("auto", "float16", "bfloat16")
             **kwargs: Additional model/tokenizer arguments
+
+        Raises:
+            RuntimeError: if ``quantisation`` is requested but no CUDA GPU is
+                detected (bits-and-bytes only supports CUDA devices).
         """
         super().__init__(model_name, **kwargs)
         self.model_name = model_name.split("/")[-1]
@@ -33,6 +42,14 @@ class HuggingFaceBackend(LLMBackend):
         # Set quantization configuration if needed
         quant_config = None
         if quantisation:
+            # BitsAndBytes quantization currently only works with CUDA backends.
+            # If we are running on Apple MPS or CPU-only, inform the user early.
+            if not torch.cuda.is_available():
+                raise RuntimeError(
+                    "Quantisation via bits-and-bytes requires a CUDA GPU. "
+                    "Detected no CUDA device (MPS or CPU only). "
+                    "Disable quantisation or switch to a CUDA-capable machine."
+                )
             quant_config = BitsAndBytesConfig(
                 load_in_4bit=True,
                 bnb_4bit_compute_dtype=torch_dtype,
