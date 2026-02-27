@@ -4,14 +4,13 @@ import pandas as pd
 import logging
 
 
-from actantial.utils import parse_json
 from actantial.extract import extract_actants
 from actantial.backends.base import LLMBackend
 from tqdm import tqdm
 from jinja2 import Environment, FileSystemLoader, Template
 from pathlib import Path
 from datetime import datetime
-from actantial.utils import ensure_directory
+from actantial.io import parse_json, ensure_directory
 
 
 os.environ["TOKENIZERS_PARALLELISM"] = (
