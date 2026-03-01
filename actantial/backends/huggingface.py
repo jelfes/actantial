@@ -78,6 +78,7 @@ class HuggingFaceBackend(LLMBackend):
         do_sample: bool = False,
         temperature: float = None,
         top_p: float = None,
+        top_k: int = None,
         **kwargs,
     ) -> str:
         """
@@ -107,6 +108,7 @@ class HuggingFaceBackend(LLMBackend):
                 do_sample=do_sample,
                 temperature=temperature,
                 top_p=top_p,
+                top_k=top_k,
                 **kwargs,
             )
 
