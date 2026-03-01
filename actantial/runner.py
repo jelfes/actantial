@@ -3,6 +3,8 @@ import json
 import pandas as pd
 import logging
 
+import yaml
+
 
 from actantial.extract import extract_actants
 from actantial.backends.base import LLMBackend
@@ -19,7 +21,7 @@ os.environ["TOKENIZERS_PARALLELISM"] = (
 
 
 def run_extract(
-    data: pd.DataFrame, backend: LLMBackend, data_path: Path, template: str
+    data: pd.DataFrame, backend: LLMBackend, data_path: Path, template: str, actor_labels_path: str = None, object_labels_path: str = None
 ):
     """
     Hanldes logging, data loop, saving results, and calls extraction function.
@@ -29,6 +31,8 @@ def run_extract(
         backend: Initialized LLMBackend instance
         data_path: Base path for saving results and logs
         template: Name of the prompt template to use (without .txt extension)
+        actor_labels_path: Optional path to actor labels for annotation with predefined labels. Requires a template that supports labels.
+        object_labels_path: Optional path to object labels for annotation with predefined labels. Requires a template that supports labels.
     """
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -54,9 +58,22 @@ def run_extract(
     )
     template = environment.get_template(template + ".txt")
 
+    if actor_labels_path is not None:
+        with open(actor_labels_path) as f:
+            actor_labels = yaml.safe_load(f)        
+    else:
+        actor_labels = None
+
+    if object_labels_path is not None:
+        with open(object_labels_path) as f:
+            object_labels = yaml.safe_load(f)
+    else:
+        object_labels = None
+
     # start logging
-    logging.info(f"Prompt: {template.render(text='COMMENT HERE')}")
+    logging.info(f"Prompt: {template.render(text='COMMENT HERE', actor_labels=actor_labels, object_labels=object_labels)}")
     ensure_directory(RUN_DIR)
+
 
     # start loop
     logging.info("Start inference")
@@ -65,7 +82,15 @@ def run_extract(
         logging.info(f"---------- ID {row.id} ----------\n")
         logging.info(f"Comment: {row.text}")
 
-        output = extract_actants(row.text, backend, template)
+
+
+        output = extract_actants(
+            input_text=row.text,
+            backend=backend,
+            prompt_template=template,
+            actor_labels=actor_labels,
+            object_labels=object_labels
+        )
 
         # Parse result
         actant_dict = parse_json(output)
