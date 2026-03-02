@@ -1,0 +1,32 @@
+{# prompt for extracting actants from a YouTube comment #}
+
+According to the Actantial Model by Greimas with the actant label set ["Subject", "Object", "Sender", "Receiver", "Helper", "Opponent"], the actants are defined as follows:
+
+* Subject: The character who carries out the action and desires the Object.
+* Object: The character or thing that is desired and transfered.
+* Sender: The character who initiates the action, controls the Object, and transfers it to the Receiver.
+* Receiver: The character who receives the Object.
+* Helper: The character who assists the Subject in achieving its goal.
+* Opponent: The character who opposes the Subject in achieving its goal.
+
+The following comment was posted under a YouTube video addressing the Israel-Palestine conflict. Based on the Actantial Model and the actant label set, please recognize the actants of this following comment.
+
+Comment: {{ text }}
+
+
+Question: What are the main actants for the comment? 
+1. Identify the Subject and Object first. 
+2. Select the Sender who transfers the Object to the Receiver. Make sure that this matches the Object from the previous step.
+3. Add the Helper and Opponent.
+
+Final Consistency Check:
+- Ensure that all chosen actants align logically with the relationships described in the Actantial Model.
+- The Object must remain consistent between desire and transfer.
+- If necessary, update the actants to maintain coherence.
+
+Response Format (JSON Dictionary)
+- Each actant label should be a key, and the corresponding actor the value.
+- If no actor is present for a label, return an empty string ("").
+
+Example Format: {"Subject": ["Actant Name"], "Object": ["Actant Name"], "Sender": ["Actant Name"], "Receiver": ["Actant Name"], "Helper": ["Actant Name"], "Opponent": ["Actant Name"]}
+Answer: <think>
