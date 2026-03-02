@@ -30,7 +30,7 @@ def run_extract(
         data: DataFrame with at least 'id' and 'text' columns
         backend: Initialized LLMBackend instance
         data_path: Base path for saving results and logs
-        template: Name of the prompt template to use (without .txt extension)
+        template: Name of the prompt template to use. Must be located in templates/{backend.model_name}/.
         actor_labels_path: Optional path to actor labels for annotation with predefined labels. Requires a template that supports labels.
         object_labels_path: Optional path to object labels for annotation with predefined labels. Requires a template that supports labels.
     """
@@ -56,8 +56,18 @@ def run_extract(
     environment = Environment(
         loader=FileSystemLoader(Path(__file__).parent / "templates")
     )
-    template = environment.get_template(template + ".txt")
 
+    if template.split(".")[-1] != "txt":
+        template += ".txt"
+
+    try:
+        template = environment.get_template(str(Path(backend.model_name, template)))
+    except Exception as e:
+        error_message = f"Error loading template {e}. Please ensure that the template exists in the templates/{backend.model_name} directory and is named correctly."
+        logging.error(error_message)
+        raise FileNotFoundError(error_message)
+
+    # handle labels (if provided)
     if actor_labels_path is not None:
         with open(actor_labels_path) as f:
             actor_labels = yaml.safe_load(f)        
@@ -95,7 +105,7 @@ def run_extract(
         # Parse result
         actant_dict = parse_json(output)
 
-        logging.info(f"Output:\n{actant_dict}")
+        logging.info(f"Output:\n\t{actant_dict}")
 
         # save results
         file_path = Path(RUN_DIR, f"{row.id}.txt")
