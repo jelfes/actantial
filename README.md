@@ -1,8 +1,6 @@
 # actantial
 `actantial` is a research tool for analyzing narratives using Greimas' Actantial Model. It provides functions to extract and analyse different character roles—actants—in text. Applications include news articles, social media posts, and more.
 
-
-
 ## Installation
 
 ### Minimal install (just core)
@@ -20,9 +18,27 @@ pip install actantial[huggingface]
 - `actantial.cli`: command-line interface for easy usage
 
 ## Usage
+### CLI
+This is how you use the package in your terminal ...
 
 
-## Backends & Models
-- choose from different backends & models
-- huggingface needs GPU
-- API backends need api keys in `.env` file
+### Notebook
+This is how you use the package in a notebook ...
+
+### Templates
+This is how you add new templates ...
+
+<!-- # TODO add some Some notes on constraints, difficulties -->
+
+### Backends & Models
+#### Huggingface
+- do_sample=False
+- GPU
+- Quantisation
+- LLMs that are available
+- Resource for GPU constraints
+
+#### Anthropic / OpenAI
+- .env with token
+- not really tested
+- system prompt?
