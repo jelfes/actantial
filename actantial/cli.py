@@ -4,8 +4,6 @@ import argparse
 from pathlib import Path
 
 import pandas as pd
-
-from .backends import OpenAIBackend, HuggingFaceBackend
 from .runner import run_extract
 
 
@@ -20,7 +18,7 @@ def main():
         "--data_file",
         type=Path,
         required=True,
-        help="CSV file with `id` and `text` columns. Will be read with pandas."
+        help="CSV file with `id` and `text` columns. Will be read with pandas.",
     )
     parser.add_argument(
         "--output_dir",
@@ -67,7 +65,7 @@ def main():
         type=str,
         help="Optional YAML file with predefined object labels",
     )
- 
+
     # Parse arguments
     args = parser.parse_args()
 
@@ -82,12 +80,16 @@ def main():
             raise ValueError(
                 "`--repository` is required when using the huggingface backend"
             )
+        from .backends.huggingface import HuggingFaceBackend
+
         backend = HuggingFaceBackend(
             repository=args.repository,
             model_name=args.model,
             quantisation=args.quantise,
         )
     elif args.backend == "openai":
+        from .backends.openai import OpenAIBackend
+
         backend = OpenAIBackend(model_name=args.model)
     else:
         # argparse should guard against this, but safety first
@@ -101,6 +103,7 @@ def main():
         actor_labels_path=args.actor_labels_path,
         object_labels_path=args.object_labels_path,
     )
+
 
 if __name__ == "__main__":
     main()
