@@ -21,7 +21,12 @@ os.environ["TOKENIZERS_PARALLELISM"] = (
 
 
 def run_extract(
-    data: pd.DataFrame, backend: LLMBackend, data_path: Path, template: str, actor_labels_path: str = None, object_labels_path: str = None
+    data: pd.DataFrame,
+    backend: LLMBackend,
+    output_path: Path,
+    template: str,
+    actor_labels_path: str = None,
+    object_labels_path: str = None
 ):
     """
     Hanldes logging, data loop, saving results, and calls extraction function.
@@ -29,7 +34,7 @@ def run_extract(
     Args:
         data: DataFrame with at least 'id' and 'text' columns
         backend: Initialized LLMBackend instance
-        data_path: Base path for saving results and logs
+        output_path: Base path for saving results and logs
         template: Name of the prompt template to use. Must be located in templates/{backend.model_name}/.
         actor_labels_path: Optional path to actor labels for annotation with predefined labels. Requires a template that supports labels.
         object_labels_path: Optional path to object labels for annotation with predefined labels. Requires a template that supports labels.
@@ -38,10 +43,10 @@ def run_extract(
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     RUN_ID = f"{backend.model_name}_{template}_{timestamp}"
     RUN_DIR = Path(
-        data_path, "actantial_models", backend.model_name, template, timestamp
+        output_path, "actantial_models", backend.model_name, template, timestamp
     )
     print(RUN_DIR)
-    LOG_DIR = Path(data_path, "logs")
+    LOG_DIR = Path(output_path, "logs")
 
     print(f"Logging to: {RUN_ID}.log")
     configure_logging(LOG_DIR, RUN_ID)
