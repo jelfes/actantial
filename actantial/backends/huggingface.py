@@ -16,6 +16,7 @@ class HuggingFaceBackend(LLMBackend):
 
     def __init__(
         self,
+        repository: str,
         model_name: str,
         quantisation: bool = False,
         torch_dtype: str = "float16",
@@ -25,7 +26,8 @@ class HuggingFaceBackend(LLMBackend):
         Initialize HuggingFace backend.
 
         Args:
-            model_name: HuggingFace model identifier (e.g., "meta-llama/Llama-3-8B")
+            repository: HuggingFace repository (e.g. "meta-llama")
+            model_name: HuggingFace model identifier (e.g., "Llama-3-8B")
             torch_dtype: Data type ("auto", "float16", "bfloat16")
             **kwargs: Additional model/tokenizer arguments
 
@@ -33,8 +35,13 @@ class HuggingFaceBackend(LLMBackend):
             RuntimeError: if ``quantisation`` is requested but no CUDA GPU is
                 detected (bits-and-bytes only supports CUDA devices).
         """
-        super().__init__(model_name, **kwargs)
-        self.model_name = model_name.split("/")[-1]
+        
+        model_path = "/".join([repository, model_name])
+        
+        super().__init__(model_path, **kwargs)
+        self.model_name = model_name
+        self.repository = repository
+        self.model_path = model_path
 
         # Convert torch_dtype string to actual dtype
         torch_dtype = DTYPE_MAP.get(torch_dtype, "float16")
@@ -57,13 +64,13 @@ class HuggingFaceBackend(LLMBackend):
             )
 
         # Load model and tokenizer
-        print(f"Loading model {model_name}...")
+        print(f"Loading model {model_path}...")
         self.tokenizer = AutoTokenizer.from_pretrained(
-            model_name, trust_remote_code=True
+            model_path, trust_remote_code=True
         )
 
         self.model = AutoModelForCausalLM.from_pretrained(
-            model_name,
+            model_path,
             device_map="auto",
             quantization_config=quant_config,
             **kwargs,
