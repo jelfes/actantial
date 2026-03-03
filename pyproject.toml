@@ -12,6 +12,8 @@ authors = [
 dependencies = [
   "Jinja2>=3.1.6",
   "pandas>=2.3.3",
+  "krippendorff>=0.8.2",
+  "matplotlib>=3.10.8",
   "torch>=2.4.0",                 # TODO maybe move to huggingface optionals
 ]
 
@@ -32,6 +34,15 @@ openai = [
   "python-dotenv>=1.2.1",
 ]
 
+[project.scripts]
+actantial = "actantial.cli:main"
+
+
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
+
+
+[tool.setuptools.packages.find]
+where = ["actantial"]
+
