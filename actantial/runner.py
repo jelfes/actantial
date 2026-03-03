@@ -12,7 +12,7 @@ from tqdm import tqdm
 from jinja2 import Environment, FileSystemLoader, Template
 from pathlib import Path
 from datetime import datetime
-from actantial.io import parse_json, ensure_directory
+from actantial.io import parse_json, ensure_directory, configure_logging
 
 
 os.environ["TOKENIZERS_PARALLELISM"] = (
@@ -44,13 +44,7 @@ def run_extract(
     LOG_DIR = Path(data_path, "logs")
 
     print(f"Logging to: {RUN_ID}.log")
-    ensure_directory(LOG_DIR)
-    logging.basicConfig(
-        filename=f"{LOG_DIR}/{RUN_ID}.log",
-        encoding="utf-8",
-        format="%(asctime)s %(message)s",
-        level=logging.INFO,
-    )
+    configure_logging(LOG_DIR, RUN_ID)
 
     # get template
     environment = Environment(
