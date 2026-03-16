@@ -1,5 +1,5 @@
 from .base import LLMBackend
-from dotenv import load_dotenv  # type: ignore
+from dotenv import load_dotenv
 from openai import OpenAI, NotFoundError
 
 
