@@ -43,7 +43,7 @@ def compare_labels(
     merged = pd.merge(df1, df2, on=id_column, how="inner", suffixes=("_1", "_2"))
 
     if merged.shape[0] == 0:
-        return {"error": "no matching ids between dataframes"}
+        raise ValueError("No matching IDs between the two DataFrames.")
 
     scores = {}
     dropped_per_actant = {}
