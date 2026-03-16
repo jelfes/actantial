@@ -42,3 +42,7 @@ This is how you add new templates ...
 - .env with token
 - not really tested
 - system prompt?
+
+---
+
+Parts of this codebase were developed with assistance from [Claude Code](https://claude.ai/claude-code).
