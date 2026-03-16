@@ -6,12 +6,13 @@ from anthropic import Anthropic, NotFoundError
 class AnthropicBackend(LLMBackend):
     """Backend for Anthropic models."""
 
-    def __init__(self, model_name: str = "claude-haiku-4-5", api_key: str = None):
+    def __init__(self, model_name: str = "claude-haiku-4-5", system_prompt: str = "You are a helpful assistant.", api_key: str = None):
         """
         Initialize Anthropic backend.
 
         Args:
             model_name: Anthropic model identifier (e.g., "claude-haiku-4-5")
+            system_prompt: System prompt to use for all requests
             api_key: API key for Anthropic service, if None, will be fetched from environment variable 'ANTHROPIC_API_KEY'
         """
         super().__init__(model_name)
@@ -22,6 +23,8 @@ class AnthropicBackend(LLMBackend):
             self.client = Anthropic()
         else:
             self.client = Anthropic(api_key=api_key)
+
+        self.system_prompt = system_prompt
 
         try:
             self.client.models.retrieve(model_name)
@@ -54,7 +57,7 @@ class AnthropicBackend(LLMBackend):
 
         response = self.client.messages.create(
             model=self.model_name,
-            system="You are a helpful assistant.",
+            system=self.system_prompt,
             messages=[{"role": "user", "content": prompt}],
             max_tokens=max_new_tokens,
             temperature=temperature,
