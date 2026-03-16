@@ -74,7 +74,9 @@ def main():
 
     # create backend instance
     if args.backend == "anthropic":
-        raise NotImplementedError("Anthropic backend not available yet")
+        from .backends.anthropic import AnthropicBackend
+
+        backend = AnthropicBackend(model_name=args.model)
     elif args.backend == "huggingface":
         if not args.repository:
             raise ValueError(
