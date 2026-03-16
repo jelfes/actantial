@@ -30,10 +30,9 @@ class LLMBackend(ABC):
         """
         pass
 
-    # @abstractmethod
-    # def cleanup(self):
-    #     """Clean up resources (unload model, close connections, etc.)"""
-    #     pass
+    def cleanup(self):
+        """Clean up resources (unload model, close connections, etc.). No-op by default."""
+        pass
 
     def __enter__(self):
         """Context manager entry."""

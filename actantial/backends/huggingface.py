@@ -131,7 +131,6 @@ class HuggingFaceBackend(LLMBackend):
 
     def cleanup(self):
         """Unload model and free GPU memory."""
-        # TODO: assess use and revise
         if hasattr(self, "model"):
             del self.model
         if hasattr(self, "tokenizer"):
