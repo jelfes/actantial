@@ -35,9 +35,9 @@ class HuggingFaceBackend(LLMBackend):
             RuntimeError: if ``quantisation`` is requested but no CUDA GPU is
                 detected (bits-and-bytes only supports CUDA devices).
         """
-        
+
         model_path = "/".join([repository, model_name])
-        
+
         super().__init__(model_path, **kwargs)
         self.model_name = model_name
         self.repository = repository
@@ -75,6 +75,9 @@ class HuggingFaceBackend(LLMBackend):
             quantization_config=quant_config,
             **kwargs,
         )
+
+        # Switch to inference mode: disables dropout and batch normalisation.
+        self.model.eval()
 
         print("Model loaded successfully")
 
