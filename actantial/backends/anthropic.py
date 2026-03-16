@@ -1,12 +1,17 @@
 from .base import LLMBackend
-from dotenv import load_dotenv
+from dotenv import load_dotenv  # type: ignore
 from anthropic import Anthropic, NotFoundError
 
 
 class AnthropicBackend(LLMBackend):
     """Backend for Anthropic models."""
 
-    def __init__(self, model_name: str = "claude-haiku-4-5", system_prompt: str = "You are a helpful assistant.", api_key: str = None):
+    def __init__(
+        self,
+        model_name: str = "claude-haiku-4-5",
+        system_prompt: str = "You are a helpful assistant.",
+        api_key: str = None,
+    ):
         """
         Initialize Anthropic backend.
 

@@ -1,12 +1,17 @@
 from .base import LLMBackend
-from dotenv import load_dotenv
+from dotenv import load_dotenv  # type: ignore
 from openai import OpenAI, NotFoundError
 
 
 class OpenAIBackend(LLMBackend):
     """Backend for OpenAI models."""
 
-    def __init__(self, model_name: str = "gpt-4o-mini", system_prompt: str = "You are a helpful assistant.", api_key: str = None):
+    def __init__(
+        self,
+        model_name: str = "gpt-4o-mini",
+        system_prompt: str = "You are a helpful assistant.",
+        api_key: str = None,
+    ):
         """
         Initialize OpenAI backend.
 
