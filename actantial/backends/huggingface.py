@@ -1,5 +1,6 @@
 # actantial/backends/huggingface.py
 
+import gc
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 from .base import LLMBackend
@@ -135,6 +136,8 @@ class HuggingFaceBackend(LLMBackend):
             del self.model
         if hasattr(self, "tokenizer"):
             del self.tokenizer
+
+        gc.collect()
 
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
