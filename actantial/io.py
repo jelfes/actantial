@@ -21,25 +21,27 @@ def ensure_directory(dir_path: Path | str) -> None:
         path.mkdir(parents=True, exist_ok=True)
 
 
-def configure_logging(log_dir: Path | str, log_name: str) -> None:
+def configure_logging(log_dir: Path | str, log_name: str, append: bool = False) -> None:
     """Configure logging to file.
-    
+
     Args:
         log_dir: Directory where log file will be created
         log_name: Name of the log file (without extension)
+        append: If True, append to an existing log file instead of overwriting
     """
     ensure_directory(log_dir)
-    
+
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
-    
+
     # Clear existing handlers
     for handler in logger.handlers[:]:
         logger.removeHandler(handler)
-    
+
     # Add file handler
     log_file = Path(log_dir) / f"{log_name}.log"
-    handler = logging.FileHandler(log_file, encoding="utf-8")
+    file_mode = "a" if append else "w"
+    handler = logging.FileHandler(log_file, mode=file_mode, encoding="utf-8")
     handler.setFormatter(logging.Formatter("%(asctime)s %(message)s"))
     logger.addHandler(handler)
 
