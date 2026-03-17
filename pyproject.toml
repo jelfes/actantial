@@ -46,3 +46,11 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools]
 packages = ["actantial"]
 
+[tool.pytest.ini_options]
+addopts = "-m 'not integration'"
+markers = [
+    "api: tests that make real API calls (require ANTHROPIC_API_KEY / OPENAI_API_KEY)",
+    "gpu: tests that load a HuggingFace model (require a GPU and sufficient VRAM)",
+    "integration: all tests that require external resources (api + gpu)",
+]
+
