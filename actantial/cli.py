@@ -65,6 +65,13 @@ def main():
         type=str,
         help="Optional YAML file with predefined object labels",
     )
+    parser.add_argument(
+        "--resume_timestamp",
+        type=str,
+        default=None,
+        metavar="TIMESTAMP",
+        help="Timestamp of a previous run to resume (format: YYYYMMDD_HHMMSS). Model and template must match the original run.",
+    )
 
     # Parse arguments
     args = parser.parse_args()
@@ -104,6 +111,7 @@ def main():
         template=args.template,
         actor_labels_path=args.actor_labels_path,
         object_labels_path=args.object_labels_path,
+        resume_timestamp=args.resume_timestamp,
     )
 
 
