@@ -16,24 +16,17 @@ dependencies = [
   "matplotlib>=3.10.8",
   "tqdm>=4.60",
   "PyYAML>=6.0",
+  "anthropic>=0.76.0",
+  "openai>=2.15.0",
+  "python-dotenv>=1.2.1",
 ]
 
 [project.optional-dependencies]
 huggingface = [
   "accelerate>=1.12.0",
-  "torch>=2.4.0",                 # TODO maybe move to huggingface optionals
+  "torch>=2.4.0",
   "transformers>=4.57.3",
-  # "bitsandbytes>=0.42.0",
-]
-
-anthropic = [
-  "anthropic>=0.76.0",
-  "python-dotenv>=1.2.1",
-]
-
-openai = [
-  "openai>=2.15.0",
-  "python-dotenv>=1.2.1",
+  "bitsandbytes>=0.42.0",
 ]
 
 [project.scripts]
