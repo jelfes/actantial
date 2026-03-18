@@ -58,6 +58,21 @@ def run_extract(
                 f"No run found at {RUN_DIR}. "
                 "Check that the timestamp, model, and template match the original run."
             )
+        config_path = RUN_DIR / "run_config.json"
+        if not config_path.exists():
+            msg = "run_config.json not found in run directory — this may be an older run. Skipping quantisation check."
+            print(f"Warning: {msg}")
+            logging.warning(msg)
+        else:
+            with open(config_path) as f:
+                saved_config = json.load(f)
+            saved_q = saved_config.get("quantisation", False)
+            current_q = getattr(backend, "quantisation", False)
+            if saved_q != current_q:
+                raise ValueError(
+                    f"Quantisation mismatch: original run used quantisation={saved_q}, "
+                    f"but current backend has quantisation={current_q}."
+                )
         RUN_ID = f"{backend.model_name}_{template_name.removesuffix('.txt')}_{resume_timestamp}"
         resuming = True
     else:
@@ -117,6 +132,15 @@ def run_extract(
         object_labels = None
 
     ensure_directory(RUN_DIR)
+
+    if not resuming:
+        with open(RUN_DIR / "run_config.json", "w") as f:
+            json.dump({
+                "model": backend.model_name,
+                "template": template_name.removesuffix(".txt"),
+                "timestamp": timestamp,
+                "quantisation": getattr(backend, "quantisation", False),
+            }, f, indent=2)
 
     if not resuming:
         logging.info(

@@ -43,6 +43,7 @@ class HuggingFaceBackend(LLMBackend):
         self.model_name = model_name
         self.repository = repository
         self.model_path = model_path
+        self.quantisation = quantisation
 
         # Convert torch_dtype string to actual dtype
         torch_dtype = DTYPE_MAP.get(torch_dtype, "float16")
