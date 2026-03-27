@@ -101,8 +101,9 @@ def run_extract(
         logging.info(f"Run directory: {RUN_DIR}")
 
     if not resuming:
-        print(f"Timestamp: {timestamp}")
-    print(f"Log: {log_file}")
+        print(f"Timestamp: \t{timestamp}")
+    print(f"Log: \t\t{log_file}")
+    print(f"Files: \t\t{RUN_DIR}")
 
     # get template
     environment = Environment(
@@ -135,12 +136,16 @@ def run_extract(
 
     if not resuming:
         with open(RUN_DIR / "run_config.json", "w") as f:
-            json.dump({
-                "model": backend.model_name,
-                "template": template_name.removesuffix(".txt"),
-                "timestamp": timestamp,
-                "quantisation": getattr(backend, "quantisation", False),
-            }, f, indent=2)
+            json.dump(
+                {
+                    "model": backend.model_name,
+                    "template": template_name.removesuffix(".txt"),
+                    "timestamp": timestamp,
+                    "quantisation": getattr(backend, "quantisation", False),
+                },
+                f,
+                indent=2,
+            )
 
     if not resuming:
         logging.info(
