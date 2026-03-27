@@ -9,7 +9,7 @@ import yaml
 from actantial.extract import extract_actants
 from actantial.backends.base import LLMBackend
 from tqdm import tqdm
-from jinja2 import Environment, FileSystemLoader, Template
+from jinja2 import Environment, FileSystemLoader, Template, meta as jinja2_meta
 from pathlib import Path
 from datetime import datetime
 from actantial.io import parse_json, ensure_directory, configure_logging
@@ -118,6 +118,34 @@ def run_extract(
         error_message = f"Error loading template {e}. Please ensure that the template exists in the templates/{backend.model_name} directory and is named correctly."
         logging.error(error_message)
         raise FileNotFoundError(error_message)
+
+    # validate template variables
+    template_source = environment.loader.get_source(
+        environment, str(Path(backend.model_name, template_name))
+    )[0]
+    template_vars = jinja2_meta.find_undeclared_variables(
+        environment.parse(template_source)
+    )
+
+    if "text" not in template_vars:
+        raise ValueError(
+            f"Template '{template_name}' is missing the required variable '{{{{ text }}}}'. "
+            "Please add '{{ text }}' to your template to pass the input text."
+        )
+
+    if actor_labels_path is not None and "actor_labels" not in template_vars:
+        raise ValueError(
+            f"Template '{template_name}' is missing the variable '{{{{ actor_labels }}}}', "
+            "but actor_labels were provided. Either add '{{ actor_labels }}' to your template "
+            "or remove the --actor_labels argument."
+        )
+
+    if object_labels_path is not None and "object_labels" not in template_vars:
+        raise ValueError(
+            f"Template '{template_name}' is missing the variable '{{{{ object_labels }}}}', "
+            "but object_labels were provided. Either add '{{ object_labels }}' to your template "
+            "or remove the --object_labels argument."
+        )
 
     # handle labels (if provided)
     if actor_labels_path is not None:
