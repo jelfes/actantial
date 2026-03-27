@@ -9,10 +9,11 @@ According to the Actantial Model by Greimas with the actant label set ["Subject"
 * Helper: The character who assists the Subject in achieving its goal.
 * Opponent: The character who opposes the Subject in achieving its goal.
 
-The following comment was posted under a YouTube video addressing the Israel-Palestine conflict. Based on the Actantial Model and the actant label set, please recognize the actants of this following comment.
+The following comment was posted under a YouTube video addressing the Israel-Palestine conflict. Based on the Actantial Model and the actant label set, please recognize the actants of this following comment. 
+
+Note, many comments have a meta-level (discussing the video) and a conflict level (discussing the conflict). If sufficient details are given, that is, at least a related Subject and Object, focus on the conflict-level. Only when the comments focus exclusively on discussing the video, focus on the meta-level.
 
 Comment: {{ text }}
-
 
 Question: What are the main actants for the comment? 
 1. Identify the Subject and Object first. 
