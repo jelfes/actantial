@@ -1,10 +1,13 @@
 # actantial/cli.py
 
 import argparse
+import shutil
 from pathlib import Path
 
 import pandas as pd
 from .runner import run_extract
+
+BUNDLED_TEMPLATES_DIR = Path(__file__).parent / "templates"
 
 
 def main():
@@ -72,6 +75,12 @@ def main():
         metavar="TIMESTAMP",
         help="Timestamp of a previous run to resume (format: YYYYMMDD_HHMMSS). Model and template must match the original run.",
     )
+    parser.add_argument(
+        "--templates_dir",
+        type=Path,
+        default=None,
+        help="Directory containing prompt templates. Defaults to the bundled templates.",
+    )
 
     # Parse arguments
     args = parser.parse_args()
@@ -112,6 +121,33 @@ def main():
         actor_labels_path=args.actor_labels_path,
         object_labels_path=args.object_labels_path,
         resume_timestamp=args.resume_timestamp,
+        templates_dir=args.templates_dir,
+    )
+
+
+def init_templates():
+    """Copy bundled templates to a local directory for customisation."""
+    parser = argparse.ArgumentParser(
+        description="Copy bundled actantial templates to a local directory for customisation.",
+    )
+    parser.add_argument(
+        "dest",
+        type=Path,
+        nargs="?",
+        default=Path("templates"),
+        help="Destination directory (default: ./templates)",
+    )
+    args = parser.parse_args()
+
+    if args.dest.exists():
+        print(
+            f"Error: '{args.dest}' already exists. Choose a different path or remove it first."
+        )
+        raise SystemExit(1)
+
+    shutil.copytree(BUNDLED_TEMPLATES_DIR, args.dest)
+    print(
+        f"Templates copied to '{args.dest}'. Pass '--templates_dir {args.dest}' to actantial to use them."
     )
 
 

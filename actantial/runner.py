@@ -28,6 +28,7 @@ def run_extract(
     actor_labels_path: str = None,
     object_labels_path: str = None,
     resume_timestamp: str = None,
+    templates_dir: Path = Path(__file__).parent / "templates",
 ):
     """
     Handles logging, data loop, saving results, and calls extraction function.
@@ -106,9 +107,7 @@ def run_extract(
     print(f"Files: \t\t{RUN_DIR}")
 
     # get template
-    environment = Environment(
-        loader=FileSystemLoader(Path(__file__).parent / "templates")
-    )
+    environment = Environment(loader=FileSystemLoader(templates_dir))
 
     try:
         template = environment.get_template(
@@ -167,6 +166,7 @@ def run_extract(
             json.dump(
                 {
                     "model": backend.model_name,
+                    "templates_dir": templates_dir,
                     "template": template_name.removesuffix(".txt"),
                     "timestamp": timestamp,
                     "quantisation": getattr(backend, "quantisation", False),
@@ -177,7 +177,10 @@ def run_extract(
 
     if not resuming:
         logging.info(
-            f"Prompt: {template.render(text='COMMENT HERE', actor_labels=actor_labels, object_labels=object_labels)}"
+            f"Template: \t{Path(templates_dir, backend.model_name, template_name)}"
+        )
+        logging.info(
+            f"Prompt: {template.render(text='TEXT HERE', actor_labels=actor_labels, object_labels=object_labels)}"
         )
 
     # start loop
