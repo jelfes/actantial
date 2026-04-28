@@ -166,7 +166,7 @@ def run_extract(
             json.dump(
                 {
                     "model": backend.model_name,
-                    "templates_dir": templates_dir,
+                    "templates_dir": str(templates_dir),
                     "template": template_name.removesuffix(".txt"),
                     "timestamp": timestamp,
                     "quantisation": getattr(backend, "quantisation", False),
