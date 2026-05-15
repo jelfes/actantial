@@ -113,16 +113,22 @@ def main():
         # argparse should guard against this, but safety first
         raise ValueError(f"Unknown backend: {args.backend}")
 
-    run_extract(
-        data=data,
-        backend=backend,
-        output_dir=args.output_dir,
-        template=args.template,
-        actor_labels_path=args.actor_labels_path,
-        object_labels_path=args.object_labels_path,
-        resume_timestamp=args.resume_timestamp,
-        templates_dir=args.templates_dir,
-    )
+    # compile kwargs for runner
+    kwargs = {
+        "data": data,
+        "backend": backend,
+        "output_dir": args.output_dir,
+        "template": args.template,
+        "actor_labels_path": args.actor_labels_path,
+        "object_labels_path": args.object_labels_path,
+        "resume_timestamp": args.resume_timestamp,
+    }
+
+    # only include templates_dir if provided, so not to override the default in runner.py
+    if args.templates_dir is not None:
+        kwargs["templates_dir"] = args.templates_dir
+
+    run_extract(**kwargs)
 
 
 def init_templates():
