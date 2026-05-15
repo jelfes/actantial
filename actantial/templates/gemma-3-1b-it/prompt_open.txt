@@ -1,5 +1,3 @@
-{# prompt for extracting actants from a YouTube comment #}
-
 According to the Actantial Model by Greimas with the actant label set ["Subject", "Object", "Sender", "Receiver", "Helper", "Opponent"], the actants are defined as follows:
 
 * Subject: The character who carries out the action and desires the Object.
@@ -9,16 +7,16 @@ According to the Actantial Model by Greimas with the actant label set ["Subject"
 * Helper: The character who assists the Subject in achieving its goal.
 * Opponent: The character who opposes the Subject in achieving its goal.
 
-The following comment was posted under a YouTube video addressing the Israel-Palestine conflict. Based on the Actantial Model and the actant label set, please recognize the actants of this following comment. 
+Based on the Actantial Model, please recognize the actants in the following text.
 
-Note, many comments have a meta-level (discussing the video) and a conflict level (discussing the conflict). If sufficient details are given, that is, at least a related Subject and Object, focus on the conflict-level. Only when the comments focus exclusively on discussing the video, focus on the meta-level.
+Text: {{ text }}
 
-Comment: {{ text }}
 
-Question: What are the main actants for the comment? 
-1. Identify the Subject and Object first. 
-2. Select the Sender who transfers the Object to the Receiver. Make sure that this matches the Object from the previous step.
-3. Add the Helper and Opponent.
+Question: What are the main actants in the text? 
+1. Identify the main Object in the text.
+2. Identify the respective Subject.
+2. Identify the Sender who transfers the Object to the Receiver. Make sure that this matches the Object from the previous step.
+3. Identify the Helper and Opponent that try to influence the Subject in achieving the Object.
 
 Final Consistency Check:
 - Ensure that all chosen actants align logically with the relationships described in the Actantial Model.
@@ -30,4 +28,5 @@ Response Format (JSON Dictionary)
 - If no actor is present for a label, return an empty string ("").
 
 Example Format: {"Subject": ["Actant Name"], "Object": ["Actant Name"], "Sender": ["Actant Name"], "Receiver": ["Actant Name"], "Helper": ["Actant Name"], "Opponent": ["Actant Name"]}
-Answer: <think>
+
+Answer:
