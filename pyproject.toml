@@ -43,7 +43,7 @@ build-backend = "setuptools.build_meta"
 packages = ["actantial", "actantial.backends"]
 
 [tool.setuptools.package-data]
-actantial = ["templates/**/*", "data/**/*"]
+actantial = ["templates/**/*"]
 
 [tool.pytest.ini_options]
 addopts = "-m 'not integration'"
