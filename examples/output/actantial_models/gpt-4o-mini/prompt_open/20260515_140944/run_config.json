@@ -1,0 +1,7 @@
+{
+  "model": "gpt-4o-mini",
+  "templates_dir": "/Users/jelfes/ucd/actantial/actantial/templates",
+  "template": "prompt_open",
+  "timestamp": "20260515_140944",
+  "quantisation": false
+}

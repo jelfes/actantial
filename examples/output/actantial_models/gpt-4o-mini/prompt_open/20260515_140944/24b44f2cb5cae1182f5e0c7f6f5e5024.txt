@@ -1,0 +1,1 @@
+{"Subject": ["Director Mohammad Abu Salmiya"], "Object": ["Casualties (deaths) from Al-Buraq School"], "Sender": ["Israeli army"], "Receiver": ["Al-Shifa Hospital"], "Helper": ["Al-Shifa Hospital staff"], "Opponent": ["Israeli army"]}

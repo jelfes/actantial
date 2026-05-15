@@ -1,0 +1,1 @@
+"```json\n{\n    \"Subject\": [\"Director Mohammad Abu Salmiya\"],\n    \"Object\": [\"Casualties (deaths) from Al-Buraq School\"],\n    \"Sender\": [\"Israeli army\"],\n    \"Receiver\": [\"Al-Shifa Hospital\"],\n    \"Helper\": [\"Al-Shifa Hospital staff\"],\n    \"Opponent\": [\"Israeli army\"]\n}\n```"

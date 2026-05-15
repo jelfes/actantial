@@ -1,0 +1,1 @@
+{"Subject": ["Al-Shifa Hospital", "Director Mohammad Abu Salmiya"], "Object": ["deaths"], "Sender": ["Al-Shifa Hospital"], "Receiver": ["people"], "Helper": ["Al-Shifa Hospital"], "Opponent": ["Israeli army"]}

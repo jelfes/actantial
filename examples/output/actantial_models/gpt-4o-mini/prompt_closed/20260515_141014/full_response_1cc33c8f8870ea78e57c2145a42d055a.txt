@@ -1,0 +1,1 @@
+"```json\n{\n  \"Object\": [\"violence\"],\n  \"Subject\": [\"israel/israelis\"],\n  \"Sender\": [\"idf\"],\n  \"Receiver\": [\"palestine/palestinians\"],\n  \"Helper\": [],\n  \"Opponent\": [\"hamas\"]\n}\n```"

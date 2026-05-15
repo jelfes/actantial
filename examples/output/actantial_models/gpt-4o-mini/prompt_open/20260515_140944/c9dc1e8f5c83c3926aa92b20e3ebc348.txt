@@ -1,0 +1,1 @@
+{"Subject": ["Israel"], "Object": ["Gaza's hospitals and medical facilities"], "Sender": ["Israel"], "Receiver": ["Palestinian patients and displaced individuals"], "Helper": ["International humanitarian organizations (e.g., WHO, Doctors Without Borders)"], "Opponent": ["Hamas"]}
