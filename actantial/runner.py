@@ -14,7 +14,6 @@ from pathlib import Path
 from datetime import datetime
 from actantial.io import parse_json, ensure_directory, configure_logging
 
-
 os.environ["TOKENIZERS_PARALLELISM"] = (
     "false"  # to suppress warnings from transformers (TODO: check if still needed)
 )
@@ -43,7 +42,7 @@ def run_extract(
         resume_timestamp: Timestamp of a previous run to resume (format: YYYYMMDD_HHMMSS).
             The model and template must match the original run.
     """
-
+    print(templates_dir)
     template_name = template if template.endswith(".txt") else template + ".txt"
 
     if resume_timestamp is not None:
