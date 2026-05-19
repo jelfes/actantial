@@ -1,5 +1,3 @@
-import torch
-
 BACKENDS = ["anthropic", "huggingface", "openai"]
 
 SEED = 815
