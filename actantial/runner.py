@@ -191,7 +191,7 @@ def run_extract(
             continue
 
         logging.info(f"---------- ID {row.id} ----------\n")
-        logging.info(f"Comment: {row.text}")
+        logging.info(f"Test: {row.text}")
 
         output = extract_actants(
             input_text=row.text,
