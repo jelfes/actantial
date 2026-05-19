@@ -4,7 +4,6 @@ import gc
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 from .base import LLMBackend
-from actantial.config import DTYPE_MAP
 
 
 class HuggingFaceBackend(LLMBackend):
@@ -46,7 +45,7 @@ class HuggingFaceBackend(LLMBackend):
         self.quantisation = quantisation
 
         # Convert torch_dtype string to actual dtype
-        torch_dtype = DTYPE_MAP.get(torch_dtype, "float16")
+        torch_dtype = getattr(torch, torch_dtype) if torch_dtype != "auto" else None
 
         # Set quantization configuration if needed
         quant_config = None
