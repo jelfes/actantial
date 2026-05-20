@@ -24,23 +24,43 @@ def run_extract(
     backend: LLMBackend,
     output_dir: Path,
     template: str,
+    templates_dir: Path = Path(__file__).parent / "templates",
     actor_labels_path: str = None,
     object_labels_path: str = None,
     resume_timestamp: str = None,
-    templates_dir: Path = Path(__file__).parent / "templates",
 ):
     """
-    Handles logging, data loop, saving results, and calls extraction function.
+    Run the actantial extraction pipeline over a DataFrame of texts.
+
+    Iterates over each row, renders the prompt template, calls the backend,
+    parses the JSON output, and writes per-text result files to disk. Supports
+    resuming an interrupted run by skipping texts that already have a saved
+    result. Logs all activity to a timestamped log file under
+    ``output_dir/logs/``.
+
+    Results are saved under
+    ``output_dir/actantial_models/{model_name}/{template}/{timestamp}/``,
+    with one JSON file per text ID and one file containing the full raw
+    backend response.
 
     Args:
-        data: DataFrame with at least 'id' and 'text' columns
-        backend: Initialized LLMBackend instance
-        output_dir: Base path for saving results and logs
-        template: Name of the prompt template to use. Must be located in templates/{backend.model_name}/.
-        actor_labels_path: Optional path to actor labels for annotation with predefined labels. Requires a template that supports labels.
-        object_labels_path: Optional path to object labels for annotation with predefined labels. Requires a template that supports labels.
-        resume_timestamp: Timestamp of a previous run to resume (format: YYYYMMDD_HHMMSS).
-            The model and template must match the original run.
+        data: DataFrame with at least ``id`` and ``text`` columns.
+        backend: An initialised :class:`~actantial.backends.base.LLMBackend`
+            instance.
+        output_dir: Root directory for saving results and logs.
+        template: Name of the prompt template to use. Must exist in
+            ``templates_dir/{backend.model_name}/``.
+        templates_dir: Root directory containing per-model template
+            subdirectories. Defaults to the built-in ``templates/`` folder.
+        actor_labels_path: Path to a YAML file containing actor labels for
+            closed-set annotation. Only used if the template supports
+            ``actor_labels``.
+        object_labels_path: Path to a YAML file containing object labels for
+            closed-set annotation. Only used if the template supports
+            ``object_labels``.
+        resume_timestamp: Timestamp of a previous run to resume, in
+            ``YYYYMMDD_HHMMSS`` format. Texts already processed in that run
+            are skipped. The model and template must match the original run.
     """
     print(templates_dir)
     template_name = template if template.endswith(".txt") else template + ".txt"
