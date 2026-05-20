@@ -9,23 +9,38 @@ import math
 def compare_labels(
     df1: pd.DataFrame,
     df2: pd.DataFrame,
-    metric: str = "accuracy",
     id_column: str = "id",
+    metric: str = "accuracy",
     actant_columns: list = ACTANTS,
     verbose: bool = True,
-    # ignore_case: bool = True,
-    # partial_match: bool = False
+    # TODO ignore_case: bool = True,
+    # TODO partial_match: bool = False
 ):
     """
-    Compare two DataFrames containing actantial annotations and compute agreement metrics.
+    Compare two sets of actantial annotations and compute an agreement metric.
+
+    Aligns the two DataFrames on ``id_column`` via an inner join, then computes
+    the chosen metric independently for each actant column. Rows where either
+    annotator left a value missing are excluded from that actant's calculation.
+    Used in inter-annotator agreement workflows after labels have been extracted
+    and exported to a tabular format.
 
     Args:
         df1: First DataFrame with actantial annotations.
         df2: Second DataFrame with actantial annotations.
-        metric: The agreement metric to compute (e.g., "accuracy", "f1_micro").
-        id_column: The name of the column containing unique identifiers for matching rows.
-        actant_columns: List of columns corresponding to actants to compare.
-        verbose: If True, print detailed information about dropped rows and mismatches.
+        id_column: Column name used to align rows between the two DataFrames.
+        metric: Agreement metric to compute. One of ``"accuracy"``,
+            ``"f1_micro"``, ``"f1_macro"``, ``"f1_weighted"``,
+            ``"krippendorff_alpha"``.
+        actant_columns: Actant columns to compare. Defaults to the full set
+            defined in the package config.
+        verbose: If True, print warnings about row-count mismatches and
+            dropped rows per actant.
+
+    Returns:
+        A dict with two keys: ``"per_actant"`` mapping each actant name to its
+        score (NaN if the actant was missing or had no valid rows), and
+        ``"avg"`` with the mean score across actants that had valid data.
     """
     results = {}
 
