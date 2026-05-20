@@ -1,4 +1,3 @@
-import os
 import re
 import json
 import warnings
@@ -10,26 +9,28 @@ from pandas import DataFrame
 from pathlib import Path
 
 
-from typing import Dict
-from pathlib import Path
-
-
-def ensure_directory(dir_path: Path | str) -> None:
-    """Ensure directory exists (creates it if necessary)."""
+def _ensure_directory(dir_path: Path | str) -> None:
+    """Create the directory at ``dir_path`` if it does not already exist."""
     path = Path(dir_path)
     if not path.exists():
         path.mkdir(parents=True, exist_ok=True)
 
 
-def configure_logging(log_dir: Path | str, log_name: str, append: bool = False) -> None:
-    """Configure logging to file.
+def _configure_logging(
+    log_dir: Path | str, log_name: str, append: bool = False
+) -> None:
+    """
+    Configure file-based logging for a pipeline run.
+
+    Attaches a file handler to the root logger, writing to
+    ``log_dir/{log_name}.log``. Any existing handlers are removed first.
 
     Args:
-        log_dir: Directory where log file will be created
-        log_name: Name of the log file (without extension)
-        append: If True, append to an existing log file instead of overwriting
+        log_dir: Directory where the log file will be created.
+        log_name: Name of the log file, without extension.
+        append: If ``True``, append to an existing log file; otherwise overwrite.
     """
-    ensure_directory(log_dir)
+    _ensure_directory(log_dir)
 
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
@@ -46,15 +47,49 @@ def configure_logging(log_dir: Path | str, log_name: str, append: bool = False) 
     logger.addHandler(handler)
 
 
-def parse_json(input_text: str) -> Dict:
+def _read_json_file(file_path: Union[str, Path]) -> Dict[str, Any]:
+    """Read and parse a JSON file, returning its contents as a dict."""
+    path = Path(file_path)
+    try:
+        with path.open("r", encoding="utf-8") as file:
+            return json.load(file)
+    except FileNotFoundError:
+        raise
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Invalid JSON in {path}: {exc}") from exc
+
+
+def _create_file_path(base_folder: str, file_id: str) -> Optional[str]:
+    """
+    Return the path to ``{base_folder}/{file_id}.txt``, or ``None`` if the file does not exist.
+
+    Args:
+        base_folder: Base directory path.
+        file_id: Unique identifier used as the filename stem.
+
+    Returns:
+        The file path as a string, or ``None`` if the file does not exist.
+    """
+    file_path = Path(base_folder) / f"{file_id}.txt"
+
+    if file_path.exists():
+        return str(file_path)
+    return None
+
+
+def _parse_json(input_text: str) -> Dict:
     """
     Extract the first flat JSON object from a string.
 
+    Used to parse raw backend output into a dict. Only matches flat
+    (non-nested) JSON objects.
+
     Args:
-        input_text (str): The input string containing a JSON object.
+        input_text: The raw string output from the backend.
 
     Returns:
-        dict: The extracted JSON object, or empty dict if parsing fails.
+        The parsed JSON object as a dict, or an empty dict if no valid
+        JSON object is found or parsing fails.
     """
     # match only flat JSON objects
     json_pattern = re.compile(r"\{[^\{\}]*\}")
@@ -76,68 +111,39 @@ def parse_json(input_text: str) -> Dict:
         return {}
 
 
-def _read_json_file(file_path: Union[str, Path]) -> Dict[str, Any]:
-    """Read and parse a JSON file, returning a dict.
-
-    Raises FileNotFoundError or ValueError on invalid JSON.
-    """
-    path = Path(file_path)
-    try:
-        with path.open("r", encoding="utf-8") as file:
-            return json.load(file)
-    except FileNotFoundError:
-        raise
-    except json.JSONDecodeError as exc:
-        raise ValueError(f"Invalid JSON in {path}: {exc}") from exc
-
-
-def _create_file_path(base_folder: str, file_id: str) -> Optional[str]:
-    """
-    Create a file path combining the base folder and file ID. Return None if the file does not exist.
-
-    Args:
-        base_folder (str): The base directory path.
-        file_id (str): The unique identifier for the file.
-
-    Returns:
-        str: The constructed file path.
-    """
-
-    file_path = Path(base_folder) / f"{file_id}.txt"
-
-    if file_path.exists():
-        return str(file_path)
-    return None
-
-
 def load_actors(
     data: DataFrame,
-    column_name: str = "file_name",
+    file_path_column: str = "file_name",
+    actant_columns: Optional[list[str]] = ACTANTS,
     select_actor: Literal["first", "combine"] = "first",
 ) -> DataFrame:
     """
-    Extract actors from JSON files. If multiple actors are present for an actant, only the first one is retained.
+    Read per-text JSON annotation files and add actant columns to the DataFrame.
+
+    Each file is expected to map actant role names to actor values. When
+    multiple actors are listed for a role, ``select_actor`` controls whether
+    to keep only the first or join them all.
 
     Args:
-        data (DataFrame): The input DataFrame containing file paths.
-        column_name (str): The name of the column with file paths.
-        select_actor (Literal["first", "combine"], optional): Strategy for handling multiple actors per actant. Options are:
-            - "first": Use only the first actor (default)
-            - "combine": Combine all actors for each actant
+        data: DataFrame containing a column with file paths to JSON annotation files.
+        file_path_column: Name of the column containing the file paths.
+        actant_columns: List of actants to extract from the JSON files.
+             Defaults to the global ACTANTS list.
+        select_actor: Strategy for handling multiple actors per actant role.
+            ``"first"`` keeps only the first actor; ``"combine"`` joins all
+            actors into a comma-separated string.
 
     Returns:
-        DataFrame: The DataFrame with extracted actants.
-
+        A copy of the input DataFrame with one column added per actant role.
     """
-
     data_out = data.copy()
 
     # initialize columns explicitly for clarity
-    for a in ACTANTS:
+    for a in actant_columns:
         data_out[a] = None
 
     for index, row in data.iterrows():
-        file_path = row.get(column_name)
+        file_path = row.get(file_path_column)
 
         # skip non-existing files
         if not file_path:
@@ -146,7 +152,7 @@ def load_actors(
         file_data = _read_json_file(file_path)
 
         # TODO improve robustness of extraction logic
-        for actant in ACTANTS:
+        for actant in actant_columns:
             value = file_data.get(actant)
 
             # skip empty values
@@ -179,18 +185,22 @@ def load_actors(
 
 def load_annotations(data: DataFrame, label_folder: str, **kwargs) -> DataFrame:
     """
-    Load annotations from the specified label folder and integrate them into the DataFrame.
-    The dataframe is expected to have an 'id' column that matches the annotation files.
+    Load actant annotations from a run output folder into a DataFrame.
+
+    Matches each row to an annotation file in ``label_folder`` by its ``id``
+    value, then extracts actant roles from each file. Rows without a matching
+    file receive ``None`` for all actant columns.
 
     Args:
-        data (DataFrame): The input DataFrame to annotate.
-        label_folder (str): The path to the folder containing annotation files.
-        kwargs: Additional arguments for annotation extraction.
+        data: DataFrame with at least an ``id`` column.
+        label_folder: Path to the folder containing per-text JSON annotation
+            files, as produced by :func:`~actantial.runner.run_extract`.
+        **kwargs: Additional arguments forwarded to :func:`load_actors`
+            (e.g. ``select_actor``).
 
     Returns:
-        DataFrame: The DataFrame with integrated annotations.
+        A copy of the input DataFrame with actant columns added.
     """
-
     # Check if label folder exists and is a directory
     label_path = Path(label_folder)
     if not label_path.exists() or not label_path.is_dir():
@@ -216,6 +226,6 @@ def load_annotations(data: DataFrame, label_folder: str, **kwargs) -> DataFrame:
         )
 
     # Load annotations from files
-    data_annot = load_actors(data_annot, column_name="file_name", **kwargs)
+    data_annot = load_actors(data_annot, file_path_column="file_name", **kwargs)
 
     return data_annot

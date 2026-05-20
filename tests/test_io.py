@@ -1,37 +1,37 @@
 import json
 import pytest
 import pandas as pd
-from actantial.io import parse_json, load_annotations, load_actors
+from actantial.io import _parse_json, load_annotations, load_actors
 
 
 class TestParseJson:
 
     def test_valid_json(self):
-        result = parse_json('{"Subject": "Alice", "Object": "Bob"}')
+        result = _parse_json('{"Subject": "Alice", "Object": "Bob"}')
         assert result == {"Subject": "Alice", "Object": "Bob"}
 
     def test_json_embedded_in_text(self):
-        result = parse_json('Here is the answer: {"Subject": "Alice"} as requested.')
+        result = _parse_json('Here is the answer: {"Subject": "Alice"} as requested.')
         assert result == {"Subject": "Alice"}
 
     def test_no_json_returns_empty_dict(self):
-        result = parse_json("There is no JSON here.")
+        result = _parse_json("There is no JSON here.")
         assert result == {}
 
     def test_multiple_json_objects_returns_first(self):
-        result = parse_json('{"Subject": "Alice"} and {"Object": "Bob"}')
+        result = _parse_json('{"Subject": "Alice"} and {"Object": "Bob"}')
         assert result == {"Subject": "Alice"}
 
     def test_malformed_json_returns_empty_dict(self):
-        result = parse_json('{"Subject": "Alice"')
+        result = _parse_json('{"Subject": "Alice"')
         assert result == {}
 
     def test_empty_json_object(self):
-        result = parse_json("{}")
+        result = _parse_json("{}")
         assert result == {}
 
     def test_values_with_lists(self):
-        result = parse_json('{"Subject": ["Alice", "Bob"]}')
+        result = _parse_json('{"Subject": ["Alice", "Bob"]}')
         assert result == {"Subject": ["Alice", "Bob"]}
 
 

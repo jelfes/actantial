@@ -12,7 +12,7 @@ from tqdm import tqdm
 from jinja2 import Environment, FileSystemLoader, Template, meta as jinja2_meta
 from pathlib import Path
 from datetime import datetime
-from actantial.io import parse_json, ensure_directory, configure_logging
+from actantial.io import _parse_json, _ensure_directory, _configure_logging
 
 os.environ["TOKENIZERS_PARALLELISM"] = (
     "false"  # to suppress warnings from transformers (TODO: check if still needed)
@@ -111,7 +111,7 @@ def run_extract(
 
     LOG_DIR = Path(output_dir, "logs")
     log_file = LOG_DIR / f"{RUN_ID}.log"
-    configure_logging(LOG_DIR, RUN_ID, append=resuming)
+    _configure_logging(LOG_DIR, RUN_ID, append=resuming)
 
     if resuming:
         logging.info(
@@ -178,7 +178,7 @@ def run_extract(
     else:
         object_labels = None
 
-    ensure_directory(RUN_DIR)
+    _ensure_directory(RUN_DIR)
 
     if not resuming:
         with open(RUN_DIR / "run_config.json", "w") as f:
@@ -222,7 +222,7 @@ def run_extract(
         )
 
         # Parse result
-        actant_dict = parse_json(output)
+        actant_dict = _parse_json(output)
 
         logging.info(f"Output:\n\t{actant_dict}")
 
