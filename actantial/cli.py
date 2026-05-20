@@ -1,4 +1,10 @@
-# actantial/cli.py
+"""
+Command-line interface for the actantial package.
+
+Exposes two entry points: ``actantial`` for running the extraction
+pipeline, and ``actantial-init-templates`` for copying the bundled
+prompt templates to a local directory for customisation.
+"""
 
 import argparse
 import shutil
@@ -11,7 +17,12 @@ BUNDLED_TEMPLATES_DIR = Path(__file__).parent / "templates"
 
 
 def main():
-    """Main CLI entry point."""
+    """
+    Entry point for the ``actantial`` CLI command.
+
+    Parses command-line arguments, initialises the appropriate backend,
+    and delegates to :func:`~actantial.runner.run_extract`.
+    """
     parser = argparse.ArgumentParser(
         description="Actantial: LLM-based narrative role extraction",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
@@ -21,19 +32,19 @@ def main():
         "--data_file",
         type=Path,
         required=True,
-        help="CSV file with `id` and `text` columns. Will be read with pandas.",
+        help="CSV file with ``id`` and ``text`` columns.",
     )
     parser.add_argument(
         "--output_dir",
         type=Path,
         required=True,
-        help="Directory where results and logs will be emitted.",
+        help="Directory where results and logs will be saved.",
     )
     parser.add_argument(
         "--backend",
         choices=["anthropic", "huggingface", "openai"],
         required=True,
-        help="LLM backend to use",
+        help="LLM backend to use for inference.",
     )
     parser.add_argument(
         "--model",
@@ -61,12 +72,12 @@ def main():
     parser.add_argument(
         "--actor_labels_path",
         type=str,
-        help="Optional YAML file with predefined actor labels",
+        help="Path to a YAML file with predefined actor labels for closed-set annotation.",
     )
     parser.add_argument(
         "--object_labels_path",
         type=str,
-        help="Optional YAML file with predefined object labels",
+        help="Path to a YAML file with predefined object labels for closed-set annotation.",
     )
     parser.add_argument(
         "--resume_timestamp",
@@ -132,7 +143,12 @@ def main():
 
 
 def init_templates():
-    """Copy bundled templates to a local directory for customisation."""
+    """
+    Entry point for the ``actantial-init-templates`` CLI command.
+
+    Copies the bundled prompt templates to a local directory so they can
+    be inspected and customised. The destination must not already exist.
+    """
     parser = argparse.ArgumentParser(
         description="Copy bundled actantial templates to a local directory for customisation.",
     )
