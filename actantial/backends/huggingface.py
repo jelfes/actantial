@@ -1,9 +1,16 @@
 # actantial/backends/huggingface.py
 
 import gc
-import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 from .base import LLMBackend
+
+try:
+    import torch
+    from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+except ImportError:
+    raise ImportError(
+        "HuggingFace dependencies are not installed. "
+        "Run: pip install actantial[huggingface]"
+    )
 
 
 class HuggingFaceBackend(LLMBackend):
