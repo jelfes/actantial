@@ -5,15 +5,23 @@ from jinja2 import Environment, FileSystemLoader
 
 
 class LLMBackend(ABC):
-    """Abstract base class for LLM backends."""
+    """
+    Abstract base class for all LLM backends in the actantial pipeline.
+
+    Concrete backends (Anthropic, OpenAI, HuggingFace) inherit from this class
+    and implement :meth:`generate`. Shared template utilities are defined here
+    so they are available to all backends. Backends support use as context
+    managers, calling :meth:`cleanup` on exit.
+    """
 
     def __init__(self, model_name: str, **kwargs):
         """
-        Initialize the backend.
+        Set the model name and store any extra backend-specific config.
 
         Args:
-            model_name: Model identifier (HF model path, API model name, etc.)
-            **kwargs: Backend-specific configuration
+            model_name: Model identifier used by the underlying LLM service
+                or framework (e.g. an API model name or a HuggingFace path).
+            **kwargs: Backend-specific configuration stored in ``self.config``.
         """
         self.model_name = model_name
         self.config = kwargs
@@ -24,11 +32,11 @@ class LLMBackend(ABC):
         Generate text from a prompt.
 
         Args:
-            prompt: The input prompt
-            **kwargs: Generation parameters (temperature, max_tokens, etc.)
+            prompt: The input prompt string.
+            **kwargs: Generation parameters (e.g. ``temperature``, ``max_new_tokens``).
 
         Returns:
-            Generated text string
+            The generated text string, excluding the input prompt.
         """
         pass
 
@@ -37,13 +45,15 @@ class LLMBackend(ABC):
         templates_dir: Union[str, Path] = Path(__file__).parent.parent / "templates",
     ) -> list:
         """
-        List available templates for this backend.
+        List the prompt templates available for this backend's model.
 
         Args:
-            templates_dir: Base directory where templates are stored. Should contain subdirectories for the model.
+            templates_dir: Root directory containing per-model template
+                subdirectories. Defaults to the built-in ``templates/`` folder.
 
         Returns:
-            List of template names (without .txt extension)
+            List of template names available for this model, without the
+            ``.txt`` extension.
         """
 
         templates_dir = Path(templates_dir) / self.model_name
@@ -57,11 +67,16 @@ class LLMBackend(ABC):
         templates_dir: Union[str, Path] = Path(__file__).parent.parent / "templates",
     ) -> None:
         """
-        Display the content of a template with placeholders.
+        Print a prompt template with placeholder values substituted.
+
+        Renders the template with dummy values so the structure is visible
+        without requiring real input data.
 
         Args:
-            template_name: Name of the template to display (with or without .txt extension)
-            templates_dir: Base directory where templates are stored. Should contain subdirectories for the model.
+            template_name: Name of the template to display, with or without
+                the ``.txt`` extension.
+            templates_dir: Root directory containing per-model template
+                subdirectories. Defaults to the built-in ``templates/`` folder.
         """
 
         template_name = (
@@ -90,10 +105,3 @@ class LLMBackend(ABC):
         """Clean up resources (unload model, close connections, etc.). No-op by default."""
         pass
 
-    def __enter__(self):
-        """Context manager entry."""
-        return self
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        """Context manager exit."""
-        self.cleanup()
