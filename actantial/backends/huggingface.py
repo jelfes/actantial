@@ -7,11 +7,11 @@ from .base import LLMBackend
 
 
 class HuggingFaceBackend(LLMBackend):
-    """Backend for local HuggingFace models.
+    """
+    Backend for locally loaded HuggingFace models.
 
-    Quantization via bits-and-bytes is supported, but only when a CUDA GPU
-    is available. Attempting to enable quantisation on MPS or a CPU-only
-    environment will raise a :class:`RuntimeError`.
+    Loads the model and tokenizer from the HuggingFace Hub at initialisation.
+    Quantisation via bitsandbytes (4-bit) is supported, but requires a CUDA GPU.
     """
 
     def __init__(
@@ -23,17 +23,16 @@ class HuggingFaceBackend(LLMBackend):
         **kwargs,
     ):
         """
-        Initialize HuggingFace backend.
+        Load the model and tokenizer from the HuggingFace Hub.
 
         Args:
-            repository: HuggingFace repository (e.g. "meta-llama")
-            model_name: HuggingFace model identifier (e.g., "Llama-3-8B")
-            torch_dtype: Data type ("auto", "float16", "bfloat16")
-            **kwargs: Additional model/tokenizer arguments
-
-        Raises:
-            RuntimeError: if ``quantisation`` is requested but no CUDA GPU is
-                detected (bits-and-bytes only supports CUDA devices).
+            repository: HuggingFace repository name (e.g., ``"meta-llama"``).
+            model_name: Model identifier within the repository (e.g., ``"Llama-3-8B"``).
+            quantisation: If ``True``, load the model in 4-bit precision using
+                bitsandbytes. Requires a CUDA GPU.
+            torch_dtype: Floating-point precision (``"auto"``, ``"float16"``,
+                ``"bfloat16"``).
+            **kwargs: Additional arguments passed to ``AutoModelForCausalLM.from_pretrained``.
         """
 
         model_path = "/".join([repository, model_name])
@@ -93,18 +92,20 @@ class HuggingFaceBackend(LLMBackend):
         **kwargs,
     ) -> str:
         """
-        Generate text from prompt.
+        Generate text from a prompt.
 
         Args:
-            prompt: Input prompt
-            max_new_tokens: Maximum tokens to generate
-            do_sample: Whether to use sampling (FALSE for deterministic output)
-            temperature: Sampling temperature
-            top_p: Nucleus sampling parameter
-            **kwargs: Additional generation parameters
+            prompt: The input prompt string.
+            max_new_tokens: Maximum number of tokens to generate.
+            do_sample: If ``True``, use sampling; defaults to ``False`` for
+                deterministic (greedy) output.
+            temperature: Sampling temperature; higher values increase randomness.
+            top_p: Nucleus sampling probability threshold.
+            top_k: Top-k sampling parameter.
+            **kwargs: Additional parameters passed to the model's ``generate`` method.
 
         Returns:
-            Generated text (excluding prompt)
+            The generated text string, excluding the input prompt.
         """
 
         # Tokenize input prompt
