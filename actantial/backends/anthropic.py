@@ -4,7 +4,12 @@ from anthropic import Anthropic, NotFoundError
 
 
 class AnthropicBackend(LLMBackend):
-    """Backend for Anthropic models."""
+    """
+    Backend for Anthropic API models.
+
+    Wraps the Anthropic Messages API to provide text generation compatible with
+    the actantial pipeline.
+    """
 
     def __init__(
         self,
@@ -13,12 +18,14 @@ class AnthropicBackend(LLMBackend):
         api_key: str = None,
     ):
         """
-        Initialize Anthropic backend.
+        Initialise the Anthropic backend and validate the model.
 
         Args:
-            model_name: Anthropic model identifier (e.g., "claude-haiku-4-5")
-            system_prompt: System prompt to use for all requests
-            api_key: API key for Anthropic service, if None, will be fetched from environment variable 'ANTHROPIC_API_KEY'
+            model_name: Anthropic model identifier (e.g., ``"claude-haiku-4-5"``,
+                ``"claude-sonnet-4-6"``).
+            system_prompt: System-level instruction passed to the model on every request.
+            api_key: Anthropic API key. If ``None``, read from the ``ANTHROPIC_API_KEY``
+                environment variable.
         """
         super().__init__(model_name)
         self.model_name = model_name
@@ -44,16 +51,17 @@ class AnthropicBackend(LLMBackend):
         self, prompt: str, max_new_tokens: int = 2048, temperature: float = 0, **kwargs
     ) -> str:
         """
-        Generate text from prompt.
+        Generate text from a prompt.
 
         Args:
-            prompt: Input prompt
-            max_new_tokens: Maximum number of tokens to generate
-            temperature: Sampling temperature in [0, 1]. 0 is deterministic, 1 is maximum randomness.
-            **kwargs: Additional generation parameters
+            prompt: The input prompt string.
+            max_new_tokens: Maximum number of tokens to generate.
+            temperature: Sampling temperature in [0, 1]; higher values increase randomness.
+                Defaults to 0 for deterministic output.
+            **kwargs: Additional parameters passed to the Anthropic Messages API.
 
         Returns:
-            Generated text (excluding prompt)
+            The generated text string, excluding the input prompt.
         """
         if not 0 <= temperature <= 1:
             raise ValueError(
