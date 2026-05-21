@@ -4,7 +4,7 @@
 
 For further details on the theory and application, refer to the following resources:
 - [Introduction to the Actantial Model]()
-- [From narrative theory to automated annotation]() (Elfes, 2026)
+- [From narrative theory to automated annotation]() (Elfes & Bastos, 2026)
 - [Actantial model on news articles](https://dl.acm.org/doi/full/10.1145/3717867.3717868) (Elfes, 2025)
 - [Actantial model on social media](https://arxiv.org/abs/2601.07398) (Elfes et al., 2026)
 
