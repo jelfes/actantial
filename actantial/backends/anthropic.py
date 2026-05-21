@@ -1,7 +1,7 @@
 from .base import LLMBackend
 from dotenv import load_dotenv
 from anthropic import Anthropic, NotFoundError
-from typing import Any
+from typing import Any, Optional
 
 
 class AnthropicBackend(LLMBackend):
@@ -16,7 +16,7 @@ class AnthropicBackend(LLMBackend):
         self,
         model_name: str = "claude-haiku-4-5",
         system_prompt: str = "You are a helpful assistant.",
-        api_key: str = None,
+        api_key: Optional[str] = None,
     ):
         """
         Initialise the Anthropic backend and validate the model.

@@ -1,7 +1,7 @@
 # actantial/backends/huggingface.py
 
 import gc
-from typing import Any
+from typing import Any, Optional
 from .base import LLMBackend
 
 try:

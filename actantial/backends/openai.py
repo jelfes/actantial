@@ -1,7 +1,7 @@
 from .base import LLMBackend
 from dotenv import load_dotenv
 from openai import OpenAI, NotFoundError
-from typing import Any
+from typing import Any, Optional
 
 
 class OpenAIBackend(LLMBackend):
@@ -16,7 +16,7 @@ class OpenAIBackend(LLMBackend):
         self,
         model_name: str = "gpt-4o-mini",
         system_prompt: str = "You are a helpful assistant.",
-        api_key: str = None,
+        api_key: Optional[str] = None,
     ):
         """
         Initialise the OpenAI backend and validate the model.

@@ -1,10 +1,11 @@
+from typing import Optional
 from jinja2 import Template
 
 from actantial.backends.base import LLMBackend
 
 
 def extract_actants(
-    input_text: str, backend: LLMBackend, prompt_template: Template, actor_labels: list = None, object_labels: list = None
+    input_text: str, backend: LLMBackend, prompt_template: Template, actor_labels: Optional[list] = None, object_labels: Optional[list] = None
 ) -> str:
     """
     Extract actantial roles from a text using an LLM backend.

@@ -1,5 +1,6 @@
 import os
 import json
+from typing import Optional
 import pandas as pd
 import logging
 
@@ -25,9 +26,9 @@ def run_extract(
     output_dir: Path,
     template: str,
     templates_dir: Path = Path(__file__).parent / "templates",
-    actor_labels_path: str = None,
-    object_labels_path: str = None,
-    resume_timestamp: str = None,
+    actor_labels_path: Optional[str] = None,
+    object_labels_path: Optional[str] = None,
+    resume_timestamp: Optional[str] = None,
 ):
     """
     Run the actantial extraction pipeline over a DataFrame of texts.
