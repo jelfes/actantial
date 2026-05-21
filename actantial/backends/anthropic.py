@@ -1,6 +1,7 @@
 from .base import LLMBackend
 from dotenv import load_dotenv
 from anthropic import Anthropic, NotFoundError
+from typing import Any
 
 
 class AnthropicBackend(LLMBackend):
@@ -48,7 +49,11 @@ class AnthropicBackend(LLMBackend):
             )
 
     def generate(
-        self, prompt: str, max_new_tokens: int = 2048, temperature: float = 0, **kwargs
+        self,
+        prompt: str,
+        max_new_tokens: int = 2048,
+        temperature: float = 0,
+        **kwargs: Any,
     ) -> str:
         """
         Generate text from a prompt.

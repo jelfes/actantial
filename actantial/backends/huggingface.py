@@ -97,7 +97,7 @@ class HuggingFaceBackend(LLMBackend):
         temperature: float = None,
         top_p: float = None,
         top_k: int = None,
-        **kwargs,
+        **kwargs: Any,
     ) -> str:
         """
         Generate text from a prompt.

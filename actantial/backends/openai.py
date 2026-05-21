@@ -1,6 +1,7 @@
 from .base import LLMBackend
 from dotenv import load_dotenv
 from openai import OpenAI, NotFoundError
+from typing import Any
 
 
 class OpenAIBackend(LLMBackend):
@@ -48,7 +49,11 @@ class OpenAIBackend(LLMBackend):
             )
 
     def generate(
-        self, prompt: str, max_new_tokens: int = 2048, temperature: float = 0, **kwargs
+        self,
+        prompt: str,
+        max_new_tokens: int = 2048,
+        temperature: float = 0,
+        **kwargs: Any,
     ) -> str:
         """
         Generate text from a prompt.
