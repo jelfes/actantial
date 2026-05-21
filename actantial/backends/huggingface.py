@@ -1,6 +1,7 @@
 # actantial/backends/huggingface.py
 
 import gc
+from typing import Any
 from .base import LLMBackend
 
 try:
@@ -27,7 +28,7 @@ class HuggingFaceBackend(LLMBackend):
         model_name: str,
         quantisation: bool = False,
         torch_dtype: str = "float16",
-        **kwargs,
+        **kwargs: Any,
     ):
         """
         Load the model and tokenizer from the HuggingFace Hub.

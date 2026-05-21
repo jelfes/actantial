@@ -27,7 +27,7 @@ def extract_actants(
 
     Returns:
         The raw text output from the backend, typically a JSON string
-        mapping each actant role to its extracted value.
+            mapping each actant role to its extracted value.
     """
 
     # Render prompt from template

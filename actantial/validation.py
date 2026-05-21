@@ -1,5 +1,6 @@
 import pandas as pd
 
+from typing import Dict
 from krippendorff import alpha
 from sklearn.metrics import accuracy_score, f1_score
 from actantial.config import ACTANTS
@@ -15,7 +16,7 @@ def compare_labels(
     verbose: bool = True,
     # TODO ignore_case: bool = True,
     # TODO partial_match: bool = False
-):
+) -> Dict:
     """
     Compare two sets of actantial annotations and compute an agreement metric.
 
@@ -39,8 +40,8 @@ def compare_labels(
 
     Returns:
         A dict with two keys: ``"per_actant"`` mapping each actant name to its
-        score (NaN if the actant was missing or had no valid rows), and
-        ``"avg"`` with the mean score across actants that had valid data.
+            score (NaN if the actant was missing or had no valid rows), and
+            ``"avg"`` with the mean score across actants that had valid data.
     """
     results = {}
 

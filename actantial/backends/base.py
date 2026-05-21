@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Union
+from typing import Any, Union
 from jinja2 import Environment, FileSystemLoader
 
 
@@ -14,7 +14,7 @@ class LLMBackend(ABC):
     managers, calling :meth:`cleanup` on exit.
     """
 
-    def __init__(self, model_name: str, **kwargs):
+    def __init__(self, model_name: str, **kwargs: Any):
         """
         Set the model name and store any extra backend-specific config.
 
@@ -27,7 +27,7 @@ class LLMBackend(ABC):
         self.config = kwargs
 
     @abstractmethod
-    def generate(self, prompt: str, **kwargs) -> str:
+    def generate(self, prompt: str, **kwargs: Any) -> str:
         """
         Generate text from a prompt.
 
@@ -53,7 +53,7 @@ class LLMBackend(ABC):
 
         Returns:
             List of template names available for this model, without the
-            ``.txt`` extension.
+                ``.txt`` extension.
         """
 
         templates_dir = Path(templates_dir) / self.model_name

@@ -89,7 +89,7 @@ def _parse_json(input_text: str) -> Dict:
 
     Returns:
         The parsed JSON object as a dict, or an empty dict if no valid
-        JSON object is found or parsing fails.
+            JSON object is found or parsing fails.
     """
     # match only flat JSON objects
     json_pattern = re.compile(r"\{[^\{\}]*\}")
@@ -183,7 +183,7 @@ def load_actors(
     return data_out
 
 
-def load_annotations(data: DataFrame, label_folder: str, **kwargs) -> DataFrame:
+def load_annotations(data: DataFrame, label_folder: str, **kwargs: Any) -> DataFrame:
     """
     Load actant annotations from a run output folder into a DataFrame.
 
