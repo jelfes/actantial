@@ -1,6 +1,6 @@
 # actantial
 
-`actantial` is a research tool for analysing narratives using Greimas' Actantial Model. It uses LLMs to annotate texts with six character roles — called actants — including Subject, Object, Sender, Receiver, Helper, and Opponent. These structured role representations can be used to analyse the underlying character constellations of a text and compare them across texts. The model can be applied to various sources, such as news articles, social media posts, or political speeches.
+`actantial` is a research tool for analysing narratives using Greimas' Actantial Model. It uses LLMs to annotate texts with six character roles — called actants — including the Subject, Object, Sender, Receiver, Helper, and Opponent. These structured role representations can be used to analyse the underlying character constellations of a text and compare them across texts. The model can be applied to various sources, such as news articles, social media posts, or political speeches.
 
 For further details on the theory and application, refer to the following resources:
 
@@ -34,7 +34,7 @@ This additionally installs `torch`, `transformers`, `accelerate`, and `bitsandby
 
 **Templates** are the prompts sent to the LLM. They control how the extraction task is framed and must contain at least a `{{ text }}` variable. `actantial` ships with built-in example templates, but custom templates are recommended for new use cases.
 
-**Open vs. closed annotation** — in open mode, the LLM assigns actors freely from the text. In closed mode, you provide predefined lists of actor and object labels, constraining the LLM to choose from those options. Closed annotation is recommended when you want consistent, comparable labels across texts. However, it requires devising a concise label set (for details, see Elfes, 2026).
+**Open vs. closed annotation** — in open mode, the LLM assigns actors freely from the text. In closed mode, you provide predefined lists of actor and object labels, constraining the LLM to choose from those options. Closed annotation is recommended when you want consistent, comparable labels across texts. However, it requires devising a concise label set (for details, see Elfes & Bastos, 2026).
 
 ## Quick start
 
@@ -111,10 +111,10 @@ backend = HuggingFaceBackend(
 Templates are [Jinja2](https://jinja.palletsprojects.com/) files that define the prompt sent to the LLM. They are organised by model in a `templates/{model_name}/` directory structure. `actantial` ships with built-in example templates; to inspect and customise them, copy them to a local directory:
 
 ```bash
-actantial-init-templates
+actantial-init-templates path/to/directory/
 ```
 
-This creates a `templates/` folder in your current directory.
+This creates a `templates/` folder with the sample tempaltes in the specified directory.
 
 To see which templates are available for your model, and to preview a template before running:
 
@@ -131,7 +131,7 @@ To write your own template, create a `.txt` file with a `{{ text }}` variable:
 Extract actants from the following text: {{ text }}
 ```
 
-Place it at `templates/{model_name}/{template_name}.txt` and pass `templates_dir` and `template` to the runner:
+Place it at `path/to/directory/templates/{model_name}/{template_name}.txt` and pass `templates_dir` and `template` to the runner:
 
 ```python
 run_extract(
@@ -139,7 +139,7 @@ run_extract(
     backend=backend,
     output_dir="output",
     template="my_template",
-    templates_dir="templates",
+    templates_dir="path/to/directory/templates",
 )
 ```
 
@@ -161,12 +161,12 @@ run_extract(
     backend=backend,
     output_dir="output",
     template="my_template",
-    actor_labels_path="labels/actors.yaml",
-    object_labels_path="labels/objects.yaml",
+    actor_labels_path="path/to/directory/labels/actors.yaml",
+    object_labels_path="path/to/directory/labels/objects.yaml",
 )
 ```
 
-Note, not all models stick to the labels consistently!
+Note, not all models stick to the labels consistently! For additional guidance see [Elfes and Bastos (2026)]().
 
 ### System prompt
 
@@ -178,7 +178,7 @@ backend = OpenAIBackend(model_name="gpt-4o-mini", system_prompt="Always respond 
 
 ## Validation
 
-Validation of the labels is difficult. Especially open-label annotations can vary significantly between prompts and models. This is both due to the complexity of the model and the variation in label formulation without fixed label set. Thus, the validation workflow mostly makes sense for closed-set annotations. Either to compare different models, or to validate models against human annotations (for details, see [Elfes, 2026]()).
+Validation of the labels is difficult. Especially open-label annotations can vary significantly between prompts and models. This is both due to the complexity of the model and the variation in label formulation without fixed label set. Thus, the validation workflow mostly makes sense for closed-set annotations. Either to compare different models, or to validate models against human annotations (for details, see [Elfes & Bastos, 2026]()).
 
 When loading annotations, if the LLM returned multiple actors for a role you can control how they are handled with `select_actor="first"` (default) or `select_actor="combine"` (joins them into a comma-separated string):
 
@@ -212,7 +212,7 @@ actantial \
     --output_dir "output" \
     --backend openai \
     --model "gpt-4o-mini" \
-    --templates_dir "templates" \
+    --templates_dir "path/to/directory/templates" \
     --template "my_template"
 
 # HuggingFace (GPU, 4-bit quantised)
@@ -222,7 +222,7 @@ actantial \
     --backend huggingface \
     --repository "deepseek-ai" \
     --model "DeepSeek-R1-Distill-Qwen-32B" \
-    --templates_dir "templates" \
+    --templates_dir "path/to/directory/templates" \
     --template "my_template" \
     --quantise
 
@@ -232,10 +232,10 @@ actantial \
     --output_dir "output" \
     --backend anthropic \
     --model "claude-haiku-4-5" \
-    --templates_dir "templates" \
+    --templates_dir "path/to/directory/templates" \
     --template "my_template_closed" \
-    --actor_labels_path "labels/actors.yaml" \
-    --object_labels_path "labels/objects.yaml"
+    --actor_labels_path "path/to/directory/labels/actors.yaml" \
+    --object_labels_path "path/to/directory/labels/objects.yaml"
 ```
 
 **Resuming an interrupted run** — pass the timestamp printed at the start of the original run:
@@ -246,9 +246,9 @@ actantial \
     --output_dir "output" \
     --backend openai \
     --model "gpt-4o-mini" \
-    --templates_dir "templates" \
+    --templates_dir "path/to/directory/templates" \
     --template "my_template" \
-    --resume_timestamp "20260101_121500"
+    --resume_timestamp "YYYYMMDD_HHMMSS"
 ```
 
 The model and template must match the original run. Already-processed IDs are skipped automatically.
@@ -259,4 +259,4 @@ The model and template must match the original run. Already-processed IDs are sk
 
 
 ## Acknowledgements
-Part of this codebase was developed with assistance from [Claude Code](https://claude.ai/claude-code).
+Packaging, documentation, and code organisation were handled with assistance from [Claude Code](https://claude.ai/claude-code).
