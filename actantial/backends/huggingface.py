@@ -94,9 +94,9 @@ class HuggingFaceBackend(LLMBackend):
         prompt: str,
         max_new_tokens: int = 2048,
         do_sample: bool = False,
-        temperature: float = None,
-        top_p: float = None,
-        top_k: int = None,
+        temperature: Optional[float] = None,
+        top_p: Optional[float] = None,
+        top_k: Optional[int] = None,
         **kwargs: Any,
     ) -> str:
         """
