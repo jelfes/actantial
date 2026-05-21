@@ -9,9 +9,9 @@ class LLMBackend(ABC):
     Abstract base class for all LLM backends in the actantial pipeline.
 
     Concrete backends (Anthropic, OpenAI, HuggingFace) inherit from this class
-    and implement :meth:`generate`. Shared template utilities are defined here
+    and implement [`generate`][actantial.backends.base.LLMBackend.generate]. Shared template utilities are defined here
     so they are available to all backends. Backends support use as context
-    managers, calling :meth:`cleanup` on exit.
+    managers, calling [`cleanup`][actantial.backends.base.LLMBackend.cleanup] on exit.
     """
 
     def __init__(self, model_name: str, **kwargs: Any):

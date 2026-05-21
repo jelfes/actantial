@@ -15,7 +15,7 @@ def extract_actants(
 
     Args:
         input_text: The text to annotate.
-        backend: An initialised :class:`~actantial.backends.base.LLMBackend`
+        backend: An initialised [`LLMBackend`][actantial.backends.base.LLMBackend]
             instance.
         prompt_template: A Jinja2 template that accepts a ``text`` variable
             at minimum. For closed-set annotation, the template can also

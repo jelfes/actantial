@@ -45,7 +45,7 @@ def run_extract(
 
     Args:
         data: DataFrame with at least ``id`` and ``text`` columns.
-        backend: An initialised :class:`~actantial.backends.base.LLMBackend`
+        backend: An initialised [`LLMBackend`][actantial.backends.base.LLMBackend]
             instance.
         output_dir: Root directory for saving results and logs.
         template: Name of the prompt template to use. Must exist in

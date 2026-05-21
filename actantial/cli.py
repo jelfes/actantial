@@ -21,7 +21,7 @@ def main():
     Entry point for the ``actantial`` CLI command.
 
     Parses command-line arguments, initialises the appropriate backend,
-    and delegates to :func:`~actantial.runner.run_extract`.
+    and delegates to [`run_extract`][actantial.runner.run_extract].
     """
     parser = argparse.ArgumentParser(
         description="Actantial: LLM-based narrative role extraction",

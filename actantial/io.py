@@ -194,8 +194,8 @@ def load_annotations(data: DataFrame, label_folder: str, **kwargs: Any) -> DataF
     Args:
         data: DataFrame with at least an ``id`` column.
         label_folder: Path to the folder containing per-text JSON annotation
-            files, as produced by :func:`~actantial.runner.run_extract`.
-        **kwargs: Additional arguments forwarded to :func:`load_actors`
+            files, as produced by [`run_extract`][actantial.runner.run_extract].
+        **kwargs: Additional arguments forwarded to [`load_actors`][actantial.io.load_actors]
             (e.g. ``select_actor``).
 
     Returns:
