@@ -28,6 +28,10 @@ huggingface = [
   "transformers>=4.57.3",
   "bitsandbytes>=0.42.0",
 ]
+docs = [
+  "mkdocs-material>=9.0",
+  "mkdocstrings[python]>=0.24",
+]
 
 [project.scripts]
 actantial = "actantial.cli:main"

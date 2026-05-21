@@ -1,0 +1,40 @@
+site_name: actantial
+site_description: LLM-based narrative role extraction using Greimas' Actantial Model
+repo_url: https://github.com/jelfes/actantial
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+  palette:
+    scheme: default
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            members_order: source
+
+nav:
+  - Home: index.md
+  - Background: background.md
+  - Reference:
+      - Runner: reference/runner.md
+      - Extraction: reference/extract.md
+      - Input / Output: reference/io.md
+      - Validation: reference/validation.md
+      - CLI: reference/cli.md
+      - Backends:
+          - Base: reference/backends/base.md
+          - Anthropic: reference/backends/anthropic.md
+          - OpenAI: reference/backends/openai.md
+          - HuggingFace: reference/backends/huggingface.md
+  - Examples: examples/index.md
