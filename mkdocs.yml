@@ -26,7 +26,7 @@ plugins:
 nav:
   - Home: index.md
   - Background: background.md
-  - Reference:
+  - API Reference:
       - Runner: reference/runner.md
       - Extraction: reference/extract.md
       - Input / Output: reference/io.md
