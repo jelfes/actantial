@@ -22,6 +22,28 @@ def main():
 
     Parses command-line arguments, initialises the appropriate backend,
     and delegates to [`run_extract`][actantial.runner.run_extract].
+
+    Args:
+        --data_file: CSV file with ``id`` and ``text`` columns.
+        --output_dir: Directory where results and logs will be saved.
+        --backend: LLM backend to use for inference. One of ``anthropic``,
+            ``openai``, ``huggingface``.
+        --model: Model name or identifier understood by the chosen backend.
+        --repository: HuggingFace repository name. Required when using the
+            ``huggingface`` backend.
+        --quantise: Run the model in 4-bit quantised mode. Only valid for
+            the ``huggingface`` backend on a CUDA GPU.
+        --template: Prompt template name. Must exist in
+            ``templates_dir/{model}/``.
+        --actor_labels_path: Path to a YAML file with predefined actor labels
+            for closed-set annotation.
+        --object_labels_path: Path to a YAML file with predefined object labels
+            for closed-set annotation.
+        --resume_timestamp: Timestamp of a previous run to resume, in
+            ``YYYYMMDD_HHMMSS`` format. The model and template must match
+            the original run.
+        --templates_dir: Directory containing prompt templates. Defaults to
+            the bundled templates.
     """
     parser = argparse.ArgumentParser(
         description="Actantial: LLM-based narrative role extraction",
@@ -148,6 +170,11 @@ def init_templates():
 
     Copies the bundled prompt templates to a local directory so they can
     be inspected and customised. The destination must not already exist.
+
+    Args:
+        --dest: Parent directory in which a ``templates/`` folder will be
+            created. Defaults to the current directory.
+
     """
     parser = argparse.ArgumentParser(
         description="Copy bundled actantial templates to a local directory for customisation.",
@@ -156,20 +183,22 @@ def init_templates():
         "dest",
         type=Path,
         nargs="?",
-        default=Path("templates"),
-        help="Destination directory (default: ./templates)",
+        default=Path("."),
+        help="Parent directory where a ``templates/`` folder will be created (default: current directory).",
     )
     args = parser.parse_args()
 
-    if args.dest.exists():
+    dest = args.dest / "templates"
+
+    if dest.exists():
         print(
-            f"Error: '{args.dest}' already exists. Choose a different path or remove it first."
+            f"Error: '{dest}' already exists. Choose a different path or remove it first."
         )
         raise SystemExit(1)
 
-    shutil.copytree(BUNDLED_TEMPLATES_DIR, args.dest)
+    shutil.copytree(BUNDLED_TEMPLATES_DIR, dest)
     print(
-        f"Templates copied to '{args.dest}'. Pass '--templates_dir {args.dest}' to actantial to use them."
+        f"Templates copied to '{dest}'. Pass '--templates_dir {dest}' to actantial to use them."
     )
 
 
