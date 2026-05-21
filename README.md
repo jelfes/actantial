@@ -259,4 +259,4 @@ The model and template must match the original run. Already-processed IDs are sk
 
 
 ## Acknowledgements
-Packaging, documentation, and code organisation were handled with assistance from [Claude Code](https://claude.ai/claude-code).
+[Claude Code](https://claude.ai/claude-code) was used for packaging, documentation, and code organisation.
