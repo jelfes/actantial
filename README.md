@@ -4,8 +4,8 @@
 
 For further details on the theory and application, refer to the following resources:
 
-- [Introduction to the Actantial Model]()
-- [From narrative theory to automated annotation]() (Elfes & Bastos, 2026)
+- [Theoretical background of the Actantial Model]()
+- [From narrative theory to automated annotation]() (TBD)
 - [Actantial model on news articles](https://dl.acm.org/doi/full/10.1145/3717867.3717868) (Elfes, 2025)
 - [Actantial model on social media](https://arxiv.org/abs/2601.07398) (Elfes et al., 2026)
 
@@ -34,7 +34,7 @@ This additionally installs `torch`, `transformers`, `accelerate`, and `bitsandby
 
 **Templates** are the prompts sent to the LLM. They control how the extraction task is framed and must contain at least a `{{ text }}` variable. `actantial` ships with built-in example templates, but custom templates are recommended for new use cases.
 
-**Open vs. closed annotation** — in open mode, the LLM assigns actors freely from the text. In closed mode, you provide predefined lists of actor and object labels, constraining the LLM to choose from those options. Closed annotation is recommended when you want consistent, comparable labels across texts. However, it requires devising a concise label set (for details, see Elfes & Bastos, 2026).
+**Open vs. closed annotation** — in open mode, the LLM assigns actors freely from the text. In closed mode, you provide predefined lists of actor and object labels, constraining the LLM to choose from those options. Closed annotation is recommended when you want consistent, comparable labels across texts. However, it requires devising a concise label set (for details, see TBD).
 
 ## Quick start
 
@@ -166,7 +166,7 @@ run_extract(
 )
 ```
 
-Note, not all models stick to the labels consistently! For additional guidance see [Elfes and Bastos (2026)]().
+Note, not all models stick to the labels consistently! For additional guidance see [TBD](). 
 
 ### System prompt
 
@@ -178,7 +178,7 @@ backend = OpenAIBackend(model_name="gpt-4o-mini", system_prompt="Always respond 
 
 ## Validation
 
-Validation of the labels is difficult. Especially open-label annotations can vary significantly between prompts and models. This is both due to the complexity of the model and the variation in label formulation without fixed label set. Thus, the validation workflow mostly makes sense for closed-set annotations. Either to compare different models, or to validate models against human annotations (for details, see [Elfes & Bastos, 2026]()).
+Validation of the labels is difficult. Especially open-label annotations can vary significantly between prompts and models. This is both due to the complexity of the model and the variation in label formulation without fixed label set. Thus, the validation workflow mostly makes sense for closed-set annotations. Either to compare different models, or to validate models against human annotations (for details, see [TBD]()).
 
 When loading annotations, if the LLM returned multiple actors for a role you can control how they are handled with `select_actor="first"` (default) or `select_actor="combine"` (joins them into a comma-separated string):
 
