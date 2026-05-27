@@ -1,6 +1,6 @@
 {
   "model": "gemma-3-1b-it",
-  "templates_dir": "/home/people/jelfes/actantial/actantial/templates",
+  "templates_dir": "/actantial/actantial/templates",
   "template": "prompt_open",
   "timestamp": "20260519_153050",
   "quantisation": true

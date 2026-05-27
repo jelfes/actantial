@@ -1,5 +1,5 @@
 2026-05-15 14:09:44,105 Run directory: output/actantial_models/gpt-4o-mini/prompt_open/20260515_140944
-2026-05-15 14:09:44,110 Template: 	/Users/jelfes/ucd/actantial/actantial/templates/gpt-4o-mini/prompt_open.txt
+2026-05-15 14:09:44,110 Template: 	/actantial/templates/gpt-4o-mini/prompt_open.txt
 2026-05-15 14:09:44,110 Prompt: According to the Actantial Model by Greimas with the actant label set ["Subject", "Object", "Sender", "Receiver", "Helper", "Opponent"], the actants are defined as follows:
 
 * Subject: The character who carries out the action and desires the Object.

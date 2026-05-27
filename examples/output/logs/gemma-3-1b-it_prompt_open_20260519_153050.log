@@ -1,5 +1,5 @@
 2026-05-19 15:30:50,849 Run directory: output/actantial_models/gemma-3-1b-it/prompt_open/20260519_153050
-2026-05-19 15:30:50,864 Template: 	/home/people/jelfes/actantial/actantial/templates/gemma-3-1b-it/prompt_open.txt
+2026-05-19 15:30:50,864 Template: 	/actantial/templates/gemma-3-1b-it/prompt_open.txt
 2026-05-19 15:30:50,865 Prompt: According to the Actantial Model by Greimas with the actant label set ["Subject", "Object", "Sender", "Receiver", "Helper", "Opponent"], the actants are defined as follows:
 
 * Subject: The character who carries out the action and desires the Object.
