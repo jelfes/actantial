@@ -34,8 +34,8 @@ class HuggingFaceBackend(LLMBackend):
         Load the model and tokenizer from the HuggingFace Hub.
 
         Args:
-            repository: HuggingFace repository name (e.g., ``"meta-llama"``).
-            model_name: Model identifier within the repository (e.g., ``"Llama-3-8B"``).
+            repository: HuggingFace repository name (e.g., ``deepseek-ai``).
+            model_name: Model identifier within the repository (e.g., ``DeepSeek-R1-Distill-Qwen-32B``).
             quantisation: If ``True``, load the model in 4-bit precision using
                 bitsandbytes. Requires a CUDA GPU.
             torch_dtype: Floating-point precision (``"auto"``, ``"float16"``,

@@ -10,8 +10,7 @@ class LLMBackend(ABC):
 
     Concrete backends (Anthropic, OpenAI, HuggingFace) inherit from this class
     and implement [`generate`][actantial.backends.base.LLMBackend.generate]. Shared template utilities are defined here
-    so they are available to all backends. Backends support use as context
-    managers, calling [`cleanup`][actantial.backends.base.LLMBackend.cleanup] on exit.
+    so they are available to all backends.
     """
 
     def __init__(self, model_name: str, **kwargs: Any):
@@ -67,7 +66,7 @@ class LLMBackend(ABC):
         templates_dir: Union[str, Path] = Path(__file__).parent.parent / "templates",
     ) -> None:
         """
-        Print a prompt template with placeholder values substituted.
+        Print a prompt template.
 
         Renders the template with dummy values so the structure is visible
         without requiring real input data.
@@ -104,4 +103,3 @@ class LLMBackend(ABC):
     def cleanup(self):
         """Clean up resources (unload model, close connections, etc.). No-op by default."""
         pass
-
