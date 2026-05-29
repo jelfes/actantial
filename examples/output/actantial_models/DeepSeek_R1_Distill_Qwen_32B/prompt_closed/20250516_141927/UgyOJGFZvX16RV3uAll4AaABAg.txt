@@ -1,0 +1,1 @@
+{"Object": ["Information"], "Subject": ["idf"], "Sender": ["united states"], "Receiver": ["idf"], "Helper": ["united states"], "Opponent": ["united states"]}

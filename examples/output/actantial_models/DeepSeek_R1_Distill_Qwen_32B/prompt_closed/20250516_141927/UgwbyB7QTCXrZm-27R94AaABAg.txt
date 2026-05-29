@@ -1,0 +1,1 @@
+{"Object": ["Rights/Freedoms"], "Subject": ["palestinians"], "Sender": ["video creator"], "Receiver": ["audience"], "Helper": [], "Opponent": ["israel"]}

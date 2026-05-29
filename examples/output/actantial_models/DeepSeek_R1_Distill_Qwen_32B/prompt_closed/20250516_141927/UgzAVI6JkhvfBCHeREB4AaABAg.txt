@@ -1,0 +1,1 @@
+{"Object": ["Power"], "Subject": ["united states"], "Sender": ["world"], "Receiver": ["united states"], "Helper": [], "Opponent": []}

@@ -1,0 +1,1 @@
+{"Object": ["Information"], "Subject": ["commenter"], "Sender": ["god/allah"], "Receiver": ["audience"], "Helper": ["muslims"], "Opponent": ["jews"]}

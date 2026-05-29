@@ -1,0 +1,1 @@
+{"Object": ["Territory"], "Subject": ["palestinians"], "Sender": ["britain"], "Receiver": ["zionists"], "Helper": [], "Opponent": ["zionists"]}

@@ -1,0 +1,1 @@
+{"Object": ["Violence"], "Subject": ["hamas"], "Sender": [], "Receiver": [], "Helper": [], "Opponent": []}

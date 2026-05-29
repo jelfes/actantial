@@ -1,0 +1,1 @@
+{"Object": ["Information"], "Subject": ["hamas"], "Sender": ["united nations"], "Receiver": ["audience"], "Helper": ["united nations"], "Opponent": ["israel"]}

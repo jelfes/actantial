@@ -1,0 +1,1 @@
+{"Object": ["Information"], "Subject": ["commenter"], "Sender": ["united nations"], "Receiver": ["audience"], "Helper": [], "Opponent": ["russia"]}

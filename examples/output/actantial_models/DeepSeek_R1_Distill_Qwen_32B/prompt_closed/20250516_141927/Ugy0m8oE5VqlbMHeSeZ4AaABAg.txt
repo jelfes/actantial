@@ -1,0 +1,1 @@
+{"Object": ["Rights/Freedoms"], "Subject": ["Australia government"], "Sender": ["Australia government"], "Receiver": ["Australia government"], "Helper": [], "Opponent": ["israel"]}

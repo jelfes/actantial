@@ -1,0 +1,1 @@
+{"Object": ["Security/Safety"], "Subject": ["united states"], "Sender": [], "Receiver": [], "Helper": [], "Opponent": ["extremists"]}

@@ -1,0 +1,1 @@
+{"Object": ["Information"], "Subject": ["commenter"], "Sender": ["China"], "Receiver": ["audience"], "Helper": ["Koreans", "Taiwanese", "Japanese", "Yankees"], "Opponent": ["Koreans", "Taiwanese", "Japanese", "Yankees"]}

@@ -1,0 +1,1 @@
+{"Object": ["Information"], "Subject": ["commenter"], "Sender": ["video creator"], "Receiver": ["audience"], "Helper": [], "Opponent": []}
