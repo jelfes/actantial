@@ -19,6 +19,7 @@ dependencies = [
   "anthropic>=0.76.0",
   "openai>=2.15.0",
   "python-dotenv>=1.2.1",
+  "scikit-learn>=1.0",
 ]
 
 [project.optional-dependencies]
