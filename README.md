@@ -153,7 +153,7 @@ For closed-set annotation you need to create a predefined label set for the mode
 ...
 ```
 
-Then add `{{ actor_labels }}` and `{{ object_labels }}` to your template and pass the corresponding YAML files to the runner:
+Then add the variables `{{ actor_labels }}` and `{{ object_labels }}` to your template and pass the corresponding YAML files to the runner:
 
 ```python
 run_extract(
@@ -166,7 +166,7 @@ run_extract(
 )
 ```
 
-Note, not all models stick to the labels consistently! For additional guidance see [TBD](). 
+Note, not all models stick to the labels consistently! For additional guidance see [Elfes et al. (2026)](https://arxiv.org/abs/2601.07398). 
 
 ### System prompt
 
