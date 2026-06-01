@@ -23,7 +23,7 @@ def compare_labels(
     id_column: str = "id",
     metric: str = "krippendorff_alpha",
     actant_columns: list = ACTANTS,
-    verbose: bool = True,
+    verbose: bool = False,
 ) -> pd.DataFrame:
     """
     Compare multiple sets of actantial annotations and compute an agreement metric.
@@ -116,7 +116,7 @@ def _count_pairs(
             for a1, a2 in pairs
             if a1 in df_actant.columns and a2 in df_actant.columns
         )
-    return pd.Series(counts)
+    return pd.Series(counts, dtype="Int64")
 
 
 def _compute_pairwise(
