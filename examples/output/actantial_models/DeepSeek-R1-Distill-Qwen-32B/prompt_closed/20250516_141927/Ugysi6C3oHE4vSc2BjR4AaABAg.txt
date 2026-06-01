@@ -1,1 +1,0 @@
-{"Object": ["Peace"], "Subject": ["palestinians"], "Sender": ["australian government"], "Receiver": ["australian government"], "Helper": [], "Opponent": ["zionists"]}

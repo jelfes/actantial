@@ -1,1 +1,0 @@
-{"Object": ["Violence"], "Subject": ["israel"], "Sender": [], "Receiver": ["commenter"], "Helper": [], "Opponent": ["hamas"]}

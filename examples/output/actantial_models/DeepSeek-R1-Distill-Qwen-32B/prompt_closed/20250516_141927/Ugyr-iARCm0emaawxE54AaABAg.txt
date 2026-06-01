@@ -1,1 +1,0 @@
-{"Object": ["Territory"], "Subject": ["hamas"], "Sender": ["commenter"], "Receiver": ["audience"], "Helper": [], "Opponent": []}

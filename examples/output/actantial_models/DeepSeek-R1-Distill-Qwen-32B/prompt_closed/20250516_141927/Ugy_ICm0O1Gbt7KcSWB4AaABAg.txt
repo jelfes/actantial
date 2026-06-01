@@ -1,1 +1,0 @@
-{"Object": ["Rights/Freedoms"], "Subject": ["both sides"], "Sender": [], "Receiver": [], "Helper": [], "Opponent": []}

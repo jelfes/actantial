@@ -1,1 +1,0 @@
-{"Object": ["Information"], "Subject": ["audience"], "Sender": ["commenter"], "Receiver": ["audience"], "Helper": ["other News channel"], "Opponent": ["idf"]}

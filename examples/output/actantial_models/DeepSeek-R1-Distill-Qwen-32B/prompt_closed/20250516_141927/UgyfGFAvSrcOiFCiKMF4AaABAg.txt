@@ -1,1 +1,0 @@
-{"Object": ["Security/Safety"], "Subject": ["palestinians"], "Sender": ["israel"], "Receiver": ["palestinians"], "Helper": ["hamas"], "Opponent": ["israel"]}

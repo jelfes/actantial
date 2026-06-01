@@ -1,1 +1,0 @@
-{"Object": ["Information"], "Subject": ["commenter"], "Sender": ["al mayadeen", "press tv", "al manar tv"], "Receiver": ["audience"], "Helper": [], "Opponent": []}

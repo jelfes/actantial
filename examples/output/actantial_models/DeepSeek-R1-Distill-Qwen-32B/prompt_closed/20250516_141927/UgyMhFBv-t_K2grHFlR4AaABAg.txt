@@ -1,1 +1,0 @@
-{"Object": ["Rights/Freedoms"], "Subject": ["Hindus"], "Sender": ["extremists"], "Receiver": ["human rights organisations"], "Helper": ["human rights organisations"], "Opponent": ["extremists"]}
