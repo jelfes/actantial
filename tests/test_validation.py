@@ -198,7 +198,7 @@ class TestCompareLabelsN:
     def test_n_avg_row_is_nan(self):
         df = make_df([1, 2], ["hero", "villain"], ["sword", "shield"])
         result = compare_labels([df, df], metric="accuracy", actant_columns=COLS)
-        assert np.isnan(result.loc["avg", "N"])
+        assert pd.isna(result.loc["avg", "N"])
 
     def test_n_missing_actant_is_zero(self):
         df1 = pd.DataFrame({"id": [1], "Subject": ["hero"]})
