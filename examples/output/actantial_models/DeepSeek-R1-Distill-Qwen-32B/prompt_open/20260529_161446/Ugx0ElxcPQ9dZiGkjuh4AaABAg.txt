@@ -1,0 +1,1 @@
+{"Subject": ["Carpatho-Ukraine"], "Object": ["Carpatho-Ukraine War"], "Sender": ["Carpatho-Ukraine"], "Receiver": ["Kingdom of Hungary"], "Helper": [""], "Opponent": [""]}

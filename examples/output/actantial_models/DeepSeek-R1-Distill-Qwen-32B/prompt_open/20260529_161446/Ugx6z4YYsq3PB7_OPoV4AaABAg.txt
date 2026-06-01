@@ -1,0 +1,1 @@
+{"Subject": ["international community"], "Object": ["peaceful resolution"], "Sender": ["AIPAC"], "Receiver": ["U.S."], "Helper": [""], "Opponent": ["AIPAC"]}

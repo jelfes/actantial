@@ -1,0 +1,1 @@
+{"Subject": ["Indian Government"], "Object": ["High-tech Technology and Proper Defense Equipment"], "Sender": ["Indian Government"], "Receiver": ["Indian Army"], "Helper": ["Indian Defense Manufacturers and Allies"], "Opponent": ["Corrupt Bureaucrats and Officers"]}

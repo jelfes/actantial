@@ -1,0 +1,1 @@
+{"Subject": ["the west"], "Object": ["friendship"], "Sender": ["the west"], "Receiver": ["the two states"], "Helper": [""], "Opponent": ["settler colonial 'state'"]}

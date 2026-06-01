@@ -1,0 +1,1 @@
+{"Subject": ["Israel"], "Object": ["pagers"], "Sender": ["Israel"], "Receiver": ["intended target group"], "Helper": [""], "Opponent": [""]}

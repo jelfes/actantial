@@ -1,0 +1,1 @@
+{"Subject": ["you"], "Object": ["normalizing anti-Semitism"], "Sender": ["you"], "Receiver": ["Jews in Australia"], "Helper": [""], "Opponent": ["the speaker"]}

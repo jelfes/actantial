@@ -1,0 +1,1 @@
+{"Subject": ["those"], "Object": ["the upper hand"], "Sender": ["those"], "Receiver": ["opposing sides"], "Helper": ["media propaganda"], "Opponent": ["opposing sides"]}

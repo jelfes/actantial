@@ -1,0 +1,1 @@
+{"Object": ["peace"], "Subject": ["muslims"], "Sender": ["god/allah"], "Receiver": ["muslims"], "Helper": [], "Opponent": []}

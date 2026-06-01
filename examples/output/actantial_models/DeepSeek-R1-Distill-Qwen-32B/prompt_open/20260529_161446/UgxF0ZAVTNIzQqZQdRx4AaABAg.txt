@@ -1,0 +1,1 @@
+{"Subject": ["Leaders/Presidents"], "Object": ["Peace"], "Sender": ["Leaders/Presidents"], "Receiver": ["People/Countries"], "Helper": [""], "Opponent": ["Countries supplying arms"]}

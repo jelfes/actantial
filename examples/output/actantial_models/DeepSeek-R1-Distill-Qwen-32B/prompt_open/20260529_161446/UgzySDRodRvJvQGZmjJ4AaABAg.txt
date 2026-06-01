@@ -1,0 +1,1 @@
+{"Subject": ["Israel"], "Object": ["The land (Israel/Palestine)"], "Sender": ["Ottoman Empire"], "Receiver": ["Palestinians"], "Helper": ["PLO"], "Opponent": ["Hamas"]}

@@ -1,0 +1,1 @@
+{"Subject": ["Jewish people"], "Object": ["Land"], "Sender": ["Arab Christian family"], "Receiver": ["Jewish people"], "Helper": ["Arab Christian family"], "Opponent": ["The lesson (incorrect narrative)"]}

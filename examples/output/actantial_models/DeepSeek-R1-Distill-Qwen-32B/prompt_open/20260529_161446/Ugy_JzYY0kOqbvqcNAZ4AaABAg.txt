@@ -1,0 +1,1 @@
+{"Subject": ["People with Pager, Walkie Talky, Cell Phone"], "Object": ["Pager, Walkie Talky, Cell Phone"], "Sender": ["The message"], "Receiver": ["People with Pager, Walkie Talky, Cell Phone"], "Helper": ["The message"], "Opponent": ["Implied threat or danger"]}

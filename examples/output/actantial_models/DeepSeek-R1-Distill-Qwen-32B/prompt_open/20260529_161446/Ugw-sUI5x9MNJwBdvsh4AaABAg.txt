@@ -1,0 +1,1 @@
+{"Subject": ["The world, especially ICJ"], "Object": ["Actions done by Israel"], "Sender": ["Israel"], "Receiver": ["The world"], "Helper": ["Business interests"], "Opponent": ["Israel"]}

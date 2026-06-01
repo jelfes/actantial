@@ -1,0 +1,1 @@
+{"Subject": ["IDF"], "Object": ["The act of occupying or the cruelty"], "Sender": ["IDF"], "Receiver": ["Occupied territories or people"], "Helper": ["German Wehrmacht", "Waffen SS"], "Opponent": [""]}

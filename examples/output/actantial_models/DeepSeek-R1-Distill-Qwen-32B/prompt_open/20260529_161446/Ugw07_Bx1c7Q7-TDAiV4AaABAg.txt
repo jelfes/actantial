@@ -1,0 +1,1 @@
+{"Subject": ["People who listen to mainstream media"], "Object": ["Truth"], "Sender": ["Mainstream Media (FOX)"], "Receiver": ["People who listen to mainstream media"], "Helper": [""], "Opponent": ["Mainstream Media (FOX)"]}

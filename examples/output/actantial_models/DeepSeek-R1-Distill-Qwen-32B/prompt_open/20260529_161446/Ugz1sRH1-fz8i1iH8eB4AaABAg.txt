@@ -1,0 +1,1 @@
+{"Subject": ["US"], "Object": ["Militias"], "Sender": ["Militias"], "Receiver": ["US"], "Helper": ["Common sense"], "Opponent": ["Militias"]}

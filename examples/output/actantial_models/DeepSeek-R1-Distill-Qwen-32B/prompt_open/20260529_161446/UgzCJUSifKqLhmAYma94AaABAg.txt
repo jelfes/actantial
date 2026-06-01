@@ -1,0 +1,1 @@
+{"Subject": ["A guy"], "Object": ["A way to cast a valid vote"], "Sender": ["A guy"], "Receiver": ["People"], "Helper": [""], "Opponent": ["Government/Authorities"]}

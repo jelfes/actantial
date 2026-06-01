@@ -1,0 +1,1 @@
+{"Subject": ["Israel"], "Object": ["terrorist attacks"], "Sender": ["US Government"], "Receiver": ["the Region"], "Helper": ["US Government"], "Opponent": [""]}

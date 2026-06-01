@@ -1,0 +1,1 @@
+{"Subject": ["Hamas"], "Object": ["Accurate figures"], "Sender": ["International groups (UN, Oxfam, Save the Children, etc.)"], "Receiver": ["International groups (UN, Oxfam, Save the Children, etc.)"], "Helper": ["International groups (UN, Oxfam, Save the Children, etc.)"], "Opponent": ["Israel"]}

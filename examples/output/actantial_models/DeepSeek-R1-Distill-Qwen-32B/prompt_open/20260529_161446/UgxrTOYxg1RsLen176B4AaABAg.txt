@@ -1,0 +1,1 @@
+{"Subject": ["US"], "Object": ["Chinese-made cell phones"], "Sender": ["Chinese manufacturers"], "Receiver": ["US"], "Helper": [""], "Opponent": ["Chinese manufacturers"]}

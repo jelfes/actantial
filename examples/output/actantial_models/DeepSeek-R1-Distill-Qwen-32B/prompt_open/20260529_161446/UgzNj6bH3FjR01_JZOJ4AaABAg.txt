@@ -1,0 +1,1 @@
+{"Subject": ["the person living in the house"], "Object": ["the house"], "Sender": ["the settlers"], "Receiver": ["the settlers"], "Helper": [""], "Opponent": ["the settlers"]}

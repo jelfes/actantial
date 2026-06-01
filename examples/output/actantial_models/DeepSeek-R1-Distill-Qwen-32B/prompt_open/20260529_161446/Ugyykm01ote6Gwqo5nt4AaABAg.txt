@@ -1,0 +1,1 @@
+{"Subject": ["People"], "Object": ["Support for Israel"], "Sender": ["People"], "Receiver": ["Israel"], "Helper": [""], "Opponent": ["Author"]}

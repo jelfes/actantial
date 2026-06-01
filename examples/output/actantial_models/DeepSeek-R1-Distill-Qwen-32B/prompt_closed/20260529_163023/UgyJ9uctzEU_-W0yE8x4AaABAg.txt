@@ -1,0 +1,1 @@
+{"Object": ["information"], "Subject": ["audience/commenter"], "Sender": ["israel/israelis"], "Receiver": ["audience/commenter"], "Helper": [], "Opponent": ["israel/israelis"]}

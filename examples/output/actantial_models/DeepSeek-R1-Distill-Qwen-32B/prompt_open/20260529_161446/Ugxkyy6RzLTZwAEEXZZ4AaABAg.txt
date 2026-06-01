@@ -1,0 +1,1 @@
+{"Subject": ["Hamas"], "Object": ["Destruction of Gaza's infrastructure"], "Sender": ["Hamas"], "Receiver": ["People of Gaza"], "Helper": [""], "Opponent": [""]}

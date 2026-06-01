@@ -1,0 +1,1 @@
+{"Subject": ["The accused person"], "Object": ["The act of killing children and someone else"], "Sender": ["The speaker"], "Receiver": ["The accused person"], "Helper": ["None"], "Opponent": ["The speaker"]}

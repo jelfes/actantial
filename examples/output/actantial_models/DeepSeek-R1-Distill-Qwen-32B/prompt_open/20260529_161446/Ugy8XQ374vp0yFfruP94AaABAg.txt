@@ -1,0 +1,1 @@
+{"Subject": ["Hamas"], "Object": ["Concert attack"], "Sender": ["Hamas"], "Receiver": ["Israel"], "Helper": ["Supporters of Hamas"], "Opponent": ["Israel"]}

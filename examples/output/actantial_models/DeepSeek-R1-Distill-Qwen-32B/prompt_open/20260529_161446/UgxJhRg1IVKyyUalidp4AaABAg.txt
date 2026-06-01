@@ -1,0 +1,1 @@
+{"Subject": ["I"], "Object": ["The claim that the Israelites are children of the Sun (black people)"], "Sender": ["I"], "Receiver": ["You"], "Helper": [""], "Opponent": ["The common belief that the Israelites are European white"]}

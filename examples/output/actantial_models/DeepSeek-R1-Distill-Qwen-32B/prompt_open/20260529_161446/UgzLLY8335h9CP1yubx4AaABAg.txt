@@ -1,0 +1,1 @@
+{"Subject": ["The speaker"], "Object": ["Channels like al mayadeen, press tv, al manar tv"], "Sender": ["The speaker"], "Receiver": ["Ya'll (the audience)"], "Helper": ["Channels like al mayadeen, press tv, al manar tv"], "Opponent": [""]}

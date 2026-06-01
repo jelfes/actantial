@@ -1,0 +1,1 @@
+{"Subject": ["Believers/followers of Islam"], "Object": ["Islam"], "Sender": ["Prophet Adam"], "Receiver": ["Followers of Islam"], "Helper": ["Other prophets or supportive figures"], "Opponent": ["Those against Islam"]}

@@ -1,0 +1,1 @@
+{"Subject": ["they"], "Object": ["message that they are not Palestinians"], "Sender": ["they"], "Receiver": ["soldiers"], "Helper": [""], "Opponent": ["army"]}

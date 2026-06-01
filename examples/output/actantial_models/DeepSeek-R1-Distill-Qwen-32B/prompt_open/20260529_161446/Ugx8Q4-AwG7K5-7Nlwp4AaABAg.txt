@@ -1,0 +1,1 @@
+{"Subject": ["the ev!l jews"], "Object": ["virus message"], "Sender": ["the ev!l jews"], "Receiver": ["pagers"], "Helper": ["flaw in the pager design"], "Opponent": [""]}

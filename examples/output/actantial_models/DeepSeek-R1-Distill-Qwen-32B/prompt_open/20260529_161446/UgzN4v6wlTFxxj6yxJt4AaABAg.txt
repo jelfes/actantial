@@ -1,0 +1,1 @@
+{"Subject": ["The guy (speaker)"], "Object": ["Truth/historical facts"], "Sender": ["The guy (speaker)"], "Receiver": ["The audience (ppl)"], "Helper": ["Historical facts"], "Opponent": ["Opposing narrative/views"]}

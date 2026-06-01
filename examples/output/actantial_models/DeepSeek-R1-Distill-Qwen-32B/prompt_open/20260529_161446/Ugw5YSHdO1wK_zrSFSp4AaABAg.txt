@@ -1,0 +1,1 @@
+{"Subject": ["Israeli government (PM, security minister, president)"], "Object": ["Native inhabitants of the Gaza strip"], "Sender": ["Israeli government (PM, security minister, president)"], "Receiver": [""], "Helper": [""], "Opponent": ["15 of 17 judges on the ICJ"]}

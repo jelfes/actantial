@@ -1,0 +1,1 @@
+{"Subject": ["Central government"], "Object": ["Support for resistance groups"], "Sender": ["Central government"], "Receiver": ["Resistance groups"], "Helper": [""], "Opponent": ["Neighboring countries' resistance groups"]}

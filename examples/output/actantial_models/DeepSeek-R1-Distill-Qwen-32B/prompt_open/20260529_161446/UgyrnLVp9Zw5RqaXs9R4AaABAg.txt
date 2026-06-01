@@ -1,0 +1,1 @@
+{"Subject": ["The speaker"], "Object": ["The truth about the conditions"], "Sender": ["The Israelis"], "Receiver": ["The speaker"], "Helper": ["Those who debunked the stories"], "Opponent": ["Hamas"]}

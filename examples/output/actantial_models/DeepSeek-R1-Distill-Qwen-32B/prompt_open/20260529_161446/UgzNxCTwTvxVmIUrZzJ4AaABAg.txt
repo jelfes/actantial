@@ -1,0 +1,1 @@
+{"Subject": ["The person hiding the explosives"], "Object": ["Explosives"], "Sender": ["The person hiding the explosives"], "Receiver": ["The person receiving the electronic components"], "Helper": [""], "Opponent": ["Detection mechanism or person noticing the fake battery"]}

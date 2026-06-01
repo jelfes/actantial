@@ -1,0 +1,1 @@
+{"Subject": ["the speaker"], "Object": ["banning and punishing the perpetrators"], "Sender": ["authority/government"], "Receiver": ["perpetrators"], "Helper": ["Apple"], "Opponent": ["Israel"]}

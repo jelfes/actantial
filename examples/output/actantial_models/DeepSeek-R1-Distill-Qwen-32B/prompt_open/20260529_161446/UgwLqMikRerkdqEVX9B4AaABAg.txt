@@ -1,0 +1,1 @@
+{"Subject": ["Palestinians"], "Object": ["Recognition of their humanity and value"], "Sender": ["The system/power that dehumanizes them"], "Receiver": ["International community"], "Helper": ["Human rights organizations/activists"], "Opponent": ["The system/power that dehumanizes them"]}

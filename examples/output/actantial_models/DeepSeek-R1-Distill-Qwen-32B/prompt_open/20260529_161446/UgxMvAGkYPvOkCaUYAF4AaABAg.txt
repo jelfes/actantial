@@ -1,0 +1,1 @@
+{"Subject": ["Attackers/terrorists"], "Object": ["Destruction or fear caused by the attack"], "Sender": ["Planners/organizers"], "Receiver": ["Victims/targets"], "Helper": [""], "Opponent": [""]}

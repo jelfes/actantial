@@ -1,0 +1,1 @@
+{"Subject": ["The interceptors"], "Object": ["Devices (5000)"], "Sender": ["The original sender of the shipment"], "Receiver": ["The interceptors"], "Helper": ["The ones who helped find another way"], "Opponent": ["The original senders"]}

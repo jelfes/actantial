@@ -1,0 +1,1 @@
+{"Subject": ["genocide princess"], "Object": ["ethnic cleansing"], "Sender": ["her regime"], "Receiver": ["Palestinian people"], "Helper": ["her supporters"], "Opponent": ["E.U."]}

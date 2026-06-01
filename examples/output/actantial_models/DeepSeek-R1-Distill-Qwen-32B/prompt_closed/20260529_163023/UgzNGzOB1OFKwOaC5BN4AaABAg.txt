@@ -1,0 +1,1 @@
+{"Object": ["rights/freedoms"], "Subject": ["palestine/palestinians"], "Sender": ["israel/israelis"], "Receiver": ["palestine/palestinians"], "Helper": [], "Opponent": ["palestine/palestinians"]}

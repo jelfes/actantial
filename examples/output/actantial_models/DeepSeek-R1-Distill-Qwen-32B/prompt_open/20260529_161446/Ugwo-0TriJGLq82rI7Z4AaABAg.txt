@@ -1,0 +1,1 @@
+{"Subject": ["ex-hostage"], "Object": ["ex-hostage"], "Sender": ["Fox News"], "Receiver": ["the world"], "Helper": "", "Opponent": ["evil genius"]}

@@ -1,0 +1,1 @@
+{"Subject": ["captor"], "Object": ["hostages"], "Sender": ["captor"], "Receiver": ["audience"], "Helper": "", "Opponent": ["hostages"]}

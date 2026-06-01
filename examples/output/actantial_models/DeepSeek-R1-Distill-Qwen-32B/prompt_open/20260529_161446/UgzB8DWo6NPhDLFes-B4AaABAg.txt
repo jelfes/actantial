@@ -1,0 +1,1 @@
+{"Subject": ["Hamas"], "Object": ["Islamic Resistance Movement"], "Sender": [""], "Receiver": [""], "Helper": [""], "Opponent": ["Judaism"]}

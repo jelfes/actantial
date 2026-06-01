@@ -1,0 +1,1 @@
+{"Subject": ["Jewish people"], "Object": ["Jewish sovereignty in the Land of Israel"], "Sender": ["Jewish people"], "Receiver": ["Jewish people"], "Helper": ["Archaeological evidence, historical continuity, revitalization of Hebrew language, institutions, land, and economy"], "Opponent": ["Christian Crusaders, Arab and Ottoman invaders, British-led Jordanian Arab Legion, Hamas"]}

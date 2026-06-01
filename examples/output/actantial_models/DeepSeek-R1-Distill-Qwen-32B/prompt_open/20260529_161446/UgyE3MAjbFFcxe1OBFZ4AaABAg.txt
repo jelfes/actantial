@@ -1,0 +1,1 @@
+{"Subject": ["The speaker"], "Object": ["Correct wording or properly assembled product"], "Sender": [""], "Receiver": [""], "Helper": [""], "Opponent": ["The creator of incorrect information"]}

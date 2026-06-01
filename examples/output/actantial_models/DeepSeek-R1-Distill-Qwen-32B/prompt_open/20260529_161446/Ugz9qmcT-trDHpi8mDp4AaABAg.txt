@@ -1,0 +1,1 @@
+{"Subject": ["People"], "Object": ["Comments against colonial apartheid"], "Sender": ["Social media platforms"], "Receiver": ["Users"], "Helper": ["TikTok, Al Jazeera news"], "Opponent": ["Social media platforms"]}

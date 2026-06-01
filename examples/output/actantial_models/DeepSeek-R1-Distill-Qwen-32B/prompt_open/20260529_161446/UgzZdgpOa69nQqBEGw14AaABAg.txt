@@ -1,0 +1,1 @@
+{"Subject": ["hostages"], "Object": ["captors' favor"], "Sender": ["hostages"], "Receiver": ["captors"], "Helper": [""], "Opponent": ["death"]}

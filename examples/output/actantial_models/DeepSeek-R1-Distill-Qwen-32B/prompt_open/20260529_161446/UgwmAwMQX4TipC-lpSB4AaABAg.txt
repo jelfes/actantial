@@ -1,0 +1,1 @@
+{"Subject": ["Palestinian hostages"], "Object": ["Freedom and justice for Palestinian hostages"], "Sender": ["Human rights organizations/activists"], "Receiver": ["International community"], "Helper": ["Supporters of the Palestinian cause"], "Opponent": ["Israeli government"]}

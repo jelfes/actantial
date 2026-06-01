@@ -1,0 +1,1 @@
+{"Subject": ["Hamas"], "Object": ["Hostages' statements"], "Sender": ["Hamas"], "Receiver": ["Hostages"], "Helper": ["Hamas social media team"], "Opponent": ["The speaker"]}

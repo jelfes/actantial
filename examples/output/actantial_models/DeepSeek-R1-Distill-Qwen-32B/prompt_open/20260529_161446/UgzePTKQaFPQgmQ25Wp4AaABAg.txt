@@ -1,0 +1,1 @@
+{"Subject": ["those who believe in God"], "Object": ["the gift of his Son (salvation)"], "Sender": ["God"], "Receiver": ["those who believe in God"], "Helper": ["the Holy Spirit"], "Opponent": [""]}

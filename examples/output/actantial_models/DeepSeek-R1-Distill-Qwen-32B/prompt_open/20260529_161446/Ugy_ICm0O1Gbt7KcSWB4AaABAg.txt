@@ -1,0 +1,1 @@
+{"Subject": ["Company in Hungary"], "Object": ["Pagers"], "Sender": ["Taiwanese Company"], "Receiver": ["Company in Hungary"], "Helper": ["Militant/Intelligence Group"], "Opponent": ["Environmentalists, Crypto Bros"]}

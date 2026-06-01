@@ -1,0 +1,1 @@
+{"Subject": ["Germany and Russia"], "Object": ["Israel"], "Sender": ["United Nations Assembly"], "Receiver": ["Settlers in Palestine"], "Helper": [""], "Opponent": [""]}

@@ -1,0 +1,1 @@
+{"Subject": ["United Nations"], "Object": ["Power/Effectiveness"], "Sender": [""], "Receiver": [""], "Helper": [""], "Opponent": [""]}

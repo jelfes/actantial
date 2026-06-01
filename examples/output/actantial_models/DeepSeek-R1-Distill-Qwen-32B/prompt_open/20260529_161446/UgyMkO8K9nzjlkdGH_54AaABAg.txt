@@ -1,0 +1,1 @@
+{"Subject": ["The author"], "Object": ["REAL stats (truth about the absence of genocide)"], "Sender": ["The author"], "Receiver": ["Politicians"], "Helper": ["The truth"], "Opponent": ["Hamas's propaganda"]}

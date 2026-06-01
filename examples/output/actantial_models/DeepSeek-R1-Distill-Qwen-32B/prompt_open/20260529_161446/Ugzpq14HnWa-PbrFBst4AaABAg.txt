@@ -1,0 +1,1 @@
+{"Subject": ["Listener"], "Object": ["Accurate explanation"], "Sender": ["Speaker"], "Receiver": ["Listener"], "Helper": ["Historical accuracy"], "Opponent": ["Pro-Palestine group"]}

@@ -1,0 +1,1 @@
+{"Subject": ["all parties involved"], "Object": ["JUSTICE AND PEACE"], "Sender": ["truth"], "Receiver": ["all parties involved"], "Helper": ["truth"], "Opponent": ["LOOKING ONLY AT 1948+"]}

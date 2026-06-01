@@ -1,0 +1,1 @@
+{"Subject": ["The person"], "Object": ["The decision to boycott companies"], "Sender": ["The friend"], "Receiver": ["The person"], "Helper": ["The idea of educating oneself and helping without boycotting"], "Opponent": ["The friend's adamant stance"]}

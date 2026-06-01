@@ -1,0 +1,1 @@
+{"Subject": ["Christian community"], "Object": ["Peace"], "Sender": ["Christian community"], "Receiver": ["Jewish and Christian communities"], "Helper": ["Muslim community"], "Opponent": ["Biased bloggers and news casters"]}

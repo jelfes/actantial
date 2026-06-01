@@ -1,0 +1,1 @@
+{"Subject": ["India"], "Object": ["Ladakh"], "Sender": ["The report"], "Receiver": ["India"], "Helper": [""], "Opponent": ["China"]}

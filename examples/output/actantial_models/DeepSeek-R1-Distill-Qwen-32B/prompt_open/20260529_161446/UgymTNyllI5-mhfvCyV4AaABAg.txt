@@ -1,0 +1,1 @@
+{"Subject": ["The person faking the video"], "Object": ["Video"], "Sender": ["The person instructing to fake and send"], "Receiver": ["The person being asked to verify"], "Helper": [""], "Opponent": ["The person who might call it BS"]}

@@ -1,0 +1,1 @@
+{"Subject": ["Muslims in Palestine"], "Object": ["Fairness/Justice"], "Sender": ["International Community"], "Receiver": ["Muslims in Palestine"], "Helper": ["Activists/Organizations"], "Opponent": ["Israel/Other Groups"]}

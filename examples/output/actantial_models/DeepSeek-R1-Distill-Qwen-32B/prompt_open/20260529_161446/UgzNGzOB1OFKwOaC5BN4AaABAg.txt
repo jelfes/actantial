@@ -1,0 +1,1 @@
+{"Subject": ["Palestinians"], "Object": ["Self-determination and statehood"], "Sender": ["Israel"], "Receiver": ["Palestinians"], "Helper": [""], "Opponent": ["Arabs"]}

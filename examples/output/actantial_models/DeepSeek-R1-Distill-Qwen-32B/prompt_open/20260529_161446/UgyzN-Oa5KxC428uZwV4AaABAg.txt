@@ -1,0 +1,1 @@
+{"Subject": ["The Jewish people/Israel"], "Object": ["The land of Izrael"], "Sender": ["Ha Shem"], "Receiver": ["Abraham and his descendants"], "Helper": ["The tribes and kings (e.g., David, Solomon)"], "Opponent": ["The Philistines"]}

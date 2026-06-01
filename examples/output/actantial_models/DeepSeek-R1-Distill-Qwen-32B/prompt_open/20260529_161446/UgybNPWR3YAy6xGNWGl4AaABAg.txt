@@ -1,0 +1,1 @@
+{"Subject": ["Jewish leaders"], "Object": ["Israel"], "Sender": ["Jewish leaders"], "Receiver": ["Jewish leaders"], "Helper": [""], "Opponent": ["Ethnic Arab Palestinians"]}

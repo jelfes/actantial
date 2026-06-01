@@ -1,0 +1,1 @@
+{"Subject": ["Netanyahu"], "Object": ["Support/backing"], "Sender": ["US"], "Receiver": ["Netanyahu"], "Helper": ["US"], "Opponent": ["ICJ and the world"]}

@@ -1,0 +1,1 @@
+{"Subject": ["Australian government"], "Object": ["criminals"], "Sender": ["Australian government"], "Receiver": ["Australia"], "Helper": [""], "Opponent": [""]}

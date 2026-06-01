@@ -1,0 +1,1 @@
+{"Subject": ["The person who desires to understand the equations"], "Object": ["Equations"], "Sender": ["The person presenting or creating the equations"], "Receiver": ["The person receiving the equations"], "Helper": ["Numbers"], "Opponent": ["Shades of gray"]}

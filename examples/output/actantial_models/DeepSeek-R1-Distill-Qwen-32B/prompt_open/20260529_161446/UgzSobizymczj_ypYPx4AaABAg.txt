@@ -1,0 +1,1 @@
+{"Subject": ["American people"], "Object": ["Defending Israel"], "Sender": ["Biden administration"], "Receiver": ["American people"], "Helper": [""], "Opponent": ["Biden administration"]}

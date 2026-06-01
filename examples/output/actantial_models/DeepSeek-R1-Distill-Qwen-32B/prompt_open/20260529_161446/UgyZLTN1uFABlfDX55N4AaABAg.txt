@@ -1,0 +1,1 @@
+{"Subject": ["Spiritkind"], "Object": ["Trinity"], "Sender": ["The Spirit"], "Receiver": ["Most Holy Ones"], "Helper": ["The Water and The Blood"], "Opponent": ["The Tabernacle"]}

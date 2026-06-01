@@ -1,0 +1,1 @@
+{"Subject": ["Israel"], "Object": ["$24 billion weapons aid package"], "Sender": ["U.S."], "Receiver": ["Israel"], "Helper": [""], "Opponent": ["Hamas (amas)"]}

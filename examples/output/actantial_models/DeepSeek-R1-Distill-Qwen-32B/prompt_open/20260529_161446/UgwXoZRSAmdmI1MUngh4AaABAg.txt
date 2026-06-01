@@ -1,0 +1,1 @@
+{"Subject": ["Arabs"], "Object": ["Judea"], "Sender": ["Romans"], "Receiver": ["Jews"], "Helper": ["Yasser Arafat"], "Opponent": ["Israelis"]}

@@ -1,0 +1,1 @@
+{"Subject": ["The world"], "Object": ["Justice or action for Palestinians"], "Sender": ["International community"], "Receiver": ["Palestinians"], "Helper": ["Human rights groups"], "Opponent": ["Zionist groups"]}

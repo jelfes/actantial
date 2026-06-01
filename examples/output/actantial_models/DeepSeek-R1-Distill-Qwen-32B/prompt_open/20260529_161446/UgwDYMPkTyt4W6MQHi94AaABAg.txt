@@ -1,0 +1,1 @@
+{"Subject": ["Person buying electronics"], "Object": ["Electronics from China"], "Sender": ["China"], "Receiver": ["Person buying electronics"], "Helper": ["Koreans, Taiwanese, Japanese, Yankees"], "Opponent": [""]}

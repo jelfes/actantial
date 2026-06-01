@@ -1,0 +1,1 @@
+{"Subject": ["IDF"], "Object": ["fighter jets"], "Sender": ["IDF"], "Receiver": ["IDF"], "Helper": [""], "Opponent": ["Palestinian girl"]}

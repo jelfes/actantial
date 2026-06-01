@@ -1,0 +1,1 @@
+{"Subject": ["The speaker (Christian)"], "Object": ["The idea that Jerusalem is sacred only to Jews"], "Sender": ["The speaker (Christian)"], "Receiver": ["The audience"], "Helper": ["Muslim sages' writings"], "Opponent": ["The belief that Jerusalem is sacred to all three religions"]}

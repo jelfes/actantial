@@ -1,0 +1,1 @@
+{"Subject": ["Israeli fighting men"], "Object": ["Ability to fight effectively"], "Sender": ["USA and Europe"], "Receiver": ["Israel"], "Helper": [""], "Opponent": ["The speaker"]}

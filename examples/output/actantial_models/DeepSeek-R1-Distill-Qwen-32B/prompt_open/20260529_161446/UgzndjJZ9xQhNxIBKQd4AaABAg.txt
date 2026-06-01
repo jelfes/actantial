@@ -1,0 +1,1 @@
+{"Subject": ["People who want to achieve success"], "Object": ["Character and disciplines of the Jews"], "Sender": ["Jews"], "Receiver": ["People who adopt the traits"], "Helper": ["Example of the Jews"], "Opponent": ["Anti-Semitic forces"]}

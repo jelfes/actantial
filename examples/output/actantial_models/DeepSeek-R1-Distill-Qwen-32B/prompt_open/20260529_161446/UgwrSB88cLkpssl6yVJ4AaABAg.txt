@@ -1,0 +1,1 @@
+{"Subject": ["viewers seeking the truth"], "Object": ["information about the hostages"], "Sender": ["IDF"], "Receiver": ["viewers"], "Helper": ["other News channels"], "Opponent": ["fake news and propaganda"]}

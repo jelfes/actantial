@@ -1,0 +1,1 @@
+{"Subject": ["Israel"], "Object": ["New generation of people in Gaza"], "Sender": ["Israel"], "Receiver": ["People in Gaza"], "Helper": ["Current generation of Gazans"], "Opponent": ["Current generation of Gazans"]}

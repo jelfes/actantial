@@ -1,0 +1,7 @@
+{
+  "model": "DeepSeek-R1-Distill-Qwen-32B",
+  "templates_dir": "/actantial/actantial/templates",
+  "template": "prompt_open",
+  "timestamp": "20260529_161446",
+  "quantisation": true
+}

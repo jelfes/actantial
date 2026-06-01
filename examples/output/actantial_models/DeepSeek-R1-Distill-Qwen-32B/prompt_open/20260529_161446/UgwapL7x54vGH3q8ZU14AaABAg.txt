@@ -1,0 +1,1 @@
+{"Subject": ["my gut"], "Object": ["explosive capability of lithium batteries"], "Sender": ["manufacturers of lithium batteries"], "Receiver": ["consumers/users of lithium batteries"], "Helper": [""], "Opponent": ["manufacturers of lithium batteries"]}

@@ -1,0 +1,1 @@
+{"Object": ["power"], "Subject": ["audience/commenter"], "Sender": ["united states"], "Receiver": ["ronna mcdaniels"], "Helper": [], "Opponent": ["united states"]}

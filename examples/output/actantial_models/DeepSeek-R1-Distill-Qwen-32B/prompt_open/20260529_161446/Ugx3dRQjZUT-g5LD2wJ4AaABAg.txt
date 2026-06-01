@@ -1,0 +1,1 @@
+{"Subject": ["Amira Hass", "Gideon Levy", "Noam Chomsky"], "Object": ["Information about Israel-Palestine conflict"], "Sender": ["breaking the silence", "b'tselem"], "Receiver": ["International community"], "Helper": ["Ilan Papp\u00e9", "Amy Goodman"], "Opponent": ["Political figures opposing activism"]}

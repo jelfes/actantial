@@ -1,0 +1,1 @@
+{"Subject": ["Hamas"], "Object": ["terrorize and kill those who disbelieve"], "Sender": ["Koran"], "Receiver": ["Israel"], "Helper": ["I"], "Opponent": ["the innocent (the ones who refuse to obey that book)"]}

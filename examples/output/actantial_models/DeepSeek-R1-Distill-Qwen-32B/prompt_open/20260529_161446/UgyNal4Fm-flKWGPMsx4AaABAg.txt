@@ -1,0 +1,1 @@
+{"Subject": ["Zionism"], "Object": ["Legal authority for Zionism"], "Sender": ["Balfour Declaration"], "Receiver": ["Palestine Mandate"], "Helper": ["Ramsay MacDonald"], "Opponent": ["House of Lords"]}

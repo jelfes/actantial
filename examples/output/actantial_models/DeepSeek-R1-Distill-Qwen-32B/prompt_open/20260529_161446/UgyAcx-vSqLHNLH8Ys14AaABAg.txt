@@ -1,0 +1,1 @@
+{"Subject": ["EU human rights monitor"], "Object": ["Speaking about the attack"], "Sender": ["Entire world"], "Receiver": ["EU human rights monitor"], "Helper": [""], "Opponent": ["Hamas"]}

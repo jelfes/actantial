@@ -1,0 +1,1 @@
+{"Subject": ["they"], "Object": ["tunnels made by Israel"], "Sender": ["Israel"], "Receiver": ["they"], "Helper": ["governments that speak of humanity and support"], "Opponent": ["Israel"]}

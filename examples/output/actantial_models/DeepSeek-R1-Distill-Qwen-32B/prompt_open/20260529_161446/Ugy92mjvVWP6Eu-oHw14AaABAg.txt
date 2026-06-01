@@ -1,0 +1,1 @@
+{"Subject": ["Israel", "Iran"], "Object": ["Geopolitical advantage/influence"], "Sender": ["Israel", "Iran"], "Receiver": ["Israel", "Iran"], "Helper": ["Proxy mechanisms"], "Opponent": ["Israel", "Iran"]}

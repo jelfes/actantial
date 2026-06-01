@@ -1,0 +1,1 @@
+{"Subject": ["I"], "Object": ["insightful video"], "Sender": ["you"], "Receiver": ["my boyfriend and I"], "Helper": ["my boyfriend"], "Opponent": ["confusion"]}

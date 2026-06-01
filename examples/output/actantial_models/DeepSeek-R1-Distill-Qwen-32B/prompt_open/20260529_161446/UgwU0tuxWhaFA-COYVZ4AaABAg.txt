@@ -1,0 +1,1 @@
+{"Subject": ["The speaker"], "Object": ["The hostages"], "Sender": ["Netanyahu"], "Receiver": ["The speaker"], "Helper": ["God"], "Opponent": ["Netanyahu"]}

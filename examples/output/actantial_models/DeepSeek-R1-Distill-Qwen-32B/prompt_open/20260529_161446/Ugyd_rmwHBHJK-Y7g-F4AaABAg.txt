@@ -1,0 +1,1 @@
+{"Subject": ["The furrier"], "Object": ["The laser deal to Saud"], "Sender": ["Jared"], "Receiver": ["The House of Saud"], "Helper": ["Raytheon"], "Opponent": ["Harris"]}

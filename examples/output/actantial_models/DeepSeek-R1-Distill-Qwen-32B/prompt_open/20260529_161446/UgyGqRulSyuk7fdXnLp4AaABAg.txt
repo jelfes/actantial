@@ -1,0 +1,1 @@
+{"Subject": ["Jews/Israel"], "Object": ["Land"], "Sender": ["UN/International Powers"], "Receiver": ["Israel"], "Helper": ["England, France, Germany"], "Opponent": ["Arab Countries"]}

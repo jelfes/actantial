@@ -1,0 +1,1 @@
+{"Subject": ["Fox News"], "Object": ["the blonde's dance video and opinions"], "Sender": ["the blonde"], "Receiver": ["Fox News"], "Helper": [""], "Opponent": ["listeners and viewers"]}

@@ -1,0 +1,1 @@
+{"Subject": ["Palestinians"], "Object": ["Right to defend their rights"], "Sender": ["British colonialists and European settlers"], "Receiver": ["Israelis"], "Helper": [""], "Opponent": ["Israelis"]}

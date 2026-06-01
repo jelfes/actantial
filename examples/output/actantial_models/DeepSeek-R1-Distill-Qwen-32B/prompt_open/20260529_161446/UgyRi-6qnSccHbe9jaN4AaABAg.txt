@@ -1,0 +1,1 @@
+{"Subject": ["Speaker"], "Object": ["Books ('Paris 1919' and 'Desert Queen')"], "Sender": ["Speaker"], "Receiver": ["Audience"], "Helper": ["Books ('Paris 1919' and 'Desert Queen')"], "Opponent": ["Protesting Children"]}

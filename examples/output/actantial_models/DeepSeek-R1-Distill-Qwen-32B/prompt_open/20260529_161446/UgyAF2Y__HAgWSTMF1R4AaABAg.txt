@@ -1,0 +1,1 @@
+{"Subject": ["Teacher"], "Object": ["Pupils"], "Sender": ["Teacher"], "Receiver": ["Pupils"], "Helper": [""], "Opponent": [""]}

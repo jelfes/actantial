@@ -1,0 +1,1 @@
+{"Subject": ["Ashkenazi Jews"], "Object": ["Return to Palestine"], "Sender": ["Khazars"], "Receiver": ["Current Jewish presence in Palestine"], "Helper": [""], "Opponent": [""]}

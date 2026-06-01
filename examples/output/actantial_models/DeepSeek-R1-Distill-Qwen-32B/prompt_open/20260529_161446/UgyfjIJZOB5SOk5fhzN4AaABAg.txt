@@ -1,0 +1,1 @@
+{"Subject": ["Israelis"], "Object": ["40-50,000 women and children in Gaza"], "Sender": ["Israeli government/military"], "Receiver": ["Women and children in Gaza"], "Helper": ["Israeli military infrastructure"], "Opponent": ["Palestinian resistance/international organizations"]}

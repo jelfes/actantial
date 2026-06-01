@@ -1,0 +1,1 @@
+{"Subject": ["People being brainwashed"], "Object": ["Belief that Israel is defending itself"], "Sender": ["Entity spreading lies"], "Receiver": ["People being brainwashed"], "Helper": ["Media or institutions supporting the message"], "Opponent": ["Activists or organizations promoting Palestinian cause"]}

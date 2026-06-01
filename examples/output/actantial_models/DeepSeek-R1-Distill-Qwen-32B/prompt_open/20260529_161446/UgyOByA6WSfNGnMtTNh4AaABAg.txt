@@ -1,0 +1,1 @@
+{"Subject": ["Creator of the depiction"], "Object": ["The depiction or image being discussed"], "Sender": ["Creator of the depiction"], "Receiver": ["Audience or viewers"], "Helper": ["Media or platform supporting the depiction"], "Opponent": ["Critics questioning the representation"]}

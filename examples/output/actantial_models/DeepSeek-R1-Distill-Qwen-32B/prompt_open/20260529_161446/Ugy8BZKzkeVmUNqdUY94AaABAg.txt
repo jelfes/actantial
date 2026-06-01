@@ -1,0 +1,1 @@
+{"Subject": ["people who claim anti-Zionism isn't anti-Semitism"], "Object": ["anti-Zionism isn't anti-Semitism"], "Sender": ["people who claim anti-Zionism isn't anti-Semitism"], "Receiver": ["people who are convinced by the claim"], "Helper": ["anti-Zionist groups"], "Opponent": ["pro-Israel advocates"]}

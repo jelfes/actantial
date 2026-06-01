@@ -1,0 +1,1 @@
+{"Subject": ["NBC"], "Object": ["Job position at NBC"], "Sender": ["NBC"], "Receiver": ["Ronna McDaniels Romney"], "Helper": [""], "Opponent": ["MSNBC"]}

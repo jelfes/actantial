@@ -1,0 +1,1 @@
+{"Subject": ["Rusia"], "Object": ["Bisnis senjata api"], "Sender": ["Indonesia"], "Receiver": ["Rusia"], "Helper": ["Israel"], "Opponent": [""]}

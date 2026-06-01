@@ -1,0 +1,1 @@
+{"Subject": ["Professor Papp\u00e9, Professors Avi Shlaim, Shlomo Sand"], "Object": ["Nobel Prize"], "Sender": ["Nobel Committee"], "Receiver": ["Professor Papp\u00e9, Professors Avi Shlaim, Shlomo Sand"], "Helper": ["The user (speaker)"], "Opponent": [""]}

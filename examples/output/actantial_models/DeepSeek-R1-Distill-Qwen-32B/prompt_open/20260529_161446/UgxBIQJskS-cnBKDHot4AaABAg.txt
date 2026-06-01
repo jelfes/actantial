@@ -1,0 +1,1 @@
+{"Subject": ["US"], "Object": ["Request for Iran not to retaliate"], "Sender": ["US"], "Receiver": ["Arab leaders"], "Helper": ["US bias, lying media, politicians"], "Opponent": ["Iran"]}

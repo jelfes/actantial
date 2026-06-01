@@ -1,0 +1,1 @@
+{"Subject": ["the world"], "Object": ["the world's attention/memory of Oct. 7th"], "Sender": ["the report"], "Receiver": ["the world"], "Helper": [""], "Opponent": ["Palestinian provocation"]}

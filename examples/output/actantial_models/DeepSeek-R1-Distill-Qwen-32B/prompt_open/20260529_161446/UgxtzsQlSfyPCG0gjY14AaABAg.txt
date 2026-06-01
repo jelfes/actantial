@@ -1,0 +1,1 @@
+{"Subject": ["Jewish settlers/Israeli government"], "Object": ["the land (in the Shfela, the center of Israel)"], "Sender": ["Palestinians (previous owners)"], "Receiver": ["Jewish settlers/Israeli government"], "Helper": ["money"], "Opponent": ["displaced Palestinians"]}

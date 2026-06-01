@@ -1,0 +1,1 @@
+{"Subject": ["IDF"], "Object": ["international law"], "Sender": ["US"], "Receiver": ["IDF"], "Helper": ["speaker"], "Opponent": ["US"]}

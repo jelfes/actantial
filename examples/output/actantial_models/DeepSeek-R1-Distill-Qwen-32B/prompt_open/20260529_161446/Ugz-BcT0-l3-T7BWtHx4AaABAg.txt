@@ -1,0 +1,1 @@
+{"Subject": ["Australia"], "Object": ["Zionist lobby"], "Sender": ["Israel"], "Receiver": ["Australia"], "Helper": ["US and Canada"], "Opponent": [""]}

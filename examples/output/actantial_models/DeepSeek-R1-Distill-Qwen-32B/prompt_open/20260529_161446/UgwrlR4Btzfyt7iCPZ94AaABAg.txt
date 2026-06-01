@@ -1,0 +1,1 @@
+{"Subject": ["l$RAELl's"], "Object": ["Destroying anyone in their way (mowing the lawn)"], "Sender": ["l$RAELl's"], "Receiver": ["Rachel Corey, Yitzhak Rabin"], "Helper": [""], "Opponent": [""]}

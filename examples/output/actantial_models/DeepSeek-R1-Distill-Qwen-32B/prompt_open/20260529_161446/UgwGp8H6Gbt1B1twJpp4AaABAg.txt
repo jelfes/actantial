@@ -1,0 +1,1 @@
+{"Subject": ["Arabs"], "Object": ["Land"], "Sender": ["America or Germany"], "Receiver": ["Other countries/entities"], "Helper": [""], "Opponent": ["America or Germany"]}

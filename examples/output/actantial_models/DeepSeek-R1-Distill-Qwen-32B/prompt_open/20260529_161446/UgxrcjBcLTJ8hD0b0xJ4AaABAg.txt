@@ -1,0 +1,1 @@
+{"Subject": ["Zionists"], "Object": ["Land or establishment of a Jewish state"], "Sender": ["British"], "Receiver": ["Arabs"], "Helper": ["Arab immigration encouraged by Zionists"], "Opponent": ["Haj Amin al-Husseini"]}

@@ -1,0 +1,1 @@
+{"Subject": ["People whose identity is tied to religion"], "Object": ["Religion"], "Sender": [""], "Receiver": [""], "Helper": ["The idea of reducing religious influence"], "Opponent": ["Strong religious identity causing conflict"]}

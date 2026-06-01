@@ -1,0 +1,1 @@
+{"Subject": ["Canaanite Israelites"], "Object": ["Canaanite/Hebrew Names"], "Sender": ["Ancestors of the Jews"], "Receiver": ["Jews"], "Helper": ["Places in Palestine"], "Opponent": [""]}

@@ -1,0 +1,1 @@
+{"Subject": ["The speaker"], "Object": ["Help or funds for affected families"], "Sender": ["The platform"], "Receiver": ["Affected families"], "Helper": ["The platform"], "Opponent": [""]}

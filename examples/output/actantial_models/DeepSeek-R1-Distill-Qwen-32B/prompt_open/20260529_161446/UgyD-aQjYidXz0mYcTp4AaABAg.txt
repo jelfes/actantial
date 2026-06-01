@@ -1,0 +1,1 @@
+{"Subject": ["Kenneth"], "Object": ["Greater Israel"], "Sender": ["Host"], "Receiver": ["Host"], "Helper": [""], "Opponent": [""]}

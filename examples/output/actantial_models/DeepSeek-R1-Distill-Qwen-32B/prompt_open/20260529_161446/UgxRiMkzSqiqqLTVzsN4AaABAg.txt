@@ -1,0 +1,1 @@
+{"Subject": ["People at the rally"], "Object": ["Message of 'death to America'"], "Sender": ["Loudspeaker"], "Receiver": ["People hearing the message"], "Helper": ["Rally organizers"], "Opponent": ["People disagreeing with the argument"]}

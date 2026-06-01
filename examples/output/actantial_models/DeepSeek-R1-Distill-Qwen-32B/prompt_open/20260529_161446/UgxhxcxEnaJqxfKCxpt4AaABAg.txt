@@ -1,0 +1,1 @@
+{"Subject": ["Muslim Arabs/PLO"], "Object": ["Term 'Palestinian'"], "Sender": ["League of Nations"], "Receiver": ["People in Palestine (initially)"], "Helper": [""], "Opponent": [""]}

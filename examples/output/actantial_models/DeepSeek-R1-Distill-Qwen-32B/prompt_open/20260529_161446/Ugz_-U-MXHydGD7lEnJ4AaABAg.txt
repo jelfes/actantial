@@ -1,0 +1,1 @@
+{"Subject": ["Ukrainian people"], "Object": ["Peace and safety of the Ukrainian people"], "Sender": ["NATO"], "Receiver": ["Ukrainian people"], "Helper": [""], "Opponent": ["UN Security Council"]}

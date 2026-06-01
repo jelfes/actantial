@@ -1,0 +1,1 @@
+{"Subject": ["Zionists"], "Object": ["Land in Palestine"], "Sender": ["Zionist leaders"], "Receiver": ["Jewish settlers"], "Helper": ["Global Jewish population"], "Opponent": ["Palestinian Arabs"]}

@@ -1,0 +1,1 @@
+{"Subject": ["India"], "Object": ["Independence/Freedom"], "Sender": ["The speaker"], "Receiver": ["India"], "Helper": ["Palestinian people"], "Opponent": ["British, Zionism"]}

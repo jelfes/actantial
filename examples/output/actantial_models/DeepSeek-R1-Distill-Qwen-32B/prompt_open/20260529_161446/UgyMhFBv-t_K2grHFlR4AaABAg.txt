@@ -1,0 +1,1 @@
+{"Subject": ["Bangladesh Hindus"], "Object": ["Right to exist"], "Sender": ["Human rights organizations"], "Receiver": ["Bangladesh Hindus"], "Helper": ["Human rights organizations"], "Opponent": ["Islamic extremists"]}

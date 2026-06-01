@@ -1,0 +1,1 @@
+{"Subject": ["Israel"], "Object": ["Deus (God)"], "Sender": ["Deus (God)"], "Receiver": ["Israel"], "Helper": ["Adoradores do Nosso Deus (Admirers of our God)"], "Opponent": [""]}

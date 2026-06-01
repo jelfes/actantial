@@ -1,0 +1,1 @@
+{"Subject": ["The person asking the question"], "Object": ["Information about Palestine's lifestyle and the number of people killed"], "Sender": ["The person who has the information"], "Receiver": ["The person asking the question"], "Helper": [""], "Opponent": [""]}

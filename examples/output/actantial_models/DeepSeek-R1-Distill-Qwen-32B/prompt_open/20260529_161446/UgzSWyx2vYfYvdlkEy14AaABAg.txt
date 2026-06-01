@@ -1,0 +1,1 @@
+{"Subject": ["Israel"], "Object": ["Conflation of criticism as antisemitism"], "Sender": ["Israel"], "Receiver": ["Media and world at large"], "Helper": [""], "Opponent": [""]}

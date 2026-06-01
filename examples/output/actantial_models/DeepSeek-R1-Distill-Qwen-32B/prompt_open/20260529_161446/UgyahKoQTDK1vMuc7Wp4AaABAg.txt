@@ -1,0 +1,1 @@
+{"Subject": ["AIPAC"], "Object": ["Support for Israel's position"], "Sender": ["AIPAC"], "Receiver": ["US foreign policy"], "Helper": ["AIPAC's lobbying network and political donations"], "Opponent": ["Peace process"]}

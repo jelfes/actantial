@@ -1,0 +1,1 @@
+{"Subject": ["Hamas"], "Object": ["The vehicle"], "Sender": ["The Israelis"], "Receiver": ["The Israelis"], "Helper": ["The defenders"], "Opponent": ["The Israelis"]}

@@ -1,0 +1,1 @@
+{"Subject": ["The lady"], "Object": ["Facts about Gaza"], "Sender": ["Zionist apartheid state, USA, UK, the West, Arab states"], "Receiver": ["The lady"], "Helper": ["The person encouraging the lady"], "Opponent": ["Zionist apartheid state, USA, UK, the West, Arab states"]}

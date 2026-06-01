@@ -1,0 +1,1 @@
+{"Subject": ["Herzog"], "Object": ["Zionism"], "Sender": ["Cecil Rhodes"], "Receiver": ["Herzog"], "Helper": ["British colonialists"], "Opponent": [""]}

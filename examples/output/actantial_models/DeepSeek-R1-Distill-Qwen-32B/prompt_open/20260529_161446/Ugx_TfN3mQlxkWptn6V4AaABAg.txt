@@ -1,0 +1,1 @@
+{"Subject": ["Jews"], "Object": ["Their homeland"], "Sender": ["Invaders"], "Receiver": ["Invaders"], "Helper": [""], "Opponent": ["Invaders"]}

@@ -1,0 +1,1 @@
+{"Subject": ["Bush"], "Object": ["Destruction"], "Sender": ["Bush"], "Receiver": ["Reporters"], "Helper": ["Clowns"], "Opponent": ["Reporters"]}

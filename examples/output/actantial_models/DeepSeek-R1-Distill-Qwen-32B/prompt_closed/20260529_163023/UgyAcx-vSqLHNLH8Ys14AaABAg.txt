@@ -1,0 +1,1 @@
+{"Object": ["violence"], "Subject": ["hamas"], "Sender": ["united nations"], "Receiver": ["world"], "Helper": [], "Opponent": ["united nations"]}

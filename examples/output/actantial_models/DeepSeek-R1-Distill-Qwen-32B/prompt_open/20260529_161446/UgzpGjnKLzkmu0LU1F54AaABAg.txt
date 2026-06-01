@@ -1,0 +1,1 @@
+{"Subject": ["Arab countries (Kuwait, Lebanon, Jordan)"], "Object": ["Refugees"], "Sender": [""], "Receiver": ["Arab countries (Kuwait, Lebanon, Jordan)"], "Helper": [""], "Opponent": ["Inherent hatred, deceit, lies, and violence within the Arab"]}

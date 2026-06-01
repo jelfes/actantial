@@ -1,0 +1,1 @@
+{"Subject": ["the speaker (prayer)"], "Object": ["the hostages"], "Sender": ["Lord"], "Receiver": ["the families"], "Helper": ["Lord"], "Opponent": ["the enemy"]}

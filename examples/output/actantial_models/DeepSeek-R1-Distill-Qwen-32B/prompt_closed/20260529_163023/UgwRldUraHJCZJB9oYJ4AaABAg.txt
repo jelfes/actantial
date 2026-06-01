@@ -1,0 +1,1 @@
+{"Object": ["peace"], "Subject": ["audience/commenter"], "Sender": ["god/allah"], "Receiver": ["israel/israelis"], "Helper": ["idf"], "Opponent": []}

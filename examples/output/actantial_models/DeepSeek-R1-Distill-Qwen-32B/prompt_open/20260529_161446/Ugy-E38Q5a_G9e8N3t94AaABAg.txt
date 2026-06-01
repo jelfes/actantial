@@ -1,0 +1,1 @@
+{"Subject": ["Little s*tan (Israel)"], "Object": ["Palestine"], "Sender": ["Arab countries"], "Receiver": ["Arab countries"], "Helper": ["Europe"], "Opponent": ["(Not explicitly mentioned)"]}

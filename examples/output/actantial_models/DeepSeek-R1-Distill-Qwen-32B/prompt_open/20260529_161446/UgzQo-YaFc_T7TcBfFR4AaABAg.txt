@@ -1,0 +1,1 @@
+{"Subject": ["Israel"], "Object": ["Land"], "Sender": ["USA"], "Receiver": ["Israel"], "Helper": ["Christianity, France, Britain"], "Opponent": ["Palestine"]}

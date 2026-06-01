@@ -1,0 +1,1 @@
+{"Subject": ["I"], "Object": ["Support for Israel and innocent people from Palestine"], "Sender": ["Uneducated people"], "Receiver": ["Israel and innocent people from Palestine"], "Helper": [""], "Opponent": ["Uneducated people"]}

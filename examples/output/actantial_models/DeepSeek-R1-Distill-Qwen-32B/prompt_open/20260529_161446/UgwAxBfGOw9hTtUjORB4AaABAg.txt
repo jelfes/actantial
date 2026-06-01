@@ -1,0 +1,1 @@
+{"Subject": ["Yasser Arafat's uncle"], "Object": ["Chance of Palestinian Moderation"], "Sender": ["Yasser Arafat's uncle"], "Receiver": ["Palestinian people"], "Helper": ["Most Muslim neighbors"], "Opponent": ["Britain's communist establishment"]}

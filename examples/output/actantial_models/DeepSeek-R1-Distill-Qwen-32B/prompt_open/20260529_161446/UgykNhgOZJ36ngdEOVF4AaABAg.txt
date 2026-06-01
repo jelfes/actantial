@@ -1,0 +1,1 @@
+{"Subject": ["The speaker"], "Object": ["The rewriting of history"], "Sender": ["AL Jazeera"], "Receiver": ["The audience"], "Helper": ["People who support truthful recounting"], "Opponent": ["AL Jazeera"]}

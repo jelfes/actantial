@@ -1,0 +1,1 @@
+{"Subject": ["Israel"], "Object": ["Oppression/Suffering"], "Sender": ["Israel"], "Receiver": ["Palestine"], "Helper": [""], "Opponent": ["International Community"]}

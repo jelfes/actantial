@@ -1,0 +1,1 @@
+{"Subject": ["The person exercising freedom of speech"], "Object": ["Freedom of speech"], "Sender": ["The person challenging to a duel"], "Receiver": ["The person accepting the duel challenge"], "Helper": ["The person who smacks with a glove and challenges"], "Opponent": ["The person challenged to the duel"]}

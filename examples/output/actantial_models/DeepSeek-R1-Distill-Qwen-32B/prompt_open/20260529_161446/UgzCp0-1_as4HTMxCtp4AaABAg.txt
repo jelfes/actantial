@@ -1,0 +1,1 @@
+{"Subject": ["Groups involved in the acts"], "Object": ["Terror Act"], "Sender": ["USA"], "Receiver": ["Israel"], "Helper": ["International community"], "Opponent": ["Opposing groups"]}

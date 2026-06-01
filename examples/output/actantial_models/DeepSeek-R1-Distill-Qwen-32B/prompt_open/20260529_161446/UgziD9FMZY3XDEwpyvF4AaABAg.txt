@@ -1,0 +1,1 @@
+{"Subject": ["Israeli forces"], "Object": ["Women and children"], "Sender": ["Israeli forces"], "Receiver": ["Women and children"], "Helper": ["Supporters of Israeli actions"], "Opponent": ["Those opposing the actions"]}

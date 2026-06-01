@@ -1,0 +1,1 @@
+{"Subject": ["people fighting"], "Object": ["territory and sovereignty"], "Sender": [""], "Receiver": [""], "Helper": [""], "Opponent": ["people fighting each other"]}

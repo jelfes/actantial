@@ -1,0 +1,1 @@
+{"Subject": ["pray-ers"], "Object": ["hostages"], "Sender": ["Father God/Jesus"], "Receiver": ["pray-ers"], "Helper": ["Jesus"], "Opponent": [""]}

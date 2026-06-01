@@ -1,0 +1,1 @@
+{"Subject": ["As a Muslim, I"], "Object": ["Plastien"], "Sender": ["As a Muslim, I"], "Receiver": ["Plastien"], "Helper": [""], "Opponent": ["Israel"]}

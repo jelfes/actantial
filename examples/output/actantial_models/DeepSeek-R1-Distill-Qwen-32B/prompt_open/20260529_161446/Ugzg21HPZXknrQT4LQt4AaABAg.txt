@@ -1,0 +1,1 @@
+{"Subject": ["Palestinian people"], "Object": ["deliverance"], "Sender": ["God"], "Receiver": ["Palestinian people"], "Helper": ["Jesus"], "Opponent": ["Pharaoh and Egypt"]}

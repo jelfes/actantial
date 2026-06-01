@@ -1,0 +1,1 @@
+{"Subject": ["Palestinian people"], "Object": ["Crimes against the Palestinian people"], "Sender": ["They (the world)"], "Receiver": ["Palestinian people"], "Helper": [""], "Opponent": ["Hitler"]}

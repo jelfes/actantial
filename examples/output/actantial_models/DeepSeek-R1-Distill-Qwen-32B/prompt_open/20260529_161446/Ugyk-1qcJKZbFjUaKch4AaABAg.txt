@@ -1,0 +1,1 @@
+{"Subject": ["Wang Yi", "Xi Jinping"], "Object": ["the man"], "Sender": ["Wang Yi", "Xi Jinping"], "Receiver": ["the man"], "Helper": "", "Opponent": ""}

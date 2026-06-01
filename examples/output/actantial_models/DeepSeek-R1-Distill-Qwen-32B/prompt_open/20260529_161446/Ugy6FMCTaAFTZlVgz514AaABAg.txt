@@ -1,0 +1,1 @@
+{"Subject": ["you"], "Object": ["peace"], "Sender": ["speaker"], "Receiver": ["you"], "Helper": [""], "Opponent": ["anti-Semitism"]}

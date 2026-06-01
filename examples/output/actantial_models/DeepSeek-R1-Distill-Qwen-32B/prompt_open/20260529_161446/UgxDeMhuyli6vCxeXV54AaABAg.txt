@@ -1,0 +1,1 @@
+{"Subject": ["Guests"], "Object": ["Conversation/Debate"], "Sender": ["Hosts"], "Receiver": ["Guests"], "Helper": [""], "Opponent": ["Hosts"]}

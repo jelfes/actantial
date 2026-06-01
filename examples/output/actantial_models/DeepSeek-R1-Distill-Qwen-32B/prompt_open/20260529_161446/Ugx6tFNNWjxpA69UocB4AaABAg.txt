@@ -1,0 +1,1 @@
+{"Subject": ["The government"], "Object": ["The member of World Kitchen who was killed"], "Sender": ["The Zionist"], "Receiver": ["Telegram users"], "Helper": ["Satanyahu and Rafah"], "Opponent": ["The Zionist"]}

@@ -1,0 +1,1 @@
+{"Subject": ["You"], "Object": ["Truth"], "Sender": [""], "Receiver": ["You"], "Helper": ["Your Inner Self"], "Opponent": ["Distorted Perceptions"]}

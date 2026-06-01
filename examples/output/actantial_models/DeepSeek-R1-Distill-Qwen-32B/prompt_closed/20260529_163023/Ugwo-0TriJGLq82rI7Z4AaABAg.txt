@@ -1,0 +1,1 @@
+{"Object": ["rights/freedoms"], "Subject": ["world"], "Sender": ["Fox News"], "Receiver": ["audience/commenter"], "Helper": [], "Opponent": []}

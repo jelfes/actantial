@@ -1,0 +1,1 @@
+{"Subject": ["People in New Israel"], "Object": ["Identity as Jewish"], "Sender": ["People in New Israel"], "Receiver": ["People in New Israel"], "Helper": ["European men and women"], "Opponent": ["Religious Jews"]}

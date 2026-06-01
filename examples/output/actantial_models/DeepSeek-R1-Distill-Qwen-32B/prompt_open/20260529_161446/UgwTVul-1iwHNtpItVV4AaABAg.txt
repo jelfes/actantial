@@ -1,0 +1,1 @@
+{"Subject": ["We"], "Object": ["Protection and peace for Israel, IDF, hostages, children, and Jerusalem"], "Sender": ["God"], "Receiver": ["God"], "Helper": ["Yair"], "Opponent": ["Enemies"]}

@@ -1,0 +1,1 @@
+{"Subject": ["Netanyahu"], "Object": ["innocent people, women, children, babies"], "Sender": [""], "Receiver": [""], "Helper": [""], "Opponent": ["Hamas"]}

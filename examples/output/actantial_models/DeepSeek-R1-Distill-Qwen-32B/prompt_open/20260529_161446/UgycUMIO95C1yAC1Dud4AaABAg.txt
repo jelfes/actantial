@@ -1,0 +1,1 @@
+{"Subject": ["Israel"], "Object": ["Extermination plan"], "Sender": ["Fanatical ministers and settlers"], "Receiver": ["Gaza"], "Helper": ["Israeli military garrisons"], "Opponent": ["Hamas and terrorists"]}

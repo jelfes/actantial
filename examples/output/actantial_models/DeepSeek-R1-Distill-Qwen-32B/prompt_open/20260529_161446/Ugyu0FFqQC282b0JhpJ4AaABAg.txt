@@ -1,0 +1,1 @@
+{"Subject": ["People considering fighting for the leader"], "Object": ["The cause of fighting for the Hamas leader"], "Sender": ["Hamas leader"], "Receiver": ["People being asked to support"], "Helper": [""], "Opponent": ["The speaker (or others opposing)"]}

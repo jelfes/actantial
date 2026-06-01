@@ -1,0 +1,1 @@
+{"Subject": ["IDF (Israeli Defense Forces)"], "Object": ["Destruction and Starvation"], "Sender": ["Zionist Israel"], "Receiver": ["Gazans"], "Helper": ["Doctor (Zionist Propaganda Tool)"], "Opponent": ["Hamas"]}

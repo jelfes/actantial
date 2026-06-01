@@ -1,0 +1,1 @@
+{"Subject": ["I"], "Object": ["remaining hostages"], "Sender": ["Abba Father, Jesus, Holy Spirit, St. Michael"], "Receiver": ["hostages"], "Helper": ["St. Michael"], "Opponent": [""]}

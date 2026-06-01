@@ -1,0 +1,1 @@
+{"Subject": ["Non-binary uni students"], "Object": ["The slogan 'from the river to the sea'"], "Sender": ["Non-binary uni students"], "Receiver": ["The audience"], "Helper": ["The author"], "Opponent": ["Those who label them as antisemitic"]}

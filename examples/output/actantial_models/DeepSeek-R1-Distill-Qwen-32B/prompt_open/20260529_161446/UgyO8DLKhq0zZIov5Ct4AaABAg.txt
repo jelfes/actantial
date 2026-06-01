@@ -1,0 +1,1 @@
+{"Subject": ["Jewish community in Jerusalem"], "Object": ["Jewish community in Israel"], "Sender": ["Mizrahi Jews from Middle Eastern countries"], "Receiver": ["Israel"], "Helper": [""], "Opponent": [""]}

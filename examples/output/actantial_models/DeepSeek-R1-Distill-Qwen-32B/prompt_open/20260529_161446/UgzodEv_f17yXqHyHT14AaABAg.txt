@@ -1,0 +1,1 @@
+{"Subject": ["Jesus Christ"], "Object": ["True God"], "Sender": ["Prophecy"], "Receiver": ["Israel"], "Helper": [""], "Opponent": [""]}

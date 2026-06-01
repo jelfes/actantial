@@ -1,0 +1,1 @@
+{"Subject": ["The person writing the comment"], "Object": ["The video"], "Sender": ["The creator of the video"], "Receiver": ["The person writing the comment"], "Helper": ["Technology and social media"], "Opponent": ["People who find it inconvenient to hear about the genocide"]}

@@ -1,0 +1,1 @@
+{"Subject": ["Biden and his administration"], "Object": ["Funding"], "Sender": ["Biden and his administration"], "Receiver": ["Iran"], "Helper": [""], "Opponent": ["Israel"]}

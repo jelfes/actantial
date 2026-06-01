@@ -1,0 +1,1 @@
+{"Subject": ["Speaker"], "Object": ["Death of terrorists"], "Sender": ["Speaker"], "Receiver": ["Terrorists"], "Helper": [""], "Opponent": ["Terrorists"]}
