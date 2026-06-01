@@ -52,8 +52,8 @@ class TestLoadActors:
         data = pd.DataFrame({"id": ["row1"], "file_name": [str(f)]})
         result = load_actors(data)
 
-        assert result.loc[0, "Subject"] == "Alice"
-        assert result.loc[0, "Object"] == "X"
+        assert result.loc[0, "Subject"] == "alice"
+        assert result.loc[0, "Object"] == "x"
 
     def test_select_actor_first(self, tmp_path):
         f = tmp_path / "row1.txt"
@@ -62,7 +62,7 @@ class TestLoadActors:
         data = pd.DataFrame({"id": ["row1"], "file_name": [str(f)]})
         result = load_actors(data, select_actor="first")
 
-        assert result.loc[0, "Subject"] == "Alice"
+        assert result.loc[0, "Subject"] == "alice"
 
     def test_select_actor_combine(self, tmp_path):
         f = tmp_path / "row1.txt"
@@ -71,7 +71,7 @@ class TestLoadActors:
         data = pd.DataFrame({"id": ["row1"], "file_name": [str(f)]})
         result = load_actors(data, select_actor="combine")
 
-        assert result.loc[0, "Subject"] == "Alice, Bob"
+        assert result.loc[0, "Subject"] == "alice, bob"
 
     def test_missing_file_skipped(self):
         data = pd.DataFrame({"id": ["row1"], "file_name": [None]})
@@ -100,8 +100,8 @@ class TestLoadAnnotations:
         data = pd.DataFrame({"id": ["row1", "row2"], "text": ["a", "b"]})
         result = load_annotations(data, label_folder=str(tmp_path))
 
-        assert result.loc[0, "Subject"] == "Alice"
-        assert result.loc[1, "Subject"] == "Bob"
+        assert result.loc[0, "Subject"] == "alice"
+        assert result.loc[1, "Subject"] == "bob"
 
     def test_missing_label_folder_raises(self):
         data = pd.DataFrame({"id": ["row1"]})

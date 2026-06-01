@@ -118,7 +118,7 @@ def _load_allowed(path: str) -> set:
         labels = yaml.safe_load(f)
     if not labels:
         raise ValueError(f"Label file is empty or could not be parsed: {path}")
-    return set([label.lower() for label in labels] + ["[UNK]"])
+    return set(label.lower() for label in labels)
 
 
 def load_actors(
@@ -129,6 +129,7 @@ def load_actors(
     actor_labels_path: Optional[str] = None,
     object_labels_path: Optional[str] = None,
     verbose: bool = True,
+    missing_actant_token: Optional[str] = "[UNK]",
 ) -> DataFrame:
     """
     Read per-text JSON annotation files and add actant columns to the DataFrame.
@@ -138,7 +139,7 @@ def load_actors(
     to keep only the first or join them all.
 
     When label paths are provided, actor values not in the allowed set are
-    replaced with ``"[UNK]"``.
+    replaced with ``None``.
 
     Args:
         data: DataFrame containing a column with file paths to JSON annotation files.
@@ -150,11 +151,14 @@ def load_actors(
             actors into a comma-separated string.
         actor_labels_path: Path to a YAML file with allowed actor labels.
             If provided, actor values for non-Object actants not in the list
-            are replaced with ``"[UNK]"``.
+            are replaced with ``None``.
         object_labels_path: Path to a YAML file with allowed object labels.
             If provided, actor values for the Object actant not in the list
-            are replaced with ``"[UNK]"``.
+            are replaced with ``None``.
         verbose: If True, print a per-actant summary of dropped unknown actors.
+        missing_actant_token: Token used in the data to denote a missing or
+            unknown actant. Occurrences are replaced with ``None``. Set to
+            ``None`` to disable. Defaults to ``"[UNK]"``.
 
     Returns:
         A copy of the input DataFrame with one column added per actant role.
@@ -214,7 +218,7 @@ def load_actors(
                 total[actant] += 1
                 if actor not in allowed:
                     dropped[actant] += 1
-                    actor = "[UNK]"
+                    continue
 
             data_out.at[index, actant] = actor
 
@@ -223,6 +227,11 @@ def load_actors(
             print(
                 f"Dropped {dropped[actant]}/{total[actant]} unknown actors for actant '{actant}'"
             )
+
+    if missing_actant_token is not None:
+        data_out[actant_columns] = data_out[actant_columns].replace(
+            missing_actant_token, None
+        )
 
     return data_out
 
@@ -243,7 +252,7 @@ def load_annotations(
     file receive ``None`` for all actant columns.
 
     When label paths are provided, actor values not in the allowed set are
-    replaced with ``"[UNK]"``. This is useful when using closed annotation,
+    replaced with ``None``. This is useful when using closed annotation,
     where the LLM may assign labels outside the predefined label set.
 
     Args:
@@ -255,10 +264,10 @@ def load_annotations(
             actors into a comma-separated string.
         actor_labels_path: Path to a YAML file with allowed actor labels.
             If provided, values for non-Object actants not in the list are
-            replaced with ``"[UNK]"``.
+            replaced with ``None``.
         object_labels_path: Path to a YAML file with allowed object labels.
             If provided, values for the Object actant not in the list are
-            replaced with ``"[UNK]"``.
+            replaced with ``None``.
         verbose: If True, print warnings about missing annotation files and
             a per-actant summary of dropped unknown actors.
 
