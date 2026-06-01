@@ -1,10 +1,11 @@
-import pandas as pd
-
+import math
 from typing import Dict
+
+import pandas as pd
 from krippendorff import alpha
 from sklearn.metrics import accuracy_score, f1_score
+
 from actantial.config import ACTANTS
-import math
 
 
 def compare_labels(

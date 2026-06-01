@@ -3,6 +3,8 @@ import json
 import warnings
 import logging
 
+import yaml
+
 from typing import Literal, Optional, Dict, Any, Union
 from actantial.config import ACTANTS
 from pandas import DataFrame
@@ -111,11 +113,22 @@ def _parse_json(input_text: str) -> Dict:
         return {}
 
 
+def _load_allowed(path: str) -> set:
+    with open(path) as f:
+        labels = yaml.safe_load(f)
+    if not labels:
+        raise ValueError(f"Label file is empty or could not be parsed: {path}")
+    return set([label.lower() for label in labels] + ["[UNK]"])
+
+
 def load_actors(
     data: DataFrame,
     file_path_column: str = "file_name",
     actant_columns: Optional[list[str]] = ACTANTS,
     select_actor: Literal["first", "combine"] = "first",
+    actor_labels_path: Optional[str] = None,
+    object_labels_path: Optional[str] = None,
+    verbose: bool = True,
 ) -> DataFrame:
     """
     Read per-text JSON annotation files and add actant columns to the DataFrame.
@@ -123,6 +136,9 @@ def load_actors(
     Each file is expected to map actant role names to actor values. When
     multiple actors are listed for a role, ``select_actor`` controls whether
     to keep only the first or join them all.
+
+    When label paths are provided, actor values not in the allowed set are
+    replaced with ``"[UNK]"``.
 
     Args:
         data: DataFrame containing a column with file paths to JSON annotation files.
@@ -132,15 +148,28 @@ def load_actors(
         select_actor: Strategy for handling multiple actors per actant role.
             ``"first"`` keeps only the first actor; ``"combine"`` joins all
             actors into a comma-separated string.
+        actor_labels_path: Path to a YAML file with allowed actor labels.
+            If provided, actor values for non-Object actants not in the list
+            are replaced with ``"[UNK]"``.
+        object_labels_path: Path to a YAML file with allowed object labels.
+            If provided, actor values for the Object actant not in the list
+            are replaced with ``"[UNK]"``.
+        verbose: If True, print a per-actant summary of dropped unknown actors.
 
     Returns:
         A copy of the input DataFrame with one column added per actant role.
     """
+    actor_allowed = _load_allowed(actor_labels_path) if actor_labels_path else None
+    object_allowed = _load_allowed(object_labels_path) if object_labels_path else None
+
     data_out = data.copy()
 
     # initialize columns explicitly for clarity
     for a in actant_columns:
         data_out[a] = None
+
+    dropped = {a: 0 for a in actant_columns}
+    total = {a: 0 for a in actant_columns}
 
     for index, row in data.iterrows():
         file_path = row.get(file_path_column)
@@ -178,12 +207,34 @@ def load_actors(
                     f"select_actor must be 'first' or 'combine', got '{select_actor}'"
                 )
 
+            actor = str(actor).lower()
+
+            allowed = object_allowed if actant == "Object" else actor_allowed
+            if allowed is not None:
+                total[actant] += 1
+                if actor not in allowed:
+                    dropped[actant] += 1
+                    actor = "[UNK]"
+
             data_out.at[index, actant] = actor
+
+    if verbose and (actor_allowed is not None or object_allowed is not None):
+        for actant in actant_columns:
+            print(
+                f"Dropped {dropped[actant]}/{total[actant]} unknown actors for actant '{actant}'"
+            )
 
     return data_out
 
 
-def load_annotations(data: DataFrame, label_folder: str, **kwargs: Any) -> DataFrame:
+def load_annotations(
+    data: DataFrame,
+    label_folder: str,
+    actor_labels_path: Optional[str] = None,
+    object_labels_path: Optional[str] = None,
+    verbose: bool = True,
+    **kwargs,
+) -> DataFrame:
     """
     Load actant annotations from a run output folder into a DataFrame.
 
@@ -191,29 +242,38 @@ def load_annotations(data: DataFrame, label_folder: str, **kwargs: Any) -> DataF
     value, then extracts actant roles from each file. Rows without a matching
     file receive ``None`` for all actant columns.
 
+    When label paths are provided, actor values not in the allowed set are
+    replaced with ``"[UNK]"``. This is useful when using closed annotation,
+    where the LLM may assign labels outside the predefined label set.
+
     Args:
         data: DataFrame with at least an ``id`` column.
         label_folder: Path to the folder containing per-text JSON annotation
             files, as produced by [`run_extract`][actantial.runner.run_extract].
-        **kwargs: Additional arguments forwarded to [`load_actors`][actantial.io.load_actors]
-            (e.g. ``select_actor``).
+        select_actor: Strategy for handling multiple actors per actant role.
+            ``"first"`` keeps only the first actor; ``"combine"`` joins all
+            actors into a comma-separated string.
+        actor_labels_path: Path to a YAML file with allowed actor labels.
+            If provided, values for non-Object actants not in the list are
+            replaced with ``"[UNK]"``.
+        object_labels_path: Path to a YAML file with allowed object labels.
+            If provided, values for the Object actant not in the list are
+            replaced with ``"[UNK]"``.
+        verbose: If True, print warnings about missing annotation files and
+            a per-actant summary of dropped unknown actors.
 
     Returns:
         A copy of the input DataFrame with actant columns added.
     """
-    # Check if label folder exists and is a directory
     label_path = Path(label_folder)
     if not label_path.exists() or not label_path.is_dir():
         raise KeyError(f"Label folder not found or not a directory: {label_folder}")
 
-    # Create a copy of the data to avoid modifying the original DataFrame
     data_annot = data.copy()
 
-    # validate input DataFrame
     if "id" not in data_annot.columns:
         raise KeyError("Input DataFrame must contain an 'id' column")
 
-    # Map IDs to annotation file paths
     data_annot["file_name"] = data_annot.apply(
         lambda x: _create_file_path(label_folder, x.id), axis=1
     )
@@ -225,7 +285,13 @@ def load_annotations(data: DataFrame, label_folder: str, **kwargs: Any) -> DataF
             f"Warning: {n_missing_files}/{len(data_annot)} annotation files are missing."
         )
 
-    # Load annotations from files
-    data_annot = load_actors(data_annot, file_path_column="file_name", **kwargs)
+    data_annot = load_actors(
+        data_annot,
+        file_path_column="file_name",
+        actor_labels_path=actor_labels_path,
+        object_labels_path=object_labels_path,
+        verbose=verbose,
+        **kwargs,
+    )
 
     return data_annot
