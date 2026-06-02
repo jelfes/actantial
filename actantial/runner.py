@@ -29,6 +29,7 @@ def run_extract(
     actor_labels_path: Optional[str] = None,
     object_labels_path: Optional[str] = None,
     resume_timestamp: Optional[str] = None,
+    template_columns: Optional[list[str]] = None,
 ):
     """
     Run the actantial extraction pipeline over a DataFrame of texts.
@@ -62,6 +63,11 @@ def run_extract(
         resume_timestamp: Timestamp of a previous run to resume, in
             ``YYYYMMDD_HHMMSS`` format. Texts already processed in that run
             are skipped. The model and template must match the original run.
+        template_columns: Column names from ``data`` to pass as additional
+            template variables. Each name maps directly to a Jinja2 variable
+            of the same name (e.g. ``"parent_post"`` → ``{{ parent_post }}``).
+            Columns must be string dtype; cast with ``data[col].astype(str)``
+            before calling if needed.
     """
     print(templates_dir)
     template_name = template if template.endswith(".txt") else template + ".txt"
@@ -166,6 +172,36 @@ def run_extract(
             "or remove the --object_labels argument."
         )
 
+    _reserved = {"text", "actor_labels", "object_labels"}
+    template_columns = template_columns or []
+
+    for col in template_columns:
+        if col in _reserved:
+            raise ValueError(
+                f"'{col}' is a reserved template variable and cannot be used in template_columns."
+            )
+        if col not in data.columns:
+            raise ValueError(
+                f"Column '{col}' not found in data. Available columns: {list(data.columns)}."
+            )
+        if not pd.api.types.is_string_dtype(data[col]):
+            raise ValueError(
+                f"Column '{col}' must be string dtype (found {data[col].dtype}). "
+                f"Cast it first with: data['{col}'] = data['{col}'].astype(str)"
+            )
+        if col not in template_vars:
+            raise ValueError(
+                f"Column '{col}' was passed via template_columns but is not used in template '{template_name}'. "
+                "Remove it from template_columns or add the variable to your template."
+            )
+
+    unknown_vars = template_vars - _reserved - set(template_columns)
+    if unknown_vars:
+        raise ValueError(
+            f"Template '{template_name}' references variables {unknown_vars} that are not provided. "
+            "Add the missing columns to template_columns or remove the variables from your template."
+        )
+
     # handle labels (if provided)
     if actor_labels_path is not None:
         with open(actor_labels_path) as f:
@@ -190,6 +226,7 @@ def run_extract(
                     "template": template_name.removesuffix(".txt"),
                     "timestamp": timestamp,
                     "quantisation": getattr(backend, "quantisation", False),
+                    "template_columns": template_columns,
                 },
                 f,
                 indent=2,
@@ -199,8 +236,9 @@ def run_extract(
         logging.info(
             f"Template: \t{Path(templates_dir, backend.model_name, template_name)}"
         )
+        _preview_extra = {col: f"<{col.upper()}>" for col in template_columns}
         logging.info(
-            f"Prompt: {template.render(text='TEXT HERE', actor_labels=actor_labels, object_labels=object_labels)}"
+            f"Prompt preview:\n{template.render(text='<TEXT>', actor_labels=actor_labels, object_labels=object_labels, **_preview_extra)}"
         )
 
     # start loop
@@ -212,7 +250,13 @@ def run_extract(
             continue
 
         logging.info(f"---------- ID {row.id} ----------\n")
-        logging.info(f"Test: {row.text}")
+
+        extra_vars = {col: getattr(row, col) for col in template_columns}
+        var_summary = "\n".join(
+            [f"  {col}: {val}" for col, val in extra_vars.items()]
+            + [f"  text: {row.text}"]
+        )
+        logging.info(f"Variables:\n{var_summary}")
 
         output = extract_actants(
             input_text=row.text,
@@ -220,6 +264,7 @@ def run_extract(
             prompt_template=template,
             actor_labels=actor_labels,
             object_labels=object_labels,
+            **extra_vars,
         )
 
         # Parse result

@@ -114,6 +114,15 @@ def main():
         default=None,
         help="Directory containing prompt templates. Defaults to the bundled templates.",
     )
+    parser.add_argument(
+        "--template_column",
+        dest="template_columns",
+        action="append",
+        metavar="COLUMN",
+        help="DataFrame column to pass as a template variable (repeatable). "
+        "Column name must match the Jinja2 variable name in the template. "
+        "Example: --template_column parent_post",
+    )
 
     # Parse arguments
     args = parser.parse_args()
@@ -155,6 +164,7 @@ def main():
         "actor_labels_path": args.actor_labels_path,
         "object_labels_path": args.object_labels_path,
         "resume_timestamp": args.resume_timestamp,
+        "template_columns": args.template_columns,
     }
 
     # only include templates_dir if provided, so not to override the default in runner.py

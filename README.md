@@ -168,6 +168,26 @@ run_extract(
 
 Note, not all models stick to the labels consistently! For additional guidance see [Elfes et al. (2026)](https://arxiv.org/abs/2601.07398). 
 
+### Additional Variables
+
+You can pass additional columns from your DataFrame as template variables using `template_columns`. This is useful when each data point has individual context beyond the text itself. For example, you can pass the `video_title` when annotating YouTube comments.
+
+Two things are required:
+1. A column of string dtype in your DataFrame (e.g. `video_title`).
+2. A matching `{{ video_title }}` variable in your Jinja2 template.
+
+```python
+run_extract(
+    data=data,
+    backend=backend,
+    output_dir="output",
+    template="my_template",
+    template_columns=["video_title"],
+)
+```
+
+Multiple columns can be passed at once: `template_columns=["video_title", "video_creator"]`.
+
 ### System prompt
 
 An optional system prompt can be passed to API backends at initialisation:
@@ -236,6 +256,20 @@ actantial \
     --template "my_template_closed" \
     --actor_labels_path "path/to/directory/labels/actors.yaml" \
     --object_labels_path "path/to/directory/labels/objects.yaml"
+```
+
+**With additional template variables** — pass `--template_column` once per column (repeatable):
+
+```bash
+actantial \
+    --data_file "data.csv" \
+    --output_dir "output" \
+    --backend openai \
+    --model "gpt-4o-mini" \
+    --templates_dir "path/to/directory/templates" \
+    --template "my_template" \
+    --template_column video_title \
+    --template_column video_creator
 ```
 
 **Resuming an interrupted run** — pass the timestamp printed at the start of the original run:

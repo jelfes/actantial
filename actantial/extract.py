@@ -5,7 +5,12 @@ from actantial.backends.base import LLMBackend
 
 
 def extract_actants(
-    input_text: str, backend: LLMBackend, prompt_template: Template, actor_labels: Optional[list] = None, object_labels: Optional[list] = None
+    input_text: str,
+    backend: LLMBackend,
+    prompt_template: Template,
+    actor_labels: Optional[list] = None,
+    object_labels: Optional[list] = None,
+    **template_kwargs,
 ) -> str:
     """
     Extract actantial roles from a text using an LLM backend.
@@ -32,7 +37,12 @@ def extract_actants(
     """
 
     # Render prompt from template
-    prompt = prompt_template.render(text=input_text, actor_labels=actor_labels, object_labels=object_labels)
+    prompt = prompt_template.render(
+        text=input_text,
+        actor_labels=actor_labels,
+        object_labels=object_labels,
+        **template_kwargs,
+    )
 
     # Generate with backend
     output = backend.generate(prompt)
