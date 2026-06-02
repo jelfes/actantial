@@ -1,0 +1,1 @@
+{"Subject": ["Gaza's medical staff", "Palestinian civilians"], "Object": ["Safety and medical care for patients"], "Sender": ["Israeli military"], "Receiver": ["Patients and displaced individuals seeking refuge in hospitals"], "Helper": ["International humanitarian organizations", "Medical Aid for Palestinians"], "Opponent": ["Israeli military", "Hamas (as perceived by Israel)"]}
