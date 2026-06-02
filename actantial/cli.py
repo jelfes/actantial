@@ -11,6 +11,7 @@ import shutil
 from pathlib import Path
 
 import pandas as pd
+import yaml
 from .runner import run_extract
 
 BUNDLED_TEMPLATES_DIR = Path(__file__).parent / "templates"
@@ -155,14 +156,25 @@ def main():
         # argparse should guard against this, but safety first
         raise ValueError(f"Unknown backend: {args.backend}")
 
+    # load label files if provided
+    actor_labels = None
+    if args.actor_labels_path is not None:
+        with open(args.actor_labels_path) as f:
+            actor_labels = yaml.safe_load(f)
+
+    object_labels = None
+    if args.object_labels_path is not None:
+        with open(args.object_labels_path) as f:
+            object_labels = yaml.safe_load(f)
+
     # compile kwargs for runner
     kwargs = {
         "data": data,
         "backend": backend,
         "output_dir": args.output_dir,
         "template": args.template,
-        "actor_labels_path": args.actor_labels_path,
-        "object_labels_path": args.object_labels_path,
+        "actor_labels": actor_labels,
+        "object_labels": object_labels,
         "resume_timestamp": args.resume_timestamp,
         "template_columns": args.template_columns,
     }

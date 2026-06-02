@@ -153,16 +153,24 @@ For closed-set annotation you need to create a predefined label set for the mode
 ...
 ```
 
-Then add the variables `{{ actor_labels }}` and `{{ object_labels }}` to your template and pass the corresponding YAML files to the runner:
+Then add the variables `{{ actor_labels }}` and `{{ object_labels }}` to your template, load the YAML files, and pass the lists to the runner:
 
 ```python
+import yaml
+
+with open("path/to/directory/labels/actors.yaml") as f:
+    actor_labels = yaml.safe_load(f)
+
+with open("path/to/directory/labels/objects.yaml") as f:
+    object_labels = yaml.safe_load(f)
+
 run_extract(
     data=data,
     backend=backend,
     output_dir="output",
     template="my_template",
-    actor_labels_path="path/to/directory/labels/actors.yaml",
-    object_labels_path="path/to/directory/labels/objects.yaml",
+    actor_labels=actor_labels,
+    object_labels=object_labels,
 )
 ```
 

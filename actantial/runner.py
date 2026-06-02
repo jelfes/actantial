@@ -4,8 +4,6 @@ from typing import Optional
 import pandas as pd
 import logging
 
-import yaml
-
 
 from actantial.extract import extract_actants
 from actantial.backends.base import LLMBackend
@@ -26,8 +24,8 @@ def run_extract(
     output_dir: Path,
     template: str,
     templates_dir: Path = Path(__file__).parent / "templates",
-    actor_labels_path: Optional[str] = None,
-    object_labels_path: Optional[str] = None,
+    actor_labels: Optional[list] = None,
+    object_labels: Optional[list] = None,
     resume_timestamp: Optional[str] = None,
     template_columns: Optional[list[str]] = None,
 ):
@@ -54,12 +52,10 @@ def run_extract(
             ``templates_dir/{backend.model_name}/``.
         templates_dir: Root directory containing per-model template
             subdirectories. Defaults to the built-in ``templates/`` folder.
-        actor_labels_path: Path to a YAML file containing actor labels for
-            closed-set annotation. Only used if the template supports
-            ``actor_labels``.
-        object_labels_path: Path to a YAML file containing object labels for
-            closed-set annotation. Only used if the template supports
-            ``object_labels``.
+        actor_labels: List of actor labels for closed-set annotation. Only
+            used if the template supports ``actor_labels``.
+        object_labels: List of object labels for closed-set annotation. Only
+            used if the template supports ``object_labels``.
         resume_timestamp: Timestamp of a previous run to resume, in
             ``YYYYMMDD_HHMMSS`` format. Texts already processed in that run
             are skipped. The model and template must match the original run.
@@ -158,18 +154,18 @@ def run_extract(
             "Please add '{{ text }}' to your template to pass the input text."
         )
 
-    if actor_labels_path is not None and "actor_labels" not in template_vars:
+    if actor_labels is not None and "actor_labels" not in template_vars:
         raise ValueError(
             f"Template '{template_name}' is missing the variable '{{{{ actor_labels }}}}', "
             "but actor_labels were provided. Either add '{{ actor_labels }}' to your template "
-            "or remove the --actor_labels argument."
+            "or remove the actor_labels argument."
         )
 
-    if object_labels_path is not None and "object_labels" not in template_vars:
+    if object_labels is not None and "object_labels" not in template_vars:
         raise ValueError(
             f"Template '{template_name}' is missing the variable '{{{{ object_labels }}}}', "
             "but object_labels were provided. Either add '{{ object_labels }}' to your template "
-            "or remove the --object_labels argument."
+            "or remove the object_labels argument."
         )
 
     _reserved = {"text", "actor_labels", "object_labels"}
@@ -201,19 +197,6 @@ def run_extract(
             f"Template '{template_name}' references variables {unknown_vars} that are not provided. "
             "Add the missing columns to template_columns or remove the variables from your template."
         )
-
-    # handle labels (if provided)
-    if actor_labels_path is not None:
-        with open(actor_labels_path) as f:
-            actor_labels = yaml.safe_load(f)
-    else:
-        actor_labels = None
-
-    if object_labels_path is not None:
-        with open(object_labels_path) as f:
-            object_labels = yaml.safe_load(f)
-    else:
-        object_labels = None
 
     _ensure_directory(RUN_DIR)
 
