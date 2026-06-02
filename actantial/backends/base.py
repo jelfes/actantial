@@ -84,21 +84,16 @@ class LLMBackend(ABC):
         environment = Environment(loader=FileSystemLoader(templates_dir))
 
         try:
-            template = environment.get_template(
-                str(Path(self.model_name, template_name))
-            )
+            source = environment.loader.get_source(
+                environment, str(Path(self.model_name, template_name))
+            )[0]
         except Exception as e:
-            error_message = f"Error loading template {e}. Please ensure that the template exists in the templates/{self.model_name} directory and is named correctly."
-            raise FileNotFoundError(error_message)
+            raise FileNotFoundError(
+                f"Error loading template {e}. Please ensure that the template exists in the templates/{self.model_name} directory and is named correctly."
+            )
 
         print(f"Template '{template_name}' for model '{self.model_name}':\n")
-        print(
-            template.render(
-                text="[TEXT]",
-                actor_labels="[ACTOR_LABELS]",
-                object_labels="[OBJECT_LABELS]",
-            )
-        )
+        print(source)
 
     def cleanup(self):
         """Clean up resources (unload model, close connections, etc.). No-op by default."""
