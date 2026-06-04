@@ -4,8 +4,8 @@
 
 For further details on the theory and application, refer to the following resources:
 
-- [Theoretical background of the Actantial Model]()
-- [From narrative theory to automated annotation]() (TBD)
+- [Theoretical background of the Actantial Model](https://jelfes.github.io/actantial/background/)
+- From narrative theory to automated annotation (TBD)
 - [Actantial model on news articles](https://dl.acm.org/doi/full/10.1145/3717867.3717868) (Elfes, 2025)
 - [Actantial model on social media](https://arxiv.org/abs/2601.07398) (Elfes et al., 2026)
 
@@ -114,7 +114,7 @@ Templates are [Jinja2](https://jinja.palletsprojects.com/) files that define the
 actantial-init-templates path/to/directory/
 ```
 
-This creates a `templates/` folder with the sample tempaltes in the specified directory.
+This creates a `templates/` folder with the sample templates in the specified directory.
 
 To see which templates are available for your model, and to preview a template before running:
 
@@ -206,7 +206,7 @@ backend = OpenAIBackend(model_name="gpt-4o-mini", system_prompt="Always respond 
 
 ## Validation
 
-Validation of the labels is difficult. Especially open-label annotations can vary significantly between prompts and models. This is both due to the complexity of the model and the variation in label formulation without fixed label set. Thus, the validation workflow mostly makes sense for closed-set annotations. Either to compare different models, or to validate models against human annotations (for details, see [TBD]()).
+Validation of the labels is difficult. Especially open-label annotations can vary significantly between prompts and models. This is both due to the complexity of the model and the variation in label formulation without fixed label set. Thus, the validation workflow mostly makes sense for closed-set annotations. Either to compare different models, or to validate models against human annotations (for details, see the [case study](https://jelfes.github.io/actantial/examples/case_study/)).
 
 When loading annotations, if the LLM returned multiple actors for a role you can control how they are handled with `select_actor="first"` (default) or `select_actor="combine"` (joins them into a comma-separated string):
 
@@ -220,13 +220,13 @@ To validate `llm_annotations` against `reference_annotations`:
 from actantial import compare_annotations
 
 results = compare_annotations(
-    llm_annotations,        # DataFrame with 'id' + actant columns
-    reference_annotations,  # DataFrame with 'id' + actant columns
+    dfs=[llm_annotations, reference_annotations],
+    names=["llm", "reference"],
     metric="accuracy",
 )
 ```
 
-`results` is a dict with `"per_actant"` scores and an `"avg"` mean across actants. Supported metrics: `accuracy`, `f1_micro`, `f1_macro`, `f1_weighted`, `krippendorff_alpha`.
+`results` is a DataFrame with one row per actant and an `avg` summary row. Supported metrics: `accuracy`, `f1_micro`, `f1_macro`, `f1_weighted`, `krippendorff_alpha`.
 
 
 ## CLI
