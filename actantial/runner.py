@@ -65,7 +65,6 @@ def run_extract(
             Columns must be string dtype; cast with ``data[col].astype(str)``
             before calling if needed.
     """
-    print(templates_dir)
     template_name = template if template.endswith(".txt") else template + ".txt"
 
     if resume_timestamp is not None:
