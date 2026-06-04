@@ -3,7 +3,7 @@
 `actantial` is a research tool for analysing narratives using Greimas' Actantial Model. It uses LLMs to annotate texts with six character roles — called actants — including the Subject, Object, Sender, Receiver, Helper, and Opponent. These structured role representations can be used to analyse the underlying character constellations of a text and compare them across texts. The model can be applied to various sources, such as news articles, social media posts, or political speeches.
 
 For further details on the theory and application, refer to the following resources:
-
+- [Documentation](https://jelfes.github.io/actantial) 📖
 - [Theoretical background of the Actantial Model](https://jelfes.github.io/actantial/background/)
 - From narrative theory to automated annotation (TBD)
 - [Actantial model on news articles](https://dl.acm.org/doi/full/10.1145/3717867.3717868) (Elfes, 2025)
