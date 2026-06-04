@@ -217,9 +217,9 @@ llm_annotations = load_annotations(data, label_folder="output/actantial_models/m
 To validate `llm_annotations` against `reference_annotations`:
 
 ```python
-from actantial import compare_labels
+from actantial import compare_annotations
 
-results = compare_labels(
+results = compare_annotations(
     llm_annotations,        # DataFrame with 'id' + actant columns
     reference_annotations,  # DataFrame with 'id' + actant columns
     metric="accuracy",

@@ -17,7 +17,7 @@ SUPPORTED_METRICS = {
 }
 
 
-def compare_labels(
+def compare_annotations(
     dfs: List[pd.DataFrame],
     names: Optional[List[str]] = None,
     id_column: str = "id",

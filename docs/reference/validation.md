@@ -1,3 +1,3 @@
 # Validation
 
-::: actantial.validation.compare_labels
+::: actantial.validation.compare_annotations
