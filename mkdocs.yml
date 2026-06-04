@@ -39,4 +39,6 @@ nav:
           - Anthropic: reference/backends/anthropic.md
           - OpenAI: reference/backends/openai.md
           - HuggingFace: reference/backends/huggingface.md
-  - Examples: examples/examples.ipynb
+  - Examples:
+      - API Examples: examples/examples.ipynb
+      - Case Study: examples/case_study.ipynb
