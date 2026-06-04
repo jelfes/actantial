@@ -198,7 +198,8 @@ def load_actors(
             elif not isinstance(value, list):
                 value = [value]
 
-            # skip empty lists
+            # remove empty entries and skip if nothing remains
+            value = [v for v in value if v not in (None, "")]
             if len(value) == 0:
                 continue
 
