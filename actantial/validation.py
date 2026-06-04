@@ -46,8 +46,8 @@ def compare_annotations(
 
     Returns:
         DataFrame with actants as rows (plus an ``"avg"`` row). Columns are
-        annotator pairs plus ``"avg"`` for pairwise metrics, or a single
-        ``"alpha"`` column for Krippendorff.
+            annotator pairs plus ``"avg"`` for pairwise metrics, or a single
+            ``"alpha"`` column for Krippendorff.
     """
     if len(dfs) < 2:
         raise ValueError("At least two DataFrames are required.")
