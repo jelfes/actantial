@@ -80,7 +80,9 @@ class HuggingFaceBackend(LLMBackend):
         self.model = AutoModelForCausalLM.from_pretrained(
             model_path,
             device_map="auto",
+            torch_dtype=torch_dtype,
             quantization_config=quant_config,
+            trust_remote_code=True,
             **kwargs,
         )
 

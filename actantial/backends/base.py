@@ -62,7 +62,7 @@ class LLMBackend(ABC):
 
     def show_template(
         self,
-        template_name: str,
+        template: str,
         templates_dir: Union[str, Path] = Path(__file__).parent.parent / "templates",
     ) -> None:
         """
@@ -72,27 +72,25 @@ class LLMBackend(ABC):
         without requiring real input data.
 
         Args:
-            template_name: Name of the template to display, with or without
+            template: Name of the template to display, with or without
                 the ``.txt`` extension.
             templates_dir: Root directory containing per-model template
                 subdirectories. Defaults to the built-in ``templates/`` folder.
         """
 
-        template_name = (
-            template_name if template_name.endswith(".txt") else template_name + ".txt"
-        )
+        template = template if template.endswith(".txt") else template + ".txt"
         environment = Environment(loader=FileSystemLoader(templates_dir))
 
         try:
             source = environment.loader.get_source(
-                environment, str(Path(self.model_name, template_name))
+                environment, str(Path(self.model_name, template))
             )[0]
         except Exception as e:
             raise FileNotFoundError(
                 f"Error loading template {e}. Please ensure that the template exists in the templates/{self.model_name} directory and is named correctly."
             )
 
-        print(f"Template '{template_name}' for model '{self.model_name}':\n")
+        print(f"Template '{template}' for model '{self.model_name}':\n")
         print(source)
 
     def cleanup(self):

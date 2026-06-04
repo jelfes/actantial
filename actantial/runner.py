@@ -1,4 +1,3 @@
-import os
 import json
 from typing import Optional
 import pandas as pd
@@ -12,10 +11,6 @@ from jinja2 import Environment, FileSystemLoader, Template, meta as jinja2_meta
 from pathlib import Path
 from datetime import datetime
 from actantial.io import _parse_json, _ensure_directory, _configure_logging
-
-os.environ["TOKENIZERS_PARALLELISM"] = (
-    "false"  # to suppress warnings from transformers (TODO: check if still needed)
-)
 
 
 def run_extract(
@@ -225,7 +220,7 @@ def run_extract(
 
     # start loop
     logging.info("Start inference")
-    for _, row in tqdm(enumerate(data.itertuples()), total=len(data)):
+    for row in tqdm(data.itertuples(), total=len(data)):
 
         if Path(RUN_DIR, f"{row.id}.txt").exists():
             logging.info(f"Skipping ID {row.id} (already processed)")

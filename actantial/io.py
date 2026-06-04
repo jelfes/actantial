@@ -184,7 +184,6 @@ def load_actors(
 
         file_data = _read_json_file(file_path)
 
-        # TODO improve robustness of extraction logic
         for actant in actant_columns:
             value = file_data.get(actant)
 
@@ -260,9 +259,6 @@ def load_annotations(
         data: DataFrame with at least an ``id`` column.
         label_folder: Path to the folder containing per-text JSON annotation
             files, as produced by [`run_extract`][actantial.runner.run_extract].
-        select_actor: Strategy for handling multiple actors per actant role.
-            ``"first"`` keeps only the first actor; ``"combine"`` joins all
-            actors into a comma-separated string.
         actor_labels_path: Path to a YAML file with allowed actor labels.
             If provided, values for non-Object actants not in the list are
             replaced with ``None``.
