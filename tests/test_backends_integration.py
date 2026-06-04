@@ -76,7 +76,7 @@ class TestHuggingFaceBackendGPU:
             model_name="gemma-3-270m-it",
             quantisation=False,
         )
-        result = backend.generate("Reply with one word: hello.", max_new_tokens=10)
+        result = backend.generate("List three animals.", max_new_tokens=100)
         assert isinstance(result, str)
         assert len(result) > 0
 

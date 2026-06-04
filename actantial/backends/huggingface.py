@@ -27,7 +27,7 @@ class HuggingFaceBackend(LLMBackend):
         repository: str,
         model_name: str,
         quantisation: bool = False,
-        torch_dtype: str = "float16",
+        torch_dtype: str = "auto",
         **kwargs: Any,
     ):
         """
@@ -38,8 +38,8 @@ class HuggingFaceBackend(LLMBackend):
             model_name: Model identifier within the repository (e.g., ``DeepSeek-R1-Distill-Qwen-32B``).
             quantisation: If ``True``, load the model in 4-bit precision using
                 bitsandbytes. Requires a CUDA GPU.
-            torch_dtype: Floating-point precision (``"auto"``, ``"float16"``,
-                ``"bfloat16"``).
+            torch_dtype: Floating-point precision passed to ``from_pretrained``.
+                Accepts ``"auto"`` (default), ``"float16"``, or ``"bfloat16"``.
             **kwargs: Additional arguments passed to ``AutoModelForCausalLM.from_pretrained``.
         """
 
@@ -50,9 +50,6 @@ class HuggingFaceBackend(LLMBackend):
         self.repository = repository
         self.model_path = model_path
         self.quantisation = quantisation
-
-        # Convert torch_dtype string to actual dtype
-        torch_dtype = getattr(torch, torch_dtype) if torch_dtype != "auto" else None
 
         # Set quantization configuration if needed
         quant_config = None
@@ -65,9 +62,11 @@ class HuggingFaceBackend(LLMBackend):
                     "Detected no CUDA device (MPS or CPU only). "
                     "Disable quantisation or switch to a CUDA-capable machine."
                 )
+            # BitsAndBytesConfig requires a concrete dtype, not "auto"
+            bnb_dtype = getattr(torch, torch_dtype) if torch_dtype != "auto" else torch.float16
             quant_config = BitsAndBytesConfig(
                 load_in_4bit=True,
-                bnb_4bit_compute_dtype=torch_dtype,
+                bnb_4bit_compute_dtype=bnb_dtype,
                 bnb_4bit_use_double_quant=True,
             )
 
@@ -80,7 +79,7 @@ class HuggingFaceBackend(LLMBackend):
         self.model = AutoModelForCausalLM.from_pretrained(
             model_path,
             device_map="auto",
-            torch_dtype=torch_dtype,
+            dtype=torch_dtype,
             quantization_config=quant_config,
             trust_remote_code=True,
             **kwargs,
@@ -131,6 +130,7 @@ class HuggingFaceBackend(LLMBackend):
                 temperature=temperature,
                 top_p=top_p,
                 top_k=top_k,
+                pad_token_id=self.tokenizer.eos_token_id,
                 **kwargs,
             )
 
