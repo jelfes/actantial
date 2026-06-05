@@ -183,11 +183,12 @@ def _compute_krippendorff(
 
         df_actant = annotations[actant]
 
-        if df_actant.isna().all().all():
+        stacked = df_actant.stack().dropna()
+        if stacked.empty:
             rows[actant] = {"alpha": np.nan}
             continue
 
-        all_labels = sorted(df_actant.stack().astype(str).unique())
+        all_labels = sorted(stacked.astype(str).unique())
         label_dict = {label: idx for idx, label in enumerate(all_labels)}
         data = (
             df_actant.astype(str)
