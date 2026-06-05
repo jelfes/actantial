@@ -188,13 +188,20 @@ def _compute_krippendorff(
             rows[actant] = {"alpha": np.nan}
             continue
 
+        # map annotation labels to numeric codes
         all_labels = sorted(stacked.astype(str).unique())
         label_dict = {label: idx for idx, label in enumerate(all_labels)}
-        data = (
-            df_actant.astype(str)
-            .apply(lambda col: col.map(label_dict))
-            .T.values.tolist()
-        )
+        coded = df_actant.astype(str).apply(lambda col: col.map(label_dict))
+
+        # skipping annotators with all na for an actant
+        data = [
+            row for row in coded.T.values.tolist() if not all(pd.isna(v) for v in row)
+        ]
+
+        # ensure at least two annotators remain after dropping all-na rows
+        if len(data) < 2:
+            rows[actant] = {"alpha": np.nan}
+            continue
 
         try:
             score = float(
