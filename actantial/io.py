@@ -7,7 +7,7 @@ import yaml
 
 from typing import Literal, Optional, Dict, Any, Union
 from actantial.config import ACTANTS
-from pandas import DataFrame
+from pandas import DataFrame, isna
 from pathlib import Path
 
 
@@ -179,7 +179,7 @@ def load_actors(
         file_path = row.get(file_path_column)
 
         # skip non-existing files
-        if not file_path:
+        if isna(file_path) or not file_path:
             continue
 
         file_data = _read_json_file(file_path)
