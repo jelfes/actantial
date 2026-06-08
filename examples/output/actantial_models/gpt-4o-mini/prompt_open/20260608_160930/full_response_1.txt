@@ -1,0 +1,1 @@
+"```json\n{\n  \"Subject\": [\"Alice\"],\n  \"Object\": [\"Bob\"],\n  \"Sender\": [\"Alice\"],\n  \"Receiver\": [\"Bob\"],\n  \"Helper\": \"\",\n  \"Opponent\": \"\"\n}\n```"

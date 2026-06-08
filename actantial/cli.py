@@ -220,7 +220,7 @@ def init_templates():
 
     shutil.copytree(BUNDLED_TEMPLATES_DIR, dest)
     print(
-        f"Templates copied to '{dest}'. Pass '--templates_dir {dest}' to actantial to use them."
+        f"Templates copied to '{dest}'. Pass '--templates_dir {dest}' to use templates from this directory."
     )
 
 

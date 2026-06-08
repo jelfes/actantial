@@ -1,0 +1,8 @@
+{
+  "model": "gemma-3-1b-it",
+  "templates_dir": "///actantial/templates",
+  "template": "prompt_open",
+  "timestamp": "20260608_161408",
+  "quantisation": false,
+  "template_columns": []
+}

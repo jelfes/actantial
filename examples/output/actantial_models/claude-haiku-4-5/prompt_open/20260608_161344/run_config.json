@@ -1,0 +1,8 @@
+{
+  "model": "claude-haiku-4-5",
+  "templates_dir": "///actantial/templates",
+  "template": "prompt_open",
+  "timestamp": "20260608_161344",
+  "quantisation": false,
+  "template_columns": []
+}
