@@ -16,6 +16,7 @@ class AnthropicBackend(LLMBackend):
         self,
         model_name: str = "claude-haiku-4-5",
         system_prompt: str = "You are a helpful assistant.",
+        temperature: float = 0,
         api_key: Optional[str] = None,
     ):
         """
@@ -25,6 +26,8 @@ class AnthropicBackend(LLMBackend):
             model_name: Anthropic model identifier (e.g., ``"claude-haiku-4-5"``,
                 ``"claude-sonnet-4-6"``).
             system_prompt: System-level instruction passed to the model on every request.
+            temperature: Sampling temperature in [0, 1]; higher values increase randomness.
+                Defaults to 0 for deterministic output.
             api_key: Anthropic API key. If ``None``, read from the ``ANTHROPIC_API_KEY``
                 environment variable.
         """
@@ -39,6 +42,12 @@ class AnthropicBackend(LLMBackend):
 
         self.system_prompt = system_prompt
 
+        if not 0 <= temperature <= 1:
+            raise ValueError(
+                f"temperature must be between 0 and 1 for the Anthropic API (got {temperature})."
+            )
+        self.temperature = temperature
+
         try:
             self.client.models.retrieve(model_name)
         except NotFoundError:
@@ -52,7 +61,6 @@ class AnthropicBackend(LLMBackend):
         self,
         prompt: str,
         max_new_tokens: int = 2048,
-        temperature: float = 0,
         **kwargs: Any,
     ) -> str:
         """
@@ -61,24 +69,17 @@ class AnthropicBackend(LLMBackend):
         Args:
             prompt: The input prompt string.
             max_new_tokens: Maximum number of tokens to generate.
-            temperature: Sampling temperature in [0, 1]; higher values increase randomness.
-                Defaults to 0 for deterministic output.
             **kwargs: Additional parameters passed to the Anthropic Messages API.
 
         Returns:
             The generated text string, excluding the input prompt.
         """
-        if not 0 <= temperature <= 1:
-            raise ValueError(
-                f"temperature must be between 0 and 1 for the Anthropic API (got {temperature})."
-            )
-
         response = self.client.messages.create(
             model=self.model_name,
             system=self.system_prompt,
             messages=[{"role": "user", "content": prompt}],
             max_tokens=max_new_tokens,
-            temperature=temperature,
+            temperature=self.temperature,
             **kwargs,
         )
 

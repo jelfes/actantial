@@ -28,6 +28,10 @@ class HuggingFaceBackend(LLMBackend):
         model_name: str,
         quantisation: bool = False,
         torch_dtype: str = "auto",
+        temperature: Optional[float] = None,
+        do_sample: bool = False,
+        top_p: Optional[float] = None,
+        top_k: Optional[int] = None,
         **kwargs: Any,
     ):
         """
@@ -40,12 +44,21 @@ class HuggingFaceBackend(LLMBackend):
                 bitsandbytes. Requires a CUDA GPU.
             torch_dtype: Floating-point precision passed to ``from_pretrained``.
                 Accepts ``"auto"`` (default), ``"float16"``, or ``"bfloat16"``.
+            temperature: Sampling temperature; higher values increase randomness.
+            do_sample: If ``True``, use sampling; defaults to ``False`` for
+                deterministic (greedy) output.
+            top_p: Nucleus sampling probability threshold.
+            top_k: Top-k sampling parameter.
             **kwargs: Additional arguments passed to ``AutoModelForCausalLM.from_pretrained``.
         """
 
         model_path = "/".join([repository, model_name])
 
-        super().__init__(model_path, **kwargs)
+        super().__init__(model_path)
+        self.temperature = temperature
+        self.do_sample = do_sample
+        self.top_p = top_p
+        self.top_k = top_k
         self.model_name = model_name
         self.repository = repository
         self.model_path = model_path
@@ -94,10 +107,6 @@ class HuggingFaceBackend(LLMBackend):
         self,
         prompt: str,
         max_new_tokens: int = 2048,
-        do_sample: bool = False,
-        temperature: Optional[float] = None,
-        top_p: Optional[float] = None,
-        top_k: Optional[int] = None,
         **kwargs: Any,
     ) -> str:
         """
@@ -106,11 +115,6 @@ class HuggingFaceBackend(LLMBackend):
         Args:
             prompt: The input prompt string.
             max_new_tokens: Maximum number of tokens to generate.
-            do_sample: If ``True``, use sampling; defaults to ``False`` for
-                deterministic (greedy) output.
-            temperature: Sampling temperature; higher values increase randomness.
-            top_p: Nucleus sampling probability threshold.
-            top_k: Top-k sampling parameter.
             **kwargs: Additional parameters passed to the model's ``generate`` method.
 
         Returns:
@@ -126,10 +130,10 @@ class HuggingFaceBackend(LLMBackend):
             model_outputs = self.model.generate(
                 **inputs,
                 max_new_tokens=max_new_tokens,
-                do_sample=do_sample,
-                temperature=temperature,
-                top_p=top_p,
-                top_k=top_k,
+                do_sample=self.do_sample,
+                temperature=self.temperature,
+                top_p=self.top_p,
+                top_k=self.top_k,
                 pad_token_id=self.tokenizer.eos_token_id,
                 **kwargs,
             )
