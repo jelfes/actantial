@@ -10,7 +10,8 @@ try:
 except ImportError:
     raise ImportError(
         "HuggingFace dependencies are not installed. "
-        "Run: pip install actantial[huggingface]"
+        "Run: pip install actantial[huggingface] "
+        "or manually: pip install torch transformers accelerate bitsandbytes"
     )
 
 
