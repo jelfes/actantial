@@ -45,6 +45,8 @@ def main():
             the original run.
         --templates_dir: Directory containing prompt templates. Defaults to
             the bundled templates.
+        --backend_params_path: Path to a YAML file of keyword arguments passed to
+            the backend constructor (e.g. ``temperature``, ``top_p``).
     """
     parser = argparse.ArgumentParser(
         description="Actantial: LLM-based narrative role extraction",
@@ -124,9 +126,23 @@ def main():
         "Column name must match the Jinja2 variable name in the template. "
         "Example: --template_column parent_post",
     )
+    parser.add_argument(
+        "--backend_params_path",
+        type=Path,
+        default=None,
+        metavar="YAML_FILE",
+        help="Path to a YAML file of keyword arguments passed to the backend constructor "
+        "(e.g. temperature, top_p). See documentation for per-backend parameter reference.",
+    )
 
     # Parse arguments
     args = parser.parse_args()
+
+    # load backend kwargs from YAML if provided
+    backend_kwargs = {}
+    if args.backend_params_path is not None:
+        with open(args.backend_params_path) as f:
+            backend_kwargs = yaml.safe_load(f) or {}
 
     # read the dataset
     data = pd.read_csv(args.data_file)
@@ -135,7 +151,7 @@ def main():
     if args.backend == "anthropic":
         from .backends.anthropic import AnthropicBackend
 
-        backend = AnthropicBackend(model_name=args.model)
+        backend = AnthropicBackend(model_name=args.model, **backend_kwargs)
     elif args.backend == "huggingface":
         if not args.repository:
             raise ValueError(
@@ -147,11 +163,12 @@ def main():
             repository=args.repository,
             model_name=args.model,
             quantisation=args.quantise,
+            **backend_kwargs,
         )
     elif args.backend == "openai":
         from .backends.openai import OpenAIBackend
 
-        backend = OpenAIBackend(model_name=args.model)
+        backend = OpenAIBackend(model_name=args.model, **backend_kwargs)
     else:
         # argparse should guard against this, but safety first
         raise ValueError(f"Unknown backend: {args.backend}")

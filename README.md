@@ -148,7 +148,8 @@ run_extract(
 
 For closed-set annotation you need to create a predefined label set for the model to apply. You might want to create a separate set of labels for actors and objects but that is optional. The labels are saved in YAML files:
 
-```
+```yaml
+# actors.yaml
 - actor 1
 - actor 2
 ...
@@ -279,6 +280,27 @@ actantial \
     --template "my_template" \
     --template_column video_title \
     --template_column video_creator
+```
+
+**Passing backend parameters** — create a YAML file with any constructor keyword arguments for the chosen backend:
+
+```yaml
+# params.yaml
+temperature: 0.7
+top_p: 0.9
+do_sample: true
+```
+
+```bash
+actantial \
+    --data_file "data.csv" \
+    --output_dir "output" \
+    --backend huggingface \
+    --repository "google" \
+    --model "gemma-3-1b-it" \
+    --templates_dir "path/to/directory/templates" \
+    --template "my_template" \
+    --backend_params_path "path/to/directory/params.yaml"
 ```
 
 **Resuming an interrupted run** — pass the timestamp printed at the start of the original run:
