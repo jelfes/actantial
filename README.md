@@ -17,19 +17,9 @@ Further details on the theory and application:
 
 ## Installation
 
-For API-based backends (Anthropic or OpenAI):
-
 ```bash
 pip install actantial
 ```
-
-To run models locally on a GPU via HuggingFace:
-
-```bash
-pip install actantial[huggingface]
-```
-
-This additionally installs `torch`, `transformers`, `accelerate`, and `bitsandbytes`. It requires a CUDA-capable GPU.
 
 ## Key concepts
 
@@ -99,10 +89,8 @@ Both backends validate the model name at initialisation — an invalid model rai
 
 ### GPU
 
-First install the HuggingFace dependencies (see [Installation](#installation)), then:
-
 ```python
-from actantial.backends.huggingface import HuggingFaceBackend
+from actantial import HuggingFaceBackend
 
 backend = HuggingFaceBackend(
     repository="deepseek-ai",

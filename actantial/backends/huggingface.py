@@ -4,15 +4,8 @@ import gc
 from typing import Any, Optional
 from .base import LLMBackend
 
-try:
-    import torch
-    from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
-except ImportError:
-    raise ImportError(
-        "HuggingFace dependencies are not installed. "
-        "Run: pip install actantial[huggingface] "
-        "or manually: pip install torch transformers accelerate bitsandbytes"
-    )
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 
 class HuggingFaceBackend(LLMBackend):

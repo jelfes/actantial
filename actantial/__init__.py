@@ -2,9 +2,9 @@
 actantial: a toolkit for analysing narratives using Greimas' Actantial Model.
 
 Provides LLM-based extraction of actant roles from text, along with utilities
-for loading results and computing inter-annotator agreement. API-based backends
-(Anthropic, OpenAI) are available by default. The HuggingFace backend for
-local GPU inference requires a separate install: ``pip install actantial[huggingface]``.
+for loading results and computing inter-annotator agreement. Supports
+API-based backends (Anthropic, OpenAI) and a HuggingFace backend for local
+GPU inference.
 """
 
 __version__ = "0.1.0"
@@ -14,6 +14,7 @@ from actantial.io import load_annotations, load_actors
 from actantial.validation import compare_annotations
 from actantial.backends.anthropic import AnthropicBackend
 from actantial.backends.openai import OpenAIBackend
+from actantial.backends.huggingface import HuggingFaceBackend
 
 __all__ = [
     "run_extract",
@@ -22,4 +23,5 @@ __all__ = [
     "compare_annotations",
     "AnthropicBackend",
     "OpenAIBackend",
+    "HuggingFaceBackend",
 ]
