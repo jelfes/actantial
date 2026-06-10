@@ -95,7 +95,7 @@ from actantial import HuggingFaceBackend
 backend = HuggingFaceBackend(
     repository="deepseek-ai",
     model_name="DeepSeek-R1-Distill-Qwen-32B",
-    quantisation=True,  # optional: 4-bit quantisation, reduces VRAM requirements
+    quantisation=True,  # optional: 4-bit quantisation, requires a CUDA GPU!
 )
 ```
 
