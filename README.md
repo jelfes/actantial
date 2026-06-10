@@ -2,12 +2,15 @@
 
 `actantial` is a research tool for analysing narratives using Greimas' Actantial Model. It uses LLMs to annotate texts with six character roles — called actants — including the Subject, Object, Sender, Receiver, Helper, and Opponent. These structured role representations can be used to analyse the underlying character constellations of a text and compare them across texts. The model can be applied to various sources, such as news articles, social media posts, or political speeches.
 
-For further details on the theory and application, refer to the following resources:
+Getting started:
 
-- [Quick-start notebook](https://github.com/jelfes/actantial/blob/main/examples/getting_started.ipynb)
+- [Getting started notebook](https://github.com/jelfes/actantial/blob/main/examples/getting_started.ipynb) 🏄
 - [Documentation](https://jelfes.github.io/actantial) 📖
+
+Further details on the theory and application:
+
 - [Theoretical background of the Actantial Model](https://jelfes.github.io/actantial/background/)
-- From narrative theory to automated annotation (TBD)
+- From narrative theory to automated annotation (WIP)
 - [Actantial model on news articles](https://dl.acm.org/doi/full/10.1145/3717867.3717868) (Elfes, 2025)
 - [Actantial model on social media](https://arxiv.org/abs/2601.07398) (Elfes et al., 2026)
 
@@ -36,9 +39,9 @@ This additionally installs `torch`, `transformers`, `accelerate`, and `bitsandby
 
 **Templates** are the prompts sent to the LLM. They control how the extraction task is framed and must contain at least a `{{ text }}` variable. `actantial` ships with built-in example templates, but custom templates are recommended for new use cases.
 
-**Open vs. closed annotation** — in open mode, the LLM assigns actors freely from the text. In closed mode, you provide predefined lists of actor and object labels, constraining the LLM to choose from those options. Closed annotation is recommended when you want consistent, comparable labels across texts. However, it requires devising a concise label set (for details, see TBD).
+**Open vs. closed annotation** — in open mode, the LLM assigns actors freely from the text. In closed mode, you provide predefined lists of actor and object labels, constraining the LLM to choose from those options. Closed annotation is recommended when you want consistent, comparable labels across texts. However, it requires devising a concise label set (for details, see WIP).
 
-## Quick start
+## Key functions
 
 Your input data must have an `id` column and a `text` column.
 
