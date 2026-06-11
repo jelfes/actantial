@@ -1,0 +1,1 @@
+{"Subject": ["Hospital", "Patients", "Doctors", "Medical Staff"], "Object": ["Hospital", "Patients", "Medical Staff", "Doctors", "Medical Staff"], "Sender": ["Israel", "Palestinian Jihad"], "Receiver": ["Palestinians", "Medical Staff"], "Helper": ["Doctors", "Medical Staff"], "Opponent": ["Israel", "Palestinians"]}

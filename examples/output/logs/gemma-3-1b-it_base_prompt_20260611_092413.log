@@ -1,0 +1,221 @@
+2026-06-11 09:24:13,835 Run directory: output/actantial_models/gemma-3-1b-it/base_prompt/20260611_092413
+2026-06-11 09:24:13,850 Template: 	/actantial/templates/default/base_prompt.txt
+2026-06-11 09:24:13,850 Prompt preview:
+According to the Actantial Model by Greimas with the actant label set ["Subject", "Object", "Sender", "Receiver", "Helper", "Opponent"], the actants are defined as follows:
+
+* Subject: The character who carries out the action and desires the Object.
+* Object: The character or thing that is desired and transfered.
+* Sender: The character who initiates the action, controls the Object, and transfers it to the Receiver.
+* Receiver: The character who receives the Object.
+* Helper: The character who assists the Subject in achieving its goal.
+* Opponent: The character who opposes the Subject in achieving its goal.
+
+Based on the Actantial Model, please recognize the actants in the following text.
+
+Text: <TEXT>
+
+
+Question: What are the main actants in the text? 
+1. Identify the main Object in the text.
+2. Identify the respective Subject.
+2. Identify the Sender who transfers the Object to the Receiver. Make sure that this matches the Object from the previous step.
+3. Identify the Helper and Opponent that try to influence the Subject in achieving the Object.
+
+Final Consistency Check:
+- Ensure that all chosen actants align logically with the relationships described in the Actantial Model.
+- The Object must remain consistent between desire and transfer.
+- If necessary, update the actants to maintain coherence.
+
+Response Format (JSON Dictionary)
+- Each actant label should be a key, and the corresponding actor the value.
+- If no actor is present for a label, return an empty string ("").
+
+Example Format: {"Subject": ["Actant Name"], "Object": ["Actant Name"], "Sender": ["Actant Name"], "Receiver": ["Actant Name"], "Helper": ["Actant Name"], "Opponent": ["Actant Name"]}
+
+Answer:
+2026-06-11 09:24:13,850 Start inference
+2026-06-11 09:24:13,852 ---------- ID c1127d11dd9375ab3112d32853f374ae ----------
+
+2026-06-11 09:24:13,852 Variables:
+  text: Israeli troops encircle four hospitals as Gaza’s largest medical complex, Al-Shifa, faces complete collapse.
+Battles have intensified around several hospitals in northern Gaza, with some receiving direct hits and reports of casualties among patients and tens of thousands of displaced Palestinians sheltering at the facilities, as Israeli troops continue their advance.
+Gaza’s Ministry of Health said on Friday that Israeli tanks have been closing in on at least four hospitals from all directions.
+The head of Al-Shifa Hospital, Muhammad Abu Salmiya, told Al Jazeera, “This day was a day of war on hospitals.”
+“The sick and wounded occupy all of the hospital’s corridors, and we cannot perform surgical operations,” Salmiya said.
+“We cannot find a single bed to place victims on,” he added about the situation in Gaza’s largest medical facility. “We are taking difficult decisions between who to save and who to let die … as I speak to you I am standing in front of 100 dead bodies.”
+ 
+“During the past few hours, the Israeli military has been surrounding three hospitals in Gaza City and the Indonesian Hospital in the north,” Al Jazeera’s Hani Mahmoud reported from Khan Younis.
+“Using tanks and armoured vehicles, they have closed a roughly 100-metre (about 330-foot) perimeter around these hospitals, still sheltering thousands of wounded and displaced people. People have sent appeals from inside Al-Rantisi Hospital and Nasser Hospital, asking to be allowed to flee,” he said, adding that while Israel had ordered the evacuation of the facilities, even those who could flee were afraid of doing so without the guarantee of a safe passage.
+“The journey from Nasser and Al-Rantisi Hospitals to the east of Salah al-Din Street in Gaza City is very dangerous and has been hit repeatedly by air strikes,” he said.
+Early Friday, Israel struck the courtyard and the obstetrics department of Al-Shifa Hospital, where tens of thousands of people are sheltering, according to Ashraf al-Qudra, spokesperson at Gaza’s Ministry of Health. At least 13 people were killed, and several wounded.
+Israel bombed Al-Shifa Hospital buildings five times since Thursday night, al-Qudra said.
+Another attack near the Al-Nasr Medical Centre, which includes two hospitals for children, killed two people, according to the ministry.
+Later Friday, the Palestinian Red Crescent Society (PRCS) said at least one person was killed and 20 were injured in a shooting by Israeli forces at Al-Quds Hospital in Gaza.
+Dr Ahmed Mokhallalati, a surgeon at Al-Shifa Hospital, told Al Jazeera that the attacks in front of the complex have not stopped since last night.
+“You can hear a lot of gunshots and then you know that the tanks are getting near to Al-Shifa Hospital,” he said.
+Mokhallalati added that the repeated targeting of Al-Shifa by the Israel army had pushed many of the patients to leave “the hospital without taking their treatment or surgeries”.
+“Over the last month, everyone has seen that this is an unsafe place,” he said. “Supposedly, [this was] meant to be the safest place.”
+Earlier, a video from Al-Shifa recorded the sound of incoming fire waking people up in their makeshift shelters in the courtyard, followed by screams for an ambulance.
+Al-Shifa’s director said Israel demanded the facility be evacuated, but added that there was nowhere for such a large number of patients to go.
+Human Rights Watch reviewed satellite images showing Israeli forces were encircling Al-Shifa late on Thursday. The international rights group said “suggesting all civilian structures are targets or alerting civilians to flee without a safe passage or safe place to go does not suffice” as an effective warning, calling on world leaders to “act to prevent further mass atrocities”.
+“There is no safe place left. The army hit Al-Shifa. I don’t know what to do,” said 32-year-old Abu Mohammad, who was among those seeking refuge at the hospital. “There is shooting … at the hospital. We are afraid to go out.”
+In the wake of the attacks, witnesses said many people were starting to leave the grounds of the facility fearing further attacks.
+“I work at Al-Shifa hospital, and it might get bombed any moment,” Ezz Lulu, a medical student working at the hospital, said in a video testimony posted on Instagram from the facility, in which he bid farewell.
+“The Israeli occupation forces pounded parts of the hospital to pressure all those inside, including patients, victims and medical crews, to leave,” he said.
+“We cannot abandon our duties; we cannot leave thousands of injured victims and patients without help. We are not leaving at any point. We will only leave as victors or martyrs. Forgive me.”
+The Israeli army has alleged that Hamas has set up a command centre under Al-Shifa – claims that Hamas and the hospital staff have denied.
+Snipers at Red Crescent Hospital
+PRCS said Israeli snipers were shooting at Gaza City’s Al-Quds Hospital.
+“Fierce clashes now and occupation snipers shooting at Al-Quds hospital, casualties among the displaced” Palestinians sheltering at the facility, the medical organisation said in a statement.
+In an update it said that Israeli forces have opened fire on the intensive care unit at Al-Quds Hospital.
+🚨Israeli Occupation forces opened fire on the intensive care unit at Al-Quds hospital.#AlQudsHospital #NotATarget #Gaza pic.twitter.com/ocIk0d8XLb
+— PRCS (@PalestineRCS) November 10, 2023
+The Palestinian Ministry for Foreign Affairs and Expatriates said Israel “kidnaps hospitals as hostages for extortion” in Gaza.
+In a statement, the ministry said Israel was continuing its siege of hospitals to “blackmail” the international community for “political gains” and to force Palestinians to move to the south in a “new episode of genocide”.
+Ministry of Foreign Affairs and Expatriates: Israel kidnaps hospitals as hostages for extortion, aiming to leverage and gain advantages before the eyes of the entire world 
+الخارجية والمغتربين// إسرائيل تختطف المستشفيات كرهينة للابتزاز وتحقيق المكاسب على سمع وبصر العالم
+اسرائيل… pic.twitter.com/wmTtfMzUVe
+— State of Palestine – MFA 🇵🇸🇵🇸 (@pmofa) November 10, 2023
+ 
+According to the World Health Organization (WHO), 36 health facilities including 22 hospitals have been damaged since the beginning of the war.
+Gaza’s Ministry of Health said at least 18 hospitals, of 35, are out of service. At least 57 ambulances have been damaged, 45 of them completely.
+“Palestinian civilians and healthcare must be protected and Israel must cease its attacks on hospitals now,” Melanie Ward, the CEO of Medical Aid for Palestinians, a UK-based NGO which operates in Gaza, said. “Without urgent action from the international community … Gaza’s hospitals remain at serious and imminent risk of full-scale military attacks.”
+“The scenes from Al-Shifa today were horrific,” Mads Gilbert, a Norwegian doctor who has regularly volunteered there told Al Jazeera.
+“Would this have been accepted by Europe and the US if these had been hospitals caring for white people in Europe? Never ever. This is racist politics, it’s utterly disgusting and I think we have to consider this as the greatest moral collapse in Western politics in my generation.”
+More than 11,000 people, including 4,506 children, have been killed in Gaza since Israel started pounding the enclave in the wake of the October 7 Hamas attack that left more than 1,400 dead, mostly civilians.
+ 
+ 
+
+2026-06-11 09:27:13,962 Output:
+	{'Subject': ['Israeli troops', 'Gaza Ministry of Health', 'Al-Shifa Hospital', 'Palestinian civilians and healthcare'], 'Object': ['Israeli tanks', 'Hospitals', 'Patients', 'Al-Shifa Hospital', 'Gaza City', 'Nasser Hospital', 'Al-Quds Hospital'], 'Sender': ['Israeli Military Forces'], 'Receiver': ['Gaza Ministry of Health', 'Palestinian civilians and healthcare', 'Al-Shifa Hospital', 'Nasser Hospital', 'Al-Quds Hospital'], 'Helper': ['Gaza Ministry of Health', 'Palestinian civilians and healthcare'], 'Opponent': ['Israeli Military Forces']}
+2026-06-11 09:27:13,963 Writing output to: output/actantial_models/gemma-3-1b-it/base_prompt/20260611_092413/c1127d11dd9375ab3112d32853f374ae.txt
+2026-06-11 09:27:13,972 ##############################################################
+
+2026-06-11 09:27:13,974 ---------- ID 24b44f2cb5cae1182f5e0c7f6f5e5024 ----------
+
+2026-06-11 09:27:13,974 Variables:
+  text: Al-Shifa Hospital director confirms deaths after Al-Buraq School was targeted.
+At least 25 people were killed in Israeli attacks on a Gaza City school, said the director of Al-Shifa Hospital where the casualties were taken.
+“We received 25 martyrs from Al-Buraq School after missile and artillery strikes targeted the school this morning,” director Mohammad Abu Salmiya of Gaza’s largest hospital complex told Al Jazeera on Friday.
+While the Reuters news agency reported the director as saying at least 20 Palestinians had been killed, AFP news agency put the number at about 50 people.
+Video footage shared on social media showed dozens of bodies strewn across the school in the Al-Nasr neighbourhood in the aftermath of the attack. People whose homes had been destroyed were sheltering in the school.
+The Israeli army has intensified its bombardment of the Gaza Strip, repeatedly targeting schools, mosques and hospitals.
+Last week, an Israeli air missile struck the Al Fakhoura School run by the United Nations agency for Palestinian refugees (UNRWA) in the Jabalia refugee camp, killing at least 15 people and injuring 54, according to Gaza’s Ministry of Health.
+Thousands of people displaced due to Israel’s relentless bombardment of the Gaza Strip had taken refuge at the Al Fakhoura School. That was the third major attack on the Jabalia camp.
+It came hours after a deadly strike on the Osama bin Zaid School sheltering displaced families in the Al-Saftawi area north of Gaza City, killing at least 20 people, according to local media.
+At least 11,078 Palestinians have been killed in Israeli attacks on Gaza since October 7. In Israel, the death toll stands at more than 1,400.
+The Israeli strikes have damaged more than 50 percent of housing units across Gaza, according to officials. The United Nations humanitarian office said in a statement that if there is a “hell on Earth, it is northern Gaza”.
+ 
+ 
+
+2026-06-11 09:30:11,780 Output:
+	{'Subject': ['Al-Shifa Hospital', 'Gazian'], 'Object': ['Al-Shifa Hospital', 'Gazian'], 'Sender': ['Al-Shifa Hospital'], 'Receiver': ['Gazian'], 'Helper': ['Al-Shifa Hospital'], 'Opponent': ['Gazian']}
+2026-06-11 09:30:11,780 Writing output to: output/actantial_models/gemma-3-1b-it/base_prompt/20260611_092413/24b44f2cb5cae1182f5e0c7f6f5e5024.txt
+2026-06-11 09:30:11,789 ##############################################################
+
+2026-06-11 09:30:11,791 ---------- ID c9dc1e8f5c83c3926aa92b20e3ebc348 ----------
+
+2026-06-11 09:30:11,791 Variables:
+  text: Israeli tanks surround four hospitals in Gaza as bombardments, shelling, and shortages of fuel and supplies hit other medical centres.
+Israel’s warplanes and tanks are circling around the Gaza Strip’s hospitals as health facilities increasingly come under attack.
+The assaults on hospital compounds affect not just thousands of patients but also an estimated 122,000 displaced Palestinians sheltering in those facilities during unrelenting bombing by Israel.
+On Friday, the threat to many of Gaza’s hospitals mounted further.
+Here is how hospitals are being targeted:
+Gaza’s Ministry of Health says Israeli tanks on Friday surrounded four hospitals from all directions. These are the al-Rantisi Hospital, al-Nasr Hospital, and the eye and mental health hospitals.
+About 1,000 people are seeking shelter at al-Rantisi, the only hospital in Gaza that specialises in treating children with cancer. Israel has recently struck vehicles outside al-Rantisi, which is located in northern Gaza.
+Al-Rantisi Children’s Hospital..No caption needed‼️#Gaza_Genocide pic.twitter.com/gK0C6WiEs7
+— 𓂆 Khalil in Gaza🇵🇸 (@khalilo1) November 10, 2023
+A video surfaced on social media apparently shot by people inside the hospital that shows them unsure of whether to evacuate, given instances from this war of people fleeing from danger zones being bombed.
+pic.twitter.com/lThYWJMNER رسالة من داخل مستشفى الرنتيسي
+— طوفان الأقصى (@Afcq1954) November 10, 2023
+ 
+“Israel is turning its back to the international community and maintains its crimes against hospitals, health centres and shelter centres across the Gaza Strip,” Palestinian Health Minister Mai al-Kaila said in a statement cited by the Wafa news agency.
+What about al-Shifa Hospital?
+The compound of al-Shifa Hospital, the Gaza Strip’s largest medical facility, was hit by an Israeli missile overnight, and it wasn’t a one-off strike.
+Gaza Health Ministry spokesperson Ashraf al-Qudra said on Friday that Israel has bombed al-Shifa Hospital buildings five times since Thursday night.
+The hospital has been a repeated Israeli target over the past month. World Health Organization (WHO) spokesperson Margaret Harris warned that the hospital is “coming under bombardment”.
+“You can hear a lot of gunshots, and then you know that the tanks are getting near to al-Shifa Hospital,” Dr Ahmed Mokhallalati, an al-Shifa surgeon, told Al Jazeera.
+Medical student Ezudine Lulu took to Instagram and warned in a video early Friday afternoon: “It is possible that the entire hospital will be bombed within hours.”
+Al-Shifa is the most extensive hospital complex in the Gaza Strip. While al-Shifa has the capacity for 700 patients, it is currently treating about 5,000, according to Doctors Without Borders (Medecins Sans Frontieres, or MSF).
+Israel alleged that Hamas is using al-Shifa for military purposes. Hamas has rejected these claims, saying al-Shifa shelters more than 40,000 displaced people in Gaza.
+Over the past week, al-Shifa has been attacked multiple times with Israeli missiles hitting ambulances and the facility’s solar panels as an Israeli siege causes fuel shortages.
+ 
+ 
+Several hospital departments have been targeted by Israel, compromising hospital functions and damaging buildings and equipment.
+According to al-Qudra, Israel shelled the maternity department and outpatient clinics at al-Shifa this week.
+Gaza is under a total blockade by Israel. Al-Shifa has been denied urgently needed supplies of medicines and fuel. Fuel shortages threaten the function of generators, which run vital equipment like ventilators and dialysis machines.
+An unprecedented influx of wounded patients coupled with medical supplies that are rapidly running out leaves surgeons with no choice but to operate on patients on floors and without anaesthetics or pain relief.
+“It is painful for the medical team. It is not simple. It is either the patient suffers pain or loses his life,” said Mohammad Abu Salmiya, director general of al-Shifa Hospital.
+Both al-Rantisi and al-Shifa are located in northern Gaza. UN humanitarian office spokesperson Jens Laerke said the aid entering Gaza through the Rafah crossing with Egypt cannot enter northern Gaza. He urged Israel to reopen the Karem Abu Salem crossing, known in Hebrew as the Kerem Shalom crossing, which sits at the junction of Gaza’s border with Egypt and Israel, to allow more aid through.
+Twenty one of Gaza’s 35 hospitals with inpatient facilities have stopped functioning either due to damage from shelling  and air strikes or from the lack of fuel, Gaza’s Health Ministry said.
+Israeli strikes have targeted Nasser Hospital in Khan Younis and Al-Quds Hospital along with two centres of the Palestinian Red Crescent Society in Jabalia and Gaza City, the United Nations Office for the Coordination of Humanitarian Affairs reported. Gaza’s Health Ministry was also targeted.
+On October 18, nearly 500 people were killed in an air attack on Al-Ahli Arab Hospital in the besieged Gaza Strip.
+The Gaza Health Ministry said the blast was caused by an Israeli air raid. Israel attributed the explosion to a misfired rocket launched by the Palestinian Islamic Jihad armed group.
+International humanitarian law based on the 1949 Geneva Conventions considers hospitals civilian objects that receive protection.
+However, the 1977 Additional Protocols to the conventions outline some exceptions to this. Article 13 states that medical units shall lose their special protection if “used to commit, outside their humanitarian function, acts harmful to the enemy”. In such cases, it says, warnings and “a reasonable time limit” should be given before an attack.
+
+2026-06-11 09:33:09,575 Output:
+	{'Subject': ['Hospital', 'Patients', 'Doctors', 'Medical Staff'], 'Object': ['Hospital', 'Patients', 'Medical Staff', 'Doctors', 'Medical Staff'], 'Sender': ['Israel', 'Palestinian Jihad'], 'Receiver': ['Palestinians', 'Medical Staff'], 'Helper': ['Doctors', 'Medical Staff'], 'Opponent': ['Israel', 'Palestinians']}
+2026-06-11 09:33:09,576 Writing output to: output/actantial_models/gemma-3-1b-it/base_prompt/20260611_092413/c9dc1e8f5c83c3926aa92b20e3ebc348.txt
+2026-06-11 09:33:09,585 ##############################################################
+
+2026-06-11 09:33:09,586 ---------- ID 6d195f1a9e6d677be447d04c8e6139b5 ----------
+
+2026-06-11 09:33:09,587 Variables:
+  text: Israel says more than 100,000 Palestinians have moved from the north to the south of Gaza in the last two days.
+Tens of thousands of Palestinians have fled northern Gaza on foot as Israeli forces push deeper into dense urban neighbourhoods and attack hospitals where residents have been sheltering.
+Gaza City has been the focus of Israel’s ground offensive, with fierce battles and air raids reported on Friday in densely populated areas.
+A spokesperson for the Israeli army said on Friday more than 100,000 Palestinians have moved from the north to the south of Gaza in the last two days.
+A never-ending stream of people including many children, the wounded, and the elderly were seen moving south, mostly on foot, carrying only small backpacks and essential belongings.
+Israel has repeatedly targeted and attacked civilians who are making their way to the south.
+“The fighting in the urban areas of the Gaza Strip has reached critical levels, as the Israeli occupation forces are pushing forward and deeper,” Al Jazeera’s Tareq Abu Azzoum reported from Khan Younis.
+“Now the Israeli troops are stationed in Tel Al-Hawa neighbourhood, in Al-Shati refugee camp and even in the eastern areas of Gaza as they are trying to infiltrate more into the central and to main centres of Gaza City. They are only one kilometre [0.6 miles] away from Al-Shifa Hospital.”
+The UN’s humanitarian office said on Friday it is unable to deliver aid trucks to the north of Gaza, where hundreds of thousands of people still reside.
+“If there is a hell on earth, it is the north of Gaza,” Jens Laerke, spokesman for the UN Office for the Coordination of Humanitarian Affairs (OCHA), told reporters in Geneva.
+Also on Friday, the UN High Commissioner for Human Rights Volker Turk, called for an investigation into what he called Israel’s use of “high-impact explosive weapons” in Gaza. He said the use of such weapons was causing indiscriminate destruction in the besieged Palestinian enclave.
+The UN said earlier this week that at least 1.5 million of Gaza’s 2.3 million residents have fled their homes since the war began.
+More than 11,000 Palestinians, including 4,506 children, have been killed in Gaza since Israel started pounding the enclave in the wake of the October 7 Hamas attack that Israel says left more than 1,400 dead, mostly civilians.
+ 
+ 
+
+2026-06-11 09:36:07,412 Multiple JSON objects found (24). Using the first one.
+2026-06-11 09:36:07,412 Output:
+	{'Subject': ['Israel', 'Palestinians'], 'Object': ['Israel', 'Palestinians'], 'Sender': ['Israel'], 'Receiver': ['Palestinians'], 'Helper': ['Israel'], 'Opponent': ['Palestinians']}
+2026-06-11 09:36:07,412 Writing output to: output/actantial_models/gemma-3-1b-it/base_prompt/20260611_092413/6d195f1a9e6d677be447d04c8e6139b5.txt
+2026-06-11 09:36:07,420 ##############################################################
+
+2026-06-11 09:36:07,422 ---------- ID 1cc33c8f8870ea78e57c2145a42d055a ----------
+
+2026-06-11 09:36:07,422 Variables:
+  text: Israel’s military has claimed Hamas operates at al-Shifa, which the armed group and hospital officials have denied.
+Israel has attacked four hospitals in Gaza, including the enclave’s biggest medical complex, resulting in what appear to be multiple casualties, the health ministry in the Hamas-governed enclave has said.
+Israel’s military struck a yard at the al-Shifa Hospital complex, where thousands of displaced Palestinians are sheltering, health ministry spokesperson Ashraf al-Qudra said on Friday.
+“Israel is now undertaking these dangerous steps against the hospitals to put them completely out of commission and subsequently displace the people sheltering in them, as well as the patients and medics,” al-Qudra told Al Jazeera.
+Israel’s military has said that Hamas operates a command centre at the site of the hospital, including entrances to its extensive tunnel network, which Hamas and hospital officials have denied.
+Israeli officials did not immediately comment on reports of the latest strikes.
+Mohammad Abu Salmiya, director general of al-Shifa Hospital, said the strike hit civilians located next to a number of journalists in the yard, wounding four, including two critically.
+“This led to a lot of casualties, including critical injuries. It could have been a massacre in this place because of the number of people in this complex,” Abu Salmiya told Al Jazeera.
+“Before that, they bombed a building very close to the hospital. And now, there are heavy clashes and heavy bombing next to the hospital.”
+Abu Salmiya said that medics and patients were in a state of fear due to near-constant explosions near the facility.
+“Not a second goes by without bombing close to the hospital. Many of the hospital’s windows have been broken, and there is fear and anxiety amongst the medics and the patients and the displaced people,” he said.
+“This is a war against the hospitals and a war against all the [Palestinian] citizens.”
+Video of the apparent aftermath of the attack showed several people screaming and scrambling for cover, and an injured man lying on the pavement in a pool of blood.
+Al-Qudra said that two children’s hospitals, al-Rantisi and al-Nasser, had also been hit by “direct attacks and bombardments” on Friday.
+Indonesia’s foreign ministry also reported that explosions overnight damaged the Indonesian Hospital, which sits at the northern end of the enclave with thousands of wounded and displaced Palestinians sheltering nearby.
+“Indonesia once again condemns the savage attacks on civilians and civilian objects, especially humanitarian facilities in Gaza,” the ministry said in a statement.
+Holding up missile shrapnel, Atef al-Kahlout, the hospital’s director, said: “This is what the occupation is throwing at hospitals: missile shrapnel.
+“Let the world bear witness to what the occupation targets are. In 24 hours, the hospital will be out of service. It seems the Israeli occupation forces are not happy with the persistence of the Indonesian Hospital nor the steadfastness of the people of northern Gaza.”
+Omar Shakir, Human Rights Watch’s Israel and Palestine director, said on social media that medical facilities must be protected and that “no area is a free-fire zone”.
+The attack on al-Shifa is the latest in a series of reported strikes on or near the Gaza City hospital in recent days.
+Last week, Israel’s military bombed an ambulance outside the hospital, killing 15 people, according to Palestinian officials.
+On Monday, Al Jazeera and Palestinian media reported that Israeli forces had struck solar panels providing electricity to the medical complex, prompting denials by Israeli officials.
+Israeli military officials have released pictures, illustrated maps and audio recordings that they say show that Hamas is using the facility to plan operations and hide its fighters.
+“Hamas terrorists operate inside and under [al-Shifa] Hospital and other hospitals in Gaza,” spokesperson Rear Admiral Daniel Hagari said last month.
+Hamas, health authorities and al-Shifa Hospital officials have denied that the armed group is hiding in or under the complex.
+Israel’s military has repeatedly ordered the hospital to evacuate in recent weeks, drawing condemnation from humanitarian groups that say medical facilities must be spared from fighting.
+
+2026-06-11 09:39:05,403 Output:
+	{'Subject': ['Israel', 'Israeli Military'], 'Object': ['Al-Shifa Hospital', 'Medical Complex', 'Palestinians'], 'Sender': ['Israel'], 'Receiver': ['Al-Shifa Hospital', 'Palestinians', 'Medical Staff'], 'Helper': ['Israeli Military', 'Medical Staff'], 'Opponent': ['Palestinians', 'Hamas']}
+2026-06-11 09:39:05,404 Writing output to: output/actantial_models/gemma-3-1b-it/base_prompt/20260611_092413/1cc33c8f8870ea78e57c2145a42d055a.txt
+2026-06-11 09:39:05,422 ##############################################################
+
