@@ -1,0 +1,1509 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="LLM-based narrative role extraction using Greimas' Actantial Model">
+      
+      
+      
+      
+      
+        <link rel="next" href="background/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>actantial</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#actantial" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="actantial" class="md-header__button md-logo" aria-label="actantial" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            actantial
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jelfes/actantial" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="actantial" class="md-nav__button md-logo" aria-label="actantial" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    actantial
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jelfes/actantial" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key concepts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backends
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backends">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Templates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom templates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closed-set-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Closed-set templates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additional Variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System prompt
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acknowledgements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acknowledgements
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="background/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Background
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/runner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/extract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extraction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input / Output
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backends
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Backends
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/backends/base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/backends/anthropic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anthropic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/backends/openai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/backends/huggingface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HuggingFace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples/getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples/examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples/case_study/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case Study: Israel-Palestine on YouTube
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key concepts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backends
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backends">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Templates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom templates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closed-set-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Closed-set templates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additional Variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System prompt
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acknowledgements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acknowledgements
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="actantial">actantial</h1>
+<p><code>actantial</code> is a research tool for analysing narratives using Greimas' Actantial Model. It uses LLMs to annotate texts with six character roles — called actants — including the Subject, Object, Sender, Receiver, Helper, and Opponent. These structured role representations can be used to analyse the underlying character constellations of a text and compare them across texts. The model can be applied to various sources, such as news articles, social media posts, or political speeches.</p>
+<p>Getting started:</p>
+<ul>
+<li><a href="https://github.com/jelfes/actantial/blob/main/examples/getting_started.ipynb">Getting started notebook</a> 🏄</li>
+<li><a href="https://jelfes.github.io/actantial">Documentation</a> 📖</li>
+</ul>
+<p>Further details on the theory and application:</p>
+<ul>
+<li><a href="https://jelfes.github.io/actantial/background/">Theoretical background of the Actantial Model</a></li>
+<li>From narrative theory to automated annotation (WIP)</li>
+<li><a href="https://dl.acm.org/doi/full/10.1145/3717867.3717868">Actantial model on news articles</a> (Elfes, 2025)</li>
+<li><a href="https://arxiv.org/abs/2601.07398">Actantial model on social media</a> (Elfes et al., 2026)</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<pre><code class="language-bash">pip install actantial
+</code></pre>
+<h2 id="key-concepts">Key concepts</h2>
+<p><strong>Actants</strong> are the six character roles defined by Greimas' Actantial Model: Subject, Object, Sender, Receiver, Helper, and Opponent. Given a text, <code>actantial</code> uses an LLM to assign actors from the text to each of these roles.</p>
+<p><strong>Backends</strong> are the LLM providers used for inference. <code>actantial</code> supports the Anthropic and OpenAI APIs, and local models via HuggingFace.</p>
+<p><strong>Templates</strong> are the prompts sent to the LLM. They control the extraction process and significantly alter the way it is handled. The package provides a general-purpose base template that serves as a starting point for any model. However, performance varies significantly across models and use cases, so for systematic use it's important to adapt the template. This matters especially for closed-set annotations, where label definitions need careful, model-specific tuning. See <a href="#templates">Templates</a> for details.</p>
+<p><strong>Open vs. closed annotation</strong> — in open mode, the LLM assigns actors freely from the text. In closed mode, you provide predefined lists of actor and object labels, constraining the LLM to choose from those options. Closed annotation is recommended when you want consistent, comparable labels across texts. However, it requires devising a concise label set (for details, see WIP).</p>
+<h2 id="key-functions">Key functions</h2>
+<p>Your input data must have an <code>id</code> column and a <code>text</code> column.</p>
+<pre><code class="language-python">import pandas as pd
+from actantial import OpenAIBackend, run_extract, load_annotations
+
+data = pd.read_csv(&quot;data.csv&quot;)
+backend = OpenAIBackend(model_name=&quot;gpt-4o-mini&quot;)
+
+run_extract(
+    data=data,
+    backend=backend,
+    output_dir=&quot;output&quot;,
+    template=&quot;base_prompt&quot;,
+)
+</code></pre>
+<p>Results are saved to <code>output/actantial_models/{model}/{template}/{timestamp}/</code>. To load them back into your DataFrame:</p>
+<pre><code class="language-python">annotations = load_annotations(
+    data=data,
+    label_folder=&quot;output/actantial_models/gpt-4o-mini/base_prompt/TIMESTAMP/&quot;,
+)
+</code></pre>
+<blockquote>
+<p>[!TIP]
+For a detailed introduction into using <code>actantial</code> see the <a href="https://github.com/jelfes/actantial/blob/main/examples/getting_started.ipynb">Getting started notebook</a>.</p>
+</blockquote>
+<h2 id="backends">Backends</h2>
+<p><code>actantial</code> supports three backends: Anthropic, OpenAI, and HuggingFace.</p>
+<p>The <strong>API backends</strong> (<a href="https://platform.claude.com/docs/en/about-claude/pricing">Anthropic</a> and <a href="https://developers.openai.com/api/docs/pricing">OpenAI</a>) send requests to the respective company's servers. They require a subscription and an API key, but can be run from any machine. Check the pricing of your chosen model before running a large extraction.</p>
+<p>The <strong>HuggingFace backend</strong> runs open-weight models locally on your machine, giving access to models such as Llama, DeepSeek, and Gemma on the <a href="https://huggingface.co/models?pipeline_tag=text-generation&amp;sort=trending">HuggingFace platform</a>. It requires a GPU; running on a server is recommended for large-scale extractions.</p>
+<h3 id="api">API</h3>
+<p>Set your API key in a <code>.env</code> file or as an environment variable:</p>
+<pre><code class="language-bash">ANTHROPIC_API_KEY=your-key-here
+OPENAI_API_KEY=your-key-here
+</code></pre>
+<pre><code class="language-python">from actantial import AnthropicBackend, OpenAIBackend
+
+backend = AnthropicBackend(model_name=&quot;claude-haiku-4-5&quot;)
+backend = OpenAIBackend(model_name=&quot;gpt-4o-mini&quot;)
+</code></pre>
+<p>Both backends validate the model name at initialisation — an invalid model raises a <code>ValueError</code>. An optional <code>system_prompt</code> argument is available for both.</p>
+<h3 id="gpu">GPU</h3>
+<pre><code class="language-python">from actantial import HuggingFaceBackend
+
+backend = HuggingFaceBackend(
+    repository=&quot;deepseek-ai&quot;,
+    model_name=&quot;DeepSeek-R1-Distill-Qwen-32B&quot;,
+    quantisation=True,  # optional: 4-bit quantisation, requires a CUDA GPU!
+)
+</code></pre>
+<h2 id="templates">Templates</h2>
+<p>Templates are <a href="https://jinja.palletsprojects.com/">Jinja2</a> files that define the prompt sent to the LLM. They are organised by model in a <code>templates/{model_name}/</code> directory structure, plus a shared <code>templates/default/</code> directory.</p>
+<p><code>templates/default/base_prompt.txt</code> is a general-purpose open-annotation template that serves as a starting point for any model. However, performance varies significantly across models and use cases, so for systematic use it's important to adapt templates for specific models. This can be a small change, e.g., adding <code>&lt;think&gt;</code> to the end of the template to trigger <em>thinking</em> mode in a DeepSeek-R1 model. However, this can also entail adding additional details on the theory or providing more examples.</p>
+<p>Besides the <code>base_prompt</code>, <code>actantial</code> also provides additional example templates that demonstrate some of these variations and are showcased in the example notebooks. You can copy these example templates to a local directory to start creating your own customisations:</p>
+<pre><code class="language-bash">actantial-init-templates path/to/directory/
+</code></pre>
+<p>This creates a <code>templates/</code> folder with the sample templates in the specified directory.</p>
+<p>To see which templates are available for your model, and to preview a template before running:</p>
+<pre><code class="language-python">backend.list_templates()
+# {'model_specific': ['prompt_closed', 'prompt_open_variables'], 'default': ['base_prompt']}
+
+backend.show_template(&quot;base_prompt&quot;)  # prints the rendered template
+</code></pre>
+<h3 id="custom-templates">Custom templates</h3>
+<p>To write your own template, create a <code>.txt</code> file with a <code>{{ text }}</code> variable:</p>
+<pre><code>Extract actants from the following text: {{ text }}
+</code></pre>
+<p>Place it at <code>path/to/directory/templates/{model_name}/{template_name}.txt</code> and pass <code>templates_dir</code> and <code>template</code> to the runner:</p>
+<pre><code class="language-python">run_extract(
+    data=data,
+    backend=backend,
+    output_dir=&quot;output&quot;,
+    template=&quot;my_template&quot;,
+    templates_dir=&quot;path/to/directory/templates&quot;,
+)
+</code></pre>
+<h3 id="closed-set-templates">Closed-set templates</h3>
+<p>For closed-set annotation you need to create a predefined label set for the model to apply. You might want to create a separate set of labels for actors and objects but that is optional. The labels are saved in YAML files:</p>
+<pre><code class="language-yaml"># actors.yaml
+- actor 1
+- actor 2
+...
+</code></pre>
+<p>Then add the variables <code>{{ actor_labels }}</code> and <code>{{ object_labels }}</code> to your template, load the YAML files, and pass the lists to the runner:</p>
+<pre><code class="language-python">import yaml
+
+with open(&quot;path/to/directory/labels/actors.yaml&quot;) as f:
+    actor_labels = yaml.safe_load(f)
+
+with open(&quot;path/to/directory/labels/objects.yaml&quot;) as f:
+    object_labels = yaml.safe_load(f)
+
+run_extract(
+    data=data,
+    backend=backend,
+    output_dir=&quot;output&quot;,
+    template=&quot;my_template&quot;,
+    actor_labels=actor_labels,
+    object_labels=object_labels,
+)
+</code></pre>
+<p>Note, not all models stick to the labels consistently! You can find a detailed example in the provided <a href="https://jelfes.github.io/actantial/examples/case_study/">case study</a>.</p>
+<p>For additional guidance see <a href="https://arxiv.org/abs/2601.07398">Elfes et al. (2026)</a>. </p>
+<h3 id="additional-variables">Additional Variables</h3>
+<p>You can pass additional columns from your DataFrame as template variables using <code>template_columns</code>. This is useful when each data point has individual context beyond the text itself. For example, you can pass the <code>video_title</code> when annotating YouTube comments.</p>
+<p>Two things are required:
+1. A column of string dtype in your DataFrame (e.g. <code>video_title</code>).
+2. A matching <code>{{ video_title }}</code> variable in your Jinja2 template.</p>
+<pre><code class="language-python">run_extract(
+    data=data,
+    backend=backend,
+    output_dir=&quot;output&quot;,
+    template=&quot;my_template&quot;,
+    template_columns=[&quot;video_title&quot;],
+)
+</code></pre>
+<p>Multiple columns can be passed at once: <code>template_columns=["video_title", "video_creator"]</code>.</p>
+<h3 id="system-prompt">System prompt</h3>
+<p>An optional system prompt can be passed to API backends at initialisation:</p>
+<pre><code class="language-python">backend = OpenAIBackend(model_name=&quot;gpt-4o-mini&quot;, system_prompt=&quot;Always respond in JSON.&quot;)
+</code></pre>
+<h2 id="validation">Validation</h2>
+<p>Validation of the labels is difficult. Especially open-label annotations can vary significantly between prompts and models. This is both due to the complexity of the model and the variation in label formulation without fixed label set. Thus, the validation workflow mostly makes sense for closed-set annotations. Either to compare different models, or to validate models against human annotations (for details, see the <a href="https://jelfes.github.io/actantial/examples/case_study/">case study</a>).</p>
+<p>When loading annotations, if the LLM returned multiple actors for a role you can control how they are handled with <code>select_actor="first"</code> (default) or <code>select_actor="combine"</code> (joins them into a comma-separated string):</p>
+<pre><code class="language-python">llm_annotations = load_annotations(data, label_folder=&quot;output/actantial_models/model/prompt/timestamp&quot;, select_actor=&quot;first&quot;)
+</code></pre>
+<p>To validate <code>llm_annotations</code> against <code>reference_annotations</code>:</p>
+<pre><code class="language-python">from actantial import compare_annotations
+
+results = compare_annotations(
+    dfs=[llm_annotations, reference_annotations],
+    names=[&quot;llm&quot;, &quot;reference&quot;],
+    metric=&quot;accuracy&quot;,
+)
+</code></pre>
+<p><code>results</code> is a DataFrame with one row per actant and an <code>avg</code> summary row. Supported metrics: <code>accuracy</code>, <code>f1_micro</code>, <code>f1_macro</code>, <code>f1_weighted</code>, <code>krippendorff_alpha</code>.</p>
+<h2 id="cli">CLI</h2>
+<p>For large datasets, <code>actantial</code> can be run directly from the command line:</p>
+<pre><code class="language-bash"># OpenAI API
+actantial \
+    --data_file &quot;data.csv&quot; \
+    --output_dir &quot;output&quot; \
+    --backend openai \
+    --model &quot;gpt-4o-mini&quot; \
+    --templates_dir &quot;path/to/directory/templates&quot; \
+    --template &quot;my_template&quot;
+
+# HuggingFace (GPU, 4-bit quantised)
+actantial \
+    --data_file &quot;data.csv&quot; \
+    --output_dir &quot;output&quot; \
+    --backend huggingface \
+    --repository &quot;deepseek-ai&quot; \
+    --model &quot;DeepSeek-R1-Distill-Qwen-32B&quot; \
+    --templates_dir &quot;path/to/directory/templates&quot; \
+    --template &quot;my_template&quot; \
+    --quantise
+
+# With predefined label sets
+actantial \
+    --data_file &quot;data.csv&quot; \
+    --output_dir &quot;output&quot; \
+    --backend anthropic \
+    --model &quot;claude-haiku-4-5&quot; \
+    --templates_dir &quot;path/to/directory/templates&quot; \
+    --template &quot;my_template_closed&quot; \
+    --actor_labels_path &quot;path/to/directory/labels/actors.yaml&quot; \
+    --object_labels_path &quot;path/to/directory/labels/objects.yaml&quot;
+</code></pre>
+<p><strong>With additional template variables</strong> — pass <code>--template_column</code> once per column (repeatable):</p>
+<pre><code class="language-bash">actantial \
+    --data_file &quot;data.csv&quot; \
+    --output_dir &quot;output&quot; \
+    --backend openai \
+    --model &quot;gpt-4o-mini&quot; \
+    --templates_dir &quot;path/to/directory/templates&quot; \
+    --template &quot;my_template&quot; \
+    --template_column video_title \
+    --template_column video_creator
+</code></pre>
+<p><strong>Passing backend parameters</strong> — create a YAML file with any constructor keyword arguments for the chosen backend:</p>
+<pre><code class="language-yaml"># params.yaml
+temperature: 0.7
+top_p: 0.9
+do_sample: true
+</code></pre>
+<pre><code class="language-bash">actantial \
+    --data_file &quot;data.csv&quot; \
+    --output_dir &quot;output&quot; \
+    --backend huggingface \
+    --repository &quot;google&quot; \
+    --model &quot;gemma-3-1b-it&quot; \
+    --templates_dir &quot;path/to/directory/templates&quot; \
+    --template &quot;my_template&quot; \
+    --backend_params_path &quot;path/to/directory/params.yaml&quot;
+</code></pre>
+<p><strong>Resuming an interrupted run</strong> — pass the timestamp printed at the start of the original run:</p>
+<pre><code class="language-bash">actantial \
+    --data_file &quot;data.csv&quot; \
+    --output_dir &quot;output&quot; \
+    --backend openai \
+    --model &quot;gpt-4o-mini&quot; \
+    --templates_dir &quot;path/to/directory/templates&quot; \
+    --template &quot;my_template&quot; \
+    --resume_timestamp &quot;YYYYMMDD_HHMMSS&quot;
+</code></pre>
+<p>The model and template must match the original run. Already-processed IDs are skipped automatically.</p>
+<hr />
+<h2 id="acknowledgements">Acknowledgements</h2>
+<p><a href="https://claude.ai/claude-code">Claude Code</a> was used for packaging, documentation, and code organisation.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.top", "search.highlight"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
