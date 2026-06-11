@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import Any, Union
-from jinja2 import Environment, FileSystemLoader
+
+from actantial.template_utils import resolve_template_path, list_templates_for_model
 
 
 class LLMBackend(ABC):
@@ -42,23 +43,22 @@ class LLMBackend(ABC):
     def list_templates(
         self,
         templates_dir: Union[str, Path] = Path(__file__).parent.parent / "templates",
-    ) -> list:
+    ) -> dict[str, list[str]]:
         """
         List the prompt templates available for this backend's model.
 
         Args:
             templates_dir: Root directory containing per-model template
-                subdirectories. Defaults to the built-in ``templates/`` folder.
+                subdirectories and the shared ``default/`` directory.
+                Defaults to the built-in ``templates/`` folder.
 
         Returns:
-            List of template names available for this model, without the
-                ``.txt`` extension.
+            A dict with keys ``"model_specific"`` and ``"default"``, each
+                mapping to a sorted list of template names available for
+                this model, without the ``.txt`` extension.
         """
 
-        templates_dir = Path(templates_dir) / self.model_name
-        if not templates_dir.exists():
-            raise FileNotFoundError(f"Directory not found: {templates_dir}.")
-        return [f.stem for f in templates_dir.glob("*.txt")]
+        return list_templates_for_model(templates_dir, self.model_name)
 
     def show_template(
         self,
@@ -66,31 +66,28 @@ class LLMBackend(ABC):
         templates_dir: Union[str, Path] = Path(__file__).parent.parent / "templates",
     ) -> None:
         """
-        Print a prompt template.
-
-        Renders the template with dummy values so the structure is visible
-        without requiring real input data.
+        Print the raw source of a prompt template.
 
         Args:
             template: Name of the template to display, with or without
                 the ``.txt`` extension.
             templates_dir: Root directory containing per-model template
-                subdirectories. Defaults to the built-in ``templates/`` folder.
+                subdirectories and the shared ``default/`` directory.
+                Defaults to the built-in ``templates/`` folder.
         """
 
         template = template if template.endswith(".txt") else template + ".txt"
-        environment = Environment(loader=FileSystemLoader(templates_dir))
+        template_path, source_dir = resolve_template_path(
+            templates_dir, self.model_name, template
+        )
 
-        try:
-            source = environment.loader.get_source(
-                environment, str(Path(self.model_name, template))
-            )[0]
-        except Exception as e:
-            raise FileNotFoundError(
-                f"Error loading template {e}. Please ensure that the template exists in the templates/{self.model_name} directory and is named correctly."
-            )
+        with open(template_path) as f:
+            source = f.read()
 
-        print(f"Template '{template}' for model '{self.model_name}':\n")
+        print(
+            f"Template '{template}' for model '{self.model_name}' "
+            f"(source: {source_dir}):\n"
+        )
         print(source)
 
     def cleanup(self):

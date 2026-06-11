@@ -11,6 +11,7 @@ from jinja2 import Environment, FileSystemLoader, Template, meta as jinja2_meta
 from pathlib import Path
 from datetime import datetime
 from actantial.io import _parse_json, _ensure_directory, _configure_logging
+from actantial.template_utils import resolve_template_path
 
 
 def run_extract(
@@ -44,9 +45,11 @@ def run_extract(
             instance.
         output_dir: Root directory for saving results and logs.
         template: Name of the prompt template to use. Must exist in
-            ``templates_dir/{backend.model_name}/``.
+            ``templates_dir/{backend.model_name}/`` or fall back to
+            ``templates_dir/default/``.
         templates_dir: Root directory containing per-model template
-            subdirectories. Defaults to the built-in ``templates/`` folder.
+            subdirectories and the shared ``default/`` directory. Defaults
+            to the built-in ``templates/`` folder.
         actor_labels: List of actor labels for closed-set annotation. Only
             used if the template supports ``actor_labels``.
         object_labels: List of object labels for closed-set annotation. Only
@@ -123,21 +126,17 @@ def run_extract(
     print(f"Files: \t\t{RUN_DIR}")
 
     # get template
-    environment = Environment(loader=FileSystemLoader(templates_dir))
+    template_path, template_source_dir = resolve_template_path(
+        templates_dir, backend.model_name, template_name
+    )
 
-    try:
-        template = environment.get_template(
-            str(Path(backend.model_name, template_name))
-        )
-    except Exception as e:
-        error_message = f"Error loading template {e}. Please ensure that the template exists in the templates/{backend.model_name} directory and is named correctly."
-        logging.error(error_message)
-        raise FileNotFoundError(error_message)
+    environment = Environment(loader=FileSystemLoader(template_path.parent))
+    template = environment.get_template(template_path.name)
 
     # validate template variables
-    template_source = environment.loader.get_source(
-        environment, str(Path(backend.model_name, template_name))
-    )[0]
+    template_source = environment.loader.get_source(environment, template_path.name)[
+        0
+    ]
     template_vars = jinja2_meta.find_undeclared_variables(
         environment.parse(template_source)
     )
@@ -201,6 +200,7 @@ def run_extract(
                     "model": backend.model_name,
                     "templates_dir": str(templates_dir),
                     "template": template_name.removesuffix(".txt"),
+                    "template_source": template_source_dir,
                     "timestamp": timestamp,
                     "quantisation": getattr(backend, "quantisation", False),
                     "template_columns": template_columns,
@@ -210,9 +210,7 @@ def run_extract(
             )
 
     if not resuming:
-        logging.info(
-            f"Template: \t{Path(templates_dir, backend.model_name, template_name)}"
-        )
+        logging.info(f"Template: \t{template_path}")
         _preview_extra = {col: f"<{col.upper()}>" for col in template_columns}
         logging.info(
             f"Prompt preview:\n{template.render(text='<TEXT>', actor_labels=actor_labels, object_labels=object_labels, **_preview_extra)}"

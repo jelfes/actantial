@@ -27,7 +27,7 @@ pip install actantial
 
 **Backends** are the LLM providers used for inference. `actantial` supports the Anthropic and OpenAI APIs, and local models via HuggingFace.
 
-**Templates** are the prompts sent to the LLM. They control how the extraction task is framed and must contain at least a `{{ text }}` variable. `actantial` ships with built-in example templates, but custom templates are recommended for new use cases.
+**Templates** are the prompts sent to the LLM. They control the extraction process and significantly alter the way it is handled. The package provides a general-purpose base template that serves as a starting point for any model. However, performance varies significantly across models and use cases, so for systematic use it's important to adapt the template. This matters especially for closed-set annotations, where label definitions need careful, model-specific tuning. See [Templates](#templates) for details.
 
 **Open vs. closed annotation** — in open mode, the LLM assigns actors freely from the text. In closed mode, you provide predefined lists of actor and object labels, constraining the LLM to choose from those options. Closed annotation is recommended when you want consistent, comparable labels across texts. However, it requires devising a concise label set (for details, see WIP).
 
@@ -46,7 +46,7 @@ run_extract(
     data=data,
     backend=backend,
     output_dir="output",
-    template="prompt_open",
+    template="base_prompt",
 )
 ```
 
@@ -55,7 +55,7 @@ Results are saved to `output/actantial_models/{model}/{template}/{timestamp}/`. 
 ```python
 annotations = load_annotations(
     data=data,
-    label_folder="output/actantial_models/gpt-4o-mini/prompt_open/TIMESTAMP/",
+    label_folder="output/actantial_models/gpt-4o-mini/base_prompt/TIMESTAMP/",
 )
 ```
 
@@ -101,7 +101,11 @@ backend = HuggingFaceBackend(
 
 ## Templates
 
-Templates are [Jinja2](https://jinja.palletsprojects.com/) files that define the prompt sent to the LLM. They are organised by model in a `templates/{model_name}/` directory structure. `actantial` ships with built-in example templates; to inspect and customise them, copy them to a local directory:
+Templates are [Jinja2](https://jinja.palletsprojects.com/) files that define the prompt sent to the LLM. They are organised by model in a `templates/{model_name}/` directory structure, plus a shared `templates/default/` directory.
+
+`templates/default/base_prompt.txt` is a general-purpose open-annotation template that serves as a starting point for any model. However, performance varies significantly across models and use cases, so for systematic use it's important to adapt templates for specific models. This can be a small change, e.g., adding `<think>` to the end of the template to trigger _thinking_ mode in a DeepSeek-R1 model. However, this can also entail adding additional details on the theory or providing more examples.
+
+Besides the `base_prompt`, `actantial` also provides additional example templates that demonstrate some of these variations and are showcased in the example notebooks. You can copy these example templates to a local directory to start creating your own customisations:
 
 ```bash
 actantial-init-templates path/to/directory/
@@ -112,8 +116,10 @@ This creates a `templates/` folder with the sample templates in the specified di
 To see which templates are available for your model, and to preview a template before running:
 
 ```python
-backend.list_templates()       # returns a list of template names
-backend.show_template("prompt_open")  # prints the rendered template
+backend.list_templates()
+# {'model_specific': ['prompt_closed', 'prompt_open_variables'], 'default': ['base_prompt']}
+
+backend.show_template("base_prompt")  # prints the rendered template
 ```
 
 ### Custom templates
@@ -168,7 +174,9 @@ run_extract(
 )
 ```
 
-Note, not all models stick to the labels consistently! For additional guidance see [Elfes et al. (2026)](https://arxiv.org/abs/2601.07398). 
+Note, not all models stick to the labels consistently! You can find a detailed example in the provided [case study](https://jelfes.github.io/actantial/examples/case_study/).
+
+For additional guidance see [Elfes et al. (2026)](https://arxiv.org/abs/2601.07398). 
 
 ### Additional Variables
 
