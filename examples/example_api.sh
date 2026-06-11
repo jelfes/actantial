@@ -3,4 +3,4 @@ actantial \
     --output_dir "examples/output" \
     --backend openai \
     --model "gpt-4o-mini" \
-    --template "prompt_open"
+    --template "base_prompt"

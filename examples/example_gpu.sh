@@ -4,4 +4,4 @@ python -m actantial \
     --backend huggingface \
     --repository "google" \
     --model "gemma-3-1b-it" \
-    --template "prompt_open"
+    --template "base_prompt"
