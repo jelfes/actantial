@@ -1,9 +1,9 @@
 {
-  "model": "gemma-3-1b-it",
+  "model": "claude-haiku-4-5",
   "templates_dir": "/actantial/templates",
   "template": "base_prompt",
   "template_source": "default",
-  "timestamp": "20260610_185737",
+  "timestamp": "20260611_134331",
   "quantisation": false,
   "template_columns": []
 }
