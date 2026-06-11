@@ -1,7 +1,7 @@
 According to the Actantial Model by Greimas with the actant label set ["Subject", "Object", "Sender", "Receiver", "Helper", "Opponent"], the actants are defined as follows:
 
 * Subject: The character who carries out the action and desires the Object.
-* Object: The character or thing that is desired and transfered.
+* Object: The character or thing that is desired and transferred.
 * Sender: The character who initiates the action, controls the Object, and transfers it to the Receiver.
 * Receiver: The character who receives the Object.
 * Helper: The character who assists the Subject in achieving its goal.
@@ -12,7 +12,7 @@ Based on the Actantial Model, please recognize the actants in the following text
 Text: {{ text }}
 
 
-Question: What are the main actants in the text? 
+Question: What are the main actants in the text?
 1. Identify the main Object in the text.
 2. Identify the respective Subject.
 3. Identify the Sender who transfers the Object to the Receiver. Make sure that this matches the Object from the previous step.
