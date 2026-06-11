@@ -1,0 +1,9 @@
+{
+  "model": "gemma-3-1b-it",
+  "templates_dir": "/Users/jelfes/ucd/actantial/actantial/templates",
+  "template": "base_prompt",
+  "template_source": "default",
+  "timestamp": "20260610_185737",
+  "quantisation": false,
+  "template_columns": []
+}

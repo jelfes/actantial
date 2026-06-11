@@ -1,0 +1,9 @@
+{
+  "model": "gpt-4o-mini",
+  "templates_dir": "/actantial/templates",
+  "template": "base_prompt",
+  "template_source": "default",
+  "timestamp": "20260610_185457",
+  "quantisation": false,
+  "template_columns": []
+}

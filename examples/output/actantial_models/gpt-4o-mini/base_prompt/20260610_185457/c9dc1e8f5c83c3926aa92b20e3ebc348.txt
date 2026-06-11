@@ -1,0 +1,1 @@
+{"Subject": ["Israel"], "Object": ["Gaza's hospitals"], "Sender": ["Israel"], "Receiver": ["Palestinians seeking medical care"], "Helper": ["International humanitarian organizations"], "Opponent": ["Hamas"]}

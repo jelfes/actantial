@@ -1,0 +1,1 @@
+{"Subject": ["Israel's military"], "Object": ["Hamas's operational capabilities at hospitals"], "Sender": ["Israel's military"], "Receiver": ["Palestinian civilians and the international community"], "Helper": ["Indonesian foreign ministry", "Human Rights Watch"], "Opponent": ["Hamas", "hospital officials"]}

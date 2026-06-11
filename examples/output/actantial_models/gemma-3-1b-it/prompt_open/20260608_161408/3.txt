@@ -1,1 +1,0 @@
-{"Subject": ["Alice"], "Object": ["Bob"], "Sender": ["Alice"], "Receiver": ["Bob"], "Helper": "", "Opponent": ""}

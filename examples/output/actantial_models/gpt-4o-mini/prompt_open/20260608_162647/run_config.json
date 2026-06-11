@@ -1,8 +1,0 @@
-{
-  "model": "gpt-4o-mini",
-  "templates_dir": "./test/templates",
-  "template": "prompt_open",
-  "timestamp": "20260608_162647",
-  "quantisation": false,
-  "template_columns": []
-}

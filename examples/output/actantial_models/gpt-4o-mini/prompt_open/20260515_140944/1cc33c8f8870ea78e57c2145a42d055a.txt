@@ -1,1 +1,0 @@
-{"Subject": ["Israel's military"], "Object": ["Hamas's operations at hospitals"], "Sender": ["Israel's military"], "Receiver": ["Palestinian civilians and the international community"], "Helper": ["Health ministry spokesperson Ashraf al-Qudra", "Mohammad Abu Salmiya"], "Opponent": ["Hamas", "hospital officials"]}

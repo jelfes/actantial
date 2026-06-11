@@ -1,0 +1,1 @@
+{"Subject": ["Palestinians"], "Object": ["Safety and refuge in southern Gaza"], "Sender": ["Israeli forces"], "Receiver": ["Palestinians"], "Helper": ["UN humanitarian office"], "Opponent": ["Israeli forces"]}

@@ -1,1 +1,0 @@
-{"Subject": ["Al-Shifa Hospital", "Gazian"], "Object": ["Al-Shifa Hospital", "Gazian"], "Sender": ["Al-Shifa Hospital"], "Receiver": ["Gazian"], "Helper": ["Al-Shifa Hospital"], "Opponent": ["Gazian"]}
