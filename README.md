@@ -59,7 +59,8 @@ annotations = load_annotations(
 )
 ```
 
-This adds one column per actant role — Subject, Object, Sender, Receiver, Helper, Opponent — to your DataFrame.
+> [!TIP]
+> For a detailed introduction into using `actantial` see the [Getting started notebook](https://github.com/jelfes/actantial/blob/main/examples/getting_started.ipynb).
 
 ## Backends
 
